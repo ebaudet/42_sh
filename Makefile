@@ -6,7 +6,7 @@
 #    By: ymohl-cl <ymohl-cl@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2014/01/04 16:12:18 by ymohl-cl          #+#    #+#              #
-#    Updated: 2014/02/26 09:33:34 by ymohl-cl         ###   ########.fr        #
+#    Updated: 2014/02/26 10:03:18 by ymohl-cl         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -28,7 +28,7 @@ CCB= llvm-gcc-4.2
 
 GFLAG = -g3
 
-FLAG = -Wall -Wextra -Werror $(GFLAG)
+FLAG = -Wall -Wextra -Werror
 
 ADD = -ltermcap
 
@@ -43,6 +43,8 @@ SRC =	src_int/ft_minishell.c \
 		src_int/ft_create_hst.c \
 		src_int/get_next_line.c \
 		src_int/ft_clean_thist.c \
+		src_int/ft_write_on_file.c \
+		src_int/ft_del_keyword.c \
 
 OBJ = $(SRC:.c=.o)
 

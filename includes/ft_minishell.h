@@ -6,7 +6,7 @@
 /*   By: ymohl-cl <ymohl-cl@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/02/04 13:14:22 by ymohl-cl          #+#    #+#             */
-/*   Updated: 2014/02/06 23:02:23 by ymohl-cl         ###   ########.fr       */
+/*   Updated: 2014/02/07 19:51:48 by ymohl-cl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,5 +49,7 @@ int			ft_print_fd(char str);
 int			ft_create_hst(t_hist **hst);
 int			get_next_line(int fd, char **line);
 void		ft_clean_thist(t_hist **hst);
+int			ft_write_on_file(t_edit **lst);
+void		ft_del_keyword(t_edit **lst, t_hist **hst);
 
 #endif /* !FT_MINISHELL_H */

@@ -6,7 +6,7 @@
 /*   By: ymohl-cl <ymohl-cl@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/02/06 15:44:02 by ymohl-cl          #+#    #+#             */
-/*   Updated: 2014/02/26 09:28:36 by ymohl-cl         ###   ########.fr       */
+/*   Updated: 2014/02/26 09:57:35 by ymohl-cl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,7 +82,7 @@ static void			add_line_hst(t_hist **hst, char **line)
 	new_hst->ptr = new_edit;
 }
 
-int				ft_create_hst(t_hist **hst)
+int					ft_create_hst(t_hist **hst)
 {
 	char		*line;
 	int			fd;

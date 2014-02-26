@@ -6,37 +6,34 @@
 /*   By: ymohl-cl <ymohl-cl@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/02/06 19:31:56 by ymohl-cl          #+#    #+#             */
-/*   Updated: 2014/02/26 09:28:19 by ymohl-cl         ###   ########.fr       */
+/*   Updated: 2014/02/26 09:57:18 by ymohl-cl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdlib.h>
 #include "../includes/ft_minishell.h"
 
-static void		clean_lst_e(t_edit *lst)
+static void		clean_lst_e(t_edit **lst)
 {
 	t_edit		*tmp;
 
-	tmp = NULL;
-	if (!lst)
-		return ;
-	tmp = lst;
+	tmp = *lst;
 	while (tmp->next != NULL)
 	{
 		tmp->video = 0;
 		tmp->c = '\0';
 		tmp = tmp->next;
-		lst->next = NULL;
-		lst->prev = NULL;
-		free(lst);
-		lst = tmp;
+		(*lst)->next = NULL;
+		(*lst)->prev = NULL;
+		free(*lst);
+		*lst = tmp;
 	}
 	tmp->video = 0;
 	tmp->c = '\0';
-	lst->next = NULL;
-	lst->prev = NULL;
-	free(lst);
-	lst = NULL;
+	tmp->next = NULL;
+	tmp->prev = NULL;
+	free(tmp);
+	*lst = NULL;
 	tmp = NULL;
 }
 
@@ -50,7 +47,7 @@ void			ft_clean_thist(t_hist **hst)
 	tmp = *hst;
 	while (tmp->next != NULL)
 	{
-		clean_lst_e(tmp->ptr);
+		clean_lst_e(&tmp->ptr);
 		tmp->valid = 0;
 		tmp = tmp->next;
 		(*hst)->next = NULL;
@@ -58,7 +55,7 @@ void			ft_clean_thist(t_hist **hst)
 		free((*hst));
 		*hst = tmp;
 	}
-	clean_lst_e(tmp->ptr);
+	clean_lst_e(&tmp->ptr);
 	tmp->valid = 0;
 	(*hst)->next = NULL;
 	(*hst)->prev = NULL;

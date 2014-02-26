@@ -6,7 +6,7 @@
 /*   By: ymohl-cl <ymohl-cl@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/02/04 21:30:50 by ymohl-cl          #+#    #+#             */
-/*   Updated: 2014/02/26 09:29:46 by ymohl-cl         ###   ########.fr       */
+/*   Updated: 2014/02/26 10:00:18 by ymohl-cl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ void		ft_print_lste(t_edit **lst)
 
 	mark = 0;
 	tmp = *lst;
-	while (tmp->next != NULL)
+	while (tmp->next != NULL && tmp->video != -1)
 	{
 		if (tmp->video == 1)
 			mark = 1;

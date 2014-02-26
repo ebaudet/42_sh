@@ -6,7 +6,7 @@
 /*   By: ymohl-cl <ymohl-cl@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/02/04 14:52:12 by ymohl-cl          #+#    #+#             */
-/*   Updated: 2014/02/26 09:27:38 by ymohl-cl         ###   ########.fr       */
+/*   Updated: 2014/02/26 09:57:04 by ymohl-cl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,31 +24,31 @@ static void		arrow_left_right(t_edit **lst, char *key)
 	tmp = *lst;
 	while (tmp->next != NULL && tmp->video == 0)
 		tmp = tmp->next;
-	if (ARROW && key[2] == 68 && key[3] == 0 && tmp != *lst && tmp->prev->c)
+	if (ARROW && key[2] == 68 && key[3] == 0 && tmp->video > -1)
 	{
-		if (tmp->video == 0 && tmp->c)
+		if (tmp->video == 0)
 		{
 			tmp->video = 1;
 			ft_tputs("le");
 		}
-		else if (tmp->prev != NULL && tmp->c)
+		else if (tmp->video == 1 && tmp->prev != NULL)
 		{
 			tmp->video = 0;
 			tmp->prev->video = 1;
 			ft_tputs("le");
 		}
 	}
-	else if (ARROW && key[2] == 67 && key[3] == 0)
+	else if (ARROW && key[2] == 67 && key[3] == 0 && tmp->video > -1)
 	{
-		if (tmp->video == 1 && tmp->next == NULL)
-		{
-			tmp->video = 0;
-			ft_tputs("nd");
-		}
-		else if (tmp->video == 1 && tmp->next != NULL)
+		if (tmp->video == 1 && tmp->next != NULL)
 		{
 			tmp->video = 0;
 			tmp->next->video = 1;
+			ft_tputs("nd");
+		}
+		else if (tmp->video == 1 && tmp->next == NULL)
+		{
+			tmp->video = 0;
 			ft_tputs("nd");
 		}
 	}
@@ -72,10 +72,6 @@ static void		arrow_up_down(t_edit **lst, t_hist **hst, char *key)
 				*lst = tmp->next->ptr;
 				tmp->next->valid = 1;
 				tmp->valid = 0;
-		ft_tputs("rc");
-		ft_tputs("ce");
-		ft_print_lste(lst);
-
 			}
 		}
 		else
@@ -88,54 +84,11 @@ static void		arrow_up_down(t_edit **lst, t_hist **hst, char *key)
 				*lst = tmp->prev->ptr;
 				tmp->valid = 0;
 				tmp->prev->valid = 1;
+			}
+		}
 		ft_tputs("rc");
 		ft_tputs("ce");
 		ft_print_lste(lst);
-
-			}
-		}
-/*		ft_tputs("rc");
-		ft_tputs("ce");
-		ft_print_lste(lst);*/
-	}
-}
-
-static void		del_keyword(t_edit **lst)
-{
-	t_edit		*tmp;
-
-	tmp = NULL;
-	if (!*lst)
-		return ;
-	tmp = *lst;
-	while (tmp->next != NULL && tmp->video == 0)
-		tmp = tmp->next;
-	if (tmp->prev != NULL)
-	{
-		tmp = tmp->prev;
-		ft_tputs("le");
-		ft_tputs("dc");
-		tmp->c = '\0';
-		tmp->video = 0;
-		if (tmp->prev)
-		{
-			tmp->prev->next = tmp->next;
-			tmp->next->prev = tmp->prev;
-		}
-		else
-		{
-			tmp->prev = NULL;
-			tmp->next->prev = NULL;
-			tmp->next = NULL;
-		}
-		free(tmp);
-	}
-	else if (tmp->prev == NULL && tmp->c != '\0')
-	{
-		tmp->c = '\0';
-		ft_tputs("le");
-		ft_tputs("dc");
-		tmp->video = 0;
 	}
 }
 
@@ -155,13 +108,14 @@ int				ft_check_key(char *key, t_edit **lst_e, t_hist **hst)
 			ft_print_lste(lst_e);
 		}
 		else if (key[0] == 127 && key[1] == 0 && key[2] == 0 && key[3] == 0)
-			del_keyword(lst_e);
+			ft_del_keyword(lst_e, hst);
 		else if (ft_isprint(*key))
 		{
+			ft_tputs("im");
+			ft_tputs("ic");
+			ft_putchar_fd(*key, STDIN_FILENO);
+			ft_tputs("ei");
 			ft_filled_lste(key, lst_e, hst);
-			ft_tputs("rc");
-			ft_tputs("ce");
-			ft_print_lste(lst_e);
 		}
 	}
 	else

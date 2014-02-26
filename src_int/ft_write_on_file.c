@@ -1,29 +1,52 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_tputs.c                                         :+:      :+:    :+:   */
+/*   ft_write_on_file.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ymohl-cl <ymohl-cl@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2014/02/04 15:07:16 by ymohl-cl          #+#    #+#             */
-/*   Updated: 2014/02/26 10:01:01 by ymohl-cl         ###   ########.fr       */
+/*   Created: 2014/02/07 13:53:47 by ymohl-cl          #+#    #+#             */
+/*   Updated: 2014/02/26 10:01:15 by ymohl-cl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdlib.h>
 #include <unistd.h>
-#include <term.h>
+#include <fcntl.h>
+#include <stdlib.h>
 #include "../includes/ft_minishell.h"
 
-static int		put_fd(int c)
+static void		write_last_tmp(char c, int fd)
 {
-	write(STDIN_FILENO, &c, 1);
+		write(fd, &c, 1);
+		write(fd, "\n", 1);
+}
+
+int				ft_write_on_file(t_edit **lst)
+{
+	int			i;
+	t_edit		*tmp;
+	int			fd;
+
+	i = 1;
+	tmp = NULL;
+	fd = open(FT_FILE, O_WRONLY | O_APPEND);
+	if (fd == -1)
+		return (-1);
+	if (!*lst)
+		return (-2);
+	tmp = *lst;
+	while (tmp->next != NULL)
+	{
+		if (tmp->c)
+		{
+			write(fd, &tmp->c, 1);
+			i++;
+		}
+		tmp = tmp->next;
+	}
+	if (tmp->c)
+		write_last_tmp(tmp->c, fd);
+	close(fd);
 	return (0);
 }
 
-int				ft_tputs(char *str)
-{
-	if (tputs(tgetstr(str, NULL), 1, put_fd) == -1)
-		return (-1);
-	return (0);
-}
