@@ -19,6 +19,6 @@ i propose that we use this README for communication on the modifycations for the
 
 HONOR AND HAVE FUN ALL -- GOOD JOB :D
 
-during treatment:
-1.0 Sh_3 is fonctionnality and return one string whit a command process (MrPiou) :D
-
+1.0 Sh_3 is fonctionnality and return one string whit a command process:
+during treatment:		if i delete all characters of one history list and command line, my list is break and i cant up.
+during treatment:		Return one string whit a command process
