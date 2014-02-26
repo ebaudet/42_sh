@@ -4,21 +4,4 @@ Hi team !!
  ||  ||
 || !! ||  We must think about delete this README after you complete the project !
 ||||||||
-
-i propose that we use this README for communication on the modifycations for the project.
-
-{
-	Makefile
-	README: is the file that we give all informations on this for the project.
-	auteur: Ty for check your login
-	includes: all headers for the project
-	libft: I really have to draw a picture ?? xd
-	src_int: all sources for manage interface's 42_sh
-	src_proc: all sources for process's 42_sh (lexeur, parseur and executable)
-}
-
-HONOR AND HAVE FUN ALL -- GOOD JOB :D
-
-1.0 Sh_3 is fonctionnality and return one string whit a command process:
-Resolved:				if i delete all characters of one history list and command line, my list is break and i cant up.
-during treatment:		Return one string whit a command process
+to check the progress of the project, go on trello.com
