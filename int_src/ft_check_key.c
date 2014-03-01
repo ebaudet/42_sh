@@ -6,7 +6,7 @@
 /*   By: ymohl-cl <ymohl-cl@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/02/04 14:52:12 by ymohl-cl          #+#    #+#             */
-/*   Updated: 2014/02/26 09:57:04 by ymohl-cl         ###   ########.fr       */
+/*   Updated: 2014/03/01 20:37:10 by mmole            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@
 #include "../includes/ft_minishell.h"
 #include "../libft/libft.h"
 
-static void		arrow_left_right(t_edit **lst, char *key)
+void		arrow_left_right(t_edit **lst, char *key)
 {
 	t_edit		*tmp;
 
@@ -87,7 +87,7 @@ static void		arrow_up_down(t_edit **lst, t_hist **hst, char *key)
 			}
 		}
 		ft_tputs("rc");
-		ft_tputs("ce");
+		ft_tputs("cd");
 		ft_print_lste(lst);
 	}
 }
@@ -117,6 +117,10 @@ int				ft_check_key(char *key, t_edit **lst_e, t_hist **hst)
 			ft_tputs("ei");
 			ft_filled_lste(key, lst_e, hst);
 		}
+		else if (key[0] == 27 && key[1] == 91 && key[2] == 72)
+			ft_home(lst_e);
+		else if (key[0] == 27 && key[1] == 91 && key[2] == 70)
+			ft_end(lst_e);
 	}
 	else
 		return (-1);
