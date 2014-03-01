@@ -6,7 +6,7 @@
 /*   By: mmole <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/03/01 13:14:49 by mmole             #+#    #+#             */
-/*   Updated: 2014/03/01 20:33:08 by mmole            ###   ########.fr       */
+/*   Updated: 2014/03/01 20:56:06 by mmole            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ int		ft_poscurseur(t_edit **lst)
 
 void	ft_home(t_edit **lst)
 {
-	int	pos;
+	int		pos;
 	char	key[4];
 
 	pos = ft_poscurseur(lst);
@@ -45,13 +45,10 @@ void	ft_home(t_edit **lst)
 	key[1] = 91;
 	key[2] = 68;
 	key[3] = 0;
-	if (pos != 0)
+	while ((pos) >= 0)
 	{
-		while ((pos) >= 0)
-		{
-			arrow_left_right(lst, key);
-			pos--;
-		}
+		arrow_left_right(lst, key);
+		pos--;
 	}
 }
 
@@ -74,12 +71,9 @@ void	ft_end(t_edit **lst)
 	key[1] = 91;
 	key[2] = 67;
 	key[3] = 0;
-	if (pos != 0)
+	while ((pos) < max)
 	{
-		while ((pos) < max)
-		{
-			arrow_left_right(lst, key);
-			pos++;
-		}
+		arrow_left_right(lst, key);
+		pos++;
 	}
 }
