@@ -6,7 +6,7 @@
 #    By: ymohl-cl <ymohl-cl@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2014/01/04 16:12:18 by ymohl-cl          #+#    #+#              #
-#    Updated: 2014/02/26 10:03:18 by ymohl-cl         ###   ########.fr        #
+#    Updated: 2014/03/01 20:48:04 by mmole            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -45,6 +45,7 @@ INT_SRC =	ft_minishell.c \
 			ft_clean_thist.c \
 			ft_write_on_file.c \
 			ft_del_keyword.c \
+			ft_home.c \
 
 BLD_SRC =	
 
