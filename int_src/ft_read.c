@@ -6,7 +6,7 @@
 /*   By: ymohl-cl <ymohl-cl@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/02/04 13:41:59 by ymohl-cl          #+#    #+#             */
-/*   Updated: 2014/02/26 10:00:35 by ymohl-cl         ###   ########.fr       */
+/*   Updated: 2014/03/02 17:07:36 by mmole            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,8 @@ static char		*ini_key(char *key)
 	key[1] = 0;
 	key[2] = 0;
 	key[3] = 0;
+	key[4] = 0;
+	key[5] = 0;
 	return (key);
 }
 
@@ -53,16 +55,16 @@ int				ft_read(t_env **env)
 
 	hst = NULL;
 	lst_e = NULL;
-	key = (char *)malloc(sizeof(char) * 4);
+	key = (char *)malloc(sizeof(char) * 6);
 	if (!key)
 		return (-1);
-	key[4] = '\0';
+	key[6] = '\0';
 	key = ini_key(key);
 	begin_read(&hst, &lst_e);
 	while (!(key[0] == 10 && key[1] == 0 && key[2] == 0 && key[3] == 0))
 	{
 		key = ini_key(key);
-		if (read(0, key, 4) == -1)
+		if (read(0, key, 6) == -1)
 			return (-2);
 		ft_check_key(key, &lst_e, &hst);
 	}
