@@ -6,7 +6,7 @@
 #    By: ymohl-cl <ymohl-cl@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2014/01/04 16:12:18 by ymohl-cl          #+#    #+#              #
-#    Updated: 2014/03/02 19:13:39 by wbeets           ###   ########.fr        #
+#    Updated: 2014/03/02 19:58:11 by mmole            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -48,6 +48,7 @@ INT_SRC =	ft_minishell.c \
 			ft_write_on_file.c \
 			ft_del_keyword.c \
 			ft_home.c \
+			ft_shift.c \
 
 BLD_SRC =	
 
