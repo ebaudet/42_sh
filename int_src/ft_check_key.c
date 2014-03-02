@@ -6,7 +6,7 @@
 /*   By: ymohl-cl <ymohl-cl@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/02/04 14:52:12 by ymohl-cl          #+#    #+#             */
-/*   Updated: 2014/03/01 20:37:10 by mmole            ###   ########.fr       */
+/*   Updated: 2014/03/02 17:35:06 by mmole            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -121,6 +121,8 @@ int				ft_check_key(char *key, t_edit **lst_e, t_hist **hst)
 			ft_home(lst_e);
 		else if (key[0] == 27 && key[1] == 91 && key[2] == 70)
 			ft_end(lst_e);
+		else if (ARROW && SHIFT && key[4] == 50 && (key[5] == 68 || key[5] == 67))
+			ft_shift(lst_e, key);
 	}
 	else
 		return (-1);
