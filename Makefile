@@ -6,7 +6,7 @@
 #    By: ymohl-cl <ymohl-cl@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2014/01/04 16:12:18 by ymohl-cl          #+#    #+#              #
-#    Updated: 2014/03/01 20:48:04 by mmole            ###   ########.fr        #
+#    Updated: 2014/03/02 19:13:39 by wbeets           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,6 +15,8 @@ NAME = 42_sh
 LIBFT = -L libft/ -lft
 
 LIBFTH = -I libft/
+
+INC = -I includes/
 
 WFT = make -C libft/
 
@@ -49,7 +51,9 @@ INT_SRC =	ft_minishell.c \
 
 BLD_SRC =	
 
-PRC_SRC =	
+PRC_SRC =	ft_lexer.c\
+			ft_make_oplst.c\
+			ft_split.c\
 
 INT_SRCS = $(addprefix int_src/, $(INT_SRC))
 BLD_SRCS = $(addprefix bld_src/, $(BLD_SRC))
@@ -65,7 +69,7 @@ OBJ = $(SRC:%.c=.obj/%.o)
 all: createfolder $(NAME)
 
 .obj/%.o: %.c
-	@$(CC) $(FLAG) -o $@ -c $< -I. $(LIBFTH)
+	@$(CC) $(FLAG) -o $@ -c $< -I. $(LIBFTH) $(INC)
 	@echo "\033[32m.\c\033[0m"
 
 $(NAME): say $(OBJ)
@@ -73,7 +77,7 @@ $(NAME): say $(OBJ)
 	@ranlib $(LIB)
 	@echo "\033[32m\tDONE !\033[0m"
 	@$(WFT)
-	@$(CC) $(FLAG) -o $(NAME) $(ADD) $(OJB) $(WLIB) $(LIBFT) -I.
+	@cc $(FLAG) -o $(NAME) $(ADD) $(OJB) $(WLIB) $(LIBFT) -I. $(INC)
 	@echo "\033[32m  $(NAME) project is compiled !\033[0m"
 	@echo ""
 	cat -e auteur
@@ -86,6 +90,10 @@ say:
 	@echo "\033[33m  '.' == One file is compiled\t\033[0m"
 	@echo "\033[33m  ' ' == make: Nothing to be done for 'all'\t\033[0m"
 	@echo "\033[32m  $(LIB) compilation progress\t\c\033[0m"
+
+gdb: $(OBJ)
+	@$(CC) $(FLAG) $(GFLAG) -o $(NAME) $(ADD) $(OJB) $(WLIB) $(LIBFT) -I.
+
 
 clean:
 	@rm -rf .obj

@@ -6,7 +6,7 @@
 /*   By: wbeets <wbeets@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/02/28 18:24:36 by wbeets            #+#    #+#             */
-/*   Updated: 2014/02/28 19:27:45 by wbeets           ###   ########.fr       */
+/*   Updated: 2014/03/02 19:16:03 by wbeets           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,5 +34,6 @@ typedef struct			s_op
 int		ft_lexer(char *str);
 t_op	*ft_make_oplst(char	*str);
 void	ft_ecex(t_tree *tree);
+char	**ft_split(char *str);
 
 #endif

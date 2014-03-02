@@ -6,12 +6,14 @@
 /*   By: wbeets <wbeets@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/02/28 19:33:56 by wbeets            #+#    #+#             */
-/*   Updated: 2014/03/02 17:36:13 by wbeets           ###   ########.fr       */
+/*   Updated: 2014/03/02 19:15:38 by wbeets           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "prc.h"
 #include <unistd.h>
+#include <stdlib.h>
+#include <libft.h>
 
 static void		add_end(char *str, int code, t_op *start)
 {

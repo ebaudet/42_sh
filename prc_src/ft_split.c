@@ -6,12 +6,14 @@
 /*   By: wbeets <wbeets@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/03/02 11:22:27 by wbeets            #+#    #+#             */
-/*   Updated: 2014/03/02 17:34:30 by wbeets           ###   ########.fr       */
+/*   Updated: 2014/03/02 19:17:08 by wbeets           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "prc.h"
 #include "libft.h"
+#include <unistd.h>
+#include <stdlib.h>
 
 static int		is_op(char c)
 {
@@ -62,7 +64,7 @@ static char		*find_word_2(char *str, int *i)
 	{
 		ret[k] = str[*i];
 		k++;
-		*i++;
+		*i += 1;
 	}
 	return (ret);
 }
