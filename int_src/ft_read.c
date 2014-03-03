@@ -6,7 +6,7 @@
 /*   By: ymohl-cl <ymohl-cl@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/02/04 13:41:59 by ymohl-cl          #+#    #+#             */
-/*   Updated: 2014/03/02 17:07:36 by mmole            ###   ########.fr       */
+/*   Updated: 2014/03/03 13:11:16 by mmole            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@
 #include <stdlib.h>
 #include "../includes/ft_minishell.h"
 #include "../libft/libft.h"
+#include "prc.h"
 
 static char		*ini_key(char *key)
 {
@@ -47,6 +48,32 @@ static void		clean_all(char **key, t_edit **lst_e, t_hist **hst)
 	*hst = NULL;
 }
 
+static char		*ft_creat_string(t_edit *lst)
+{
+	int		i;
+	t_edit	*tmp;
+	char	*new;
+
+	tmp = lst;
+	i = 0;
+	while (tmp)
+	{
+		tmp = tmp->next;
+		i++;
+	}
+	new = (char *)malloc(sizeof(char) * i + 1);
+	i = 0;
+	tmp = lst;
+	while (tmp)
+	{
+		new[i] = tmp->c;
+		tmp = tmp->next;
+		i++;
+	}
+	new[i] = '\0';
+	return (new);
+}
+
 int				ft_read(t_env **env)
 {
 	t_hist		*hst;
@@ -68,6 +95,7 @@ int				ft_read(t_env **env)
 			return (-2);
 		ft_check_key(key, &lst_e, &hst);
 	}
+	ft_lexer(ft_creat_string(lst_e));
 	ft_write_on_file(&lst_e);
 	clean_all(&key, &lst_e, &hst);
 	ft_putchar_fd('\n', STDIN_FILENO);
