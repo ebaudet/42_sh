@@ -6,7 +6,7 @@
 #    By: ymohl-cl <ymohl-cl@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2014/01/04 16:12:18 by ymohl-cl          #+#    #+#              #
-#    Updated: 2014/03/02 19:58:11 by mmole            ###   ########.fr        #
+#    Updated: 2014/03/03 13:47:57 by wbeets           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -78,7 +78,7 @@ $(NAME): say $(OBJ)
 	@ranlib $(LIB)
 	@echo "\033[32m\tDONE !\033[0m"
 	@$(WFT)
-	@cc $(FLAG) -o $(NAME) $(ADD) $(OJB) $(WLIB) $(LIBFT) -I. $(INC)
+	@$(CC) $(FLAG) -o $(NAME) $(OBJ) $(ADD) $(WLIB) $(LIBFT) -I. $(INC)
 	@echo "\033[32m  $(NAME) project is compiled !\033[0m"
 	@echo ""
 	cat -e auteur
@@ -92,8 +92,9 @@ say:
 	@echo "\033[33m  ' ' == make: Nothing to be done for 'all'\t\033[0m"
 	@echo "\033[32m  $(LIB) compilation progress\t\c\033[0m"
 
-gdb: $(OBJ)
-	@$(CC) $(FLAG) $(GFLAG) -o $(NAME) $(ADD) $(OJB) $(WLIB) $(LIBFT) -I.
+gdb:
+	@cc $(FLAG) $(GFLAG) -o deb $(SRC) $(ADD) $(WLIB) $(LIBFT) $(INC) $(LIBFTH)
+	gdb deb
 
 
 clean:
