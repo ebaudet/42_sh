@@ -6,7 +6,7 @@
 /*   By: ymohl-cl <ymohl-cl@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/02/06 15:44:02 by ymohl-cl          #+#    #+#             */
-/*   Updated: 2014/02/26 09:57:35 by ymohl-cl         ###   ########.fr       */
+/*   Updated: 2014/03/05 16:32:07 by ymohl-cl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,7 @@ static void			add_link_tedit(char c, t_edit **lst)
 	new->c = c;
 	new->video = 0;
 	new->next = NULL;
+	new->prev = NULL;
 	if (!*lst)
 	{
 		*lst = new;
@@ -47,6 +48,7 @@ static t_edit		*filled_t_edit(char **line)
 	int			i;
 	t_edit		*lst;
 
+	lst = NULL;
 	str = *line;
 	i = 0;
 	while (str[i] != '\0')

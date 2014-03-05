@@ -6,7 +6,7 @@
 /*   By: ymohl-cl <ymohl-cl@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/02/04 13:41:59 by ymohl-cl          #+#    #+#             */
-/*   Updated: 2014/03/03 13:11:16 by mmole            ###   ########.fr       */
+/*   Updated: 2014/03/05 17:17:17 by ymohl-cl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,8 +95,8 @@ int				ft_read(t_env **env)
 			return (-2);
 		ft_check_key(key, &lst_e, &hst);
 	}
-	ft_lexer(ft_creat_string(lst_e));
-	ft_write_on_file(&lst_e);
+	if ((ft_write_on_file(&lst_e)) == 0)
+		ft_lexer(ft_creat_string(lst_e));
 	clean_all(&key, &lst_e, &hst);
 	ft_putchar_fd('\n', STDIN_FILENO);
 	ft_read(env);
