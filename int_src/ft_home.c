@@ -6,7 +6,7 @@
 /*   By: mmole <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/03/01 13:14:49 by mmole             #+#    #+#             */
-/*   Updated: 2014/03/01 20:56:06 by mmole            ###   ########.fr       */
+/*   Updated: 2014/03/03 18:53:36 by mmole            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,8 +28,6 @@ int		ft_poscurseur(t_edit **lst)
 		i++;
 		tmp = tmp->next;
 	}
-	if (tmp->next)
-		i = i - 1;
 	if (i > 0)
 		return (i);
 	return (0);

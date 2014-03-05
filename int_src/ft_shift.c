@@ -6,12 +6,31 @@
 /*   By: mmole <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/03/02 16:40:26 by mmole             #+#    #+#             */
-/*   Updated: 2014/03/02 19:40:50 by mmole            ###   ########.fr       */
+/*   Updated: 2014/03/03 19:34:59 by mmole            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/ft_minishell.h"
 #include "../libft/libft.h"
+
+static void	ft_next_left(t_edit *tmp, int cmp, char *key, t_edit **lst)
+{
+	while ((tmp->c == ' ' || tmp->c == '\t') && tmp->prev)
+	{
+		tmp = tmp->prev;
+		cmp++;
+	}
+	while (tmp->prev && (tmp->prev->c != ' ' && tmp->prev->c != '\t'))
+	{
+		tmp = tmp->prev;
+		cmp++;
+	}
+	while (cmp != 0)
+	{
+		arrow_left_right(lst, key);
+		cmp--;
+	}
+}
 
 static void	ft_shift_left(int pos, t_edit **lst, char *key)
 {
@@ -20,24 +39,20 @@ static void	ft_shift_left(int pos, t_edit **lst, char *key)
 
 	cmp = 0;
 	tmp = *lst;
-	while (tmp && tmp->next && pos > cmp)
+	while (tmp && tmp->next && pos != cmp)
 	{
 		tmp = tmp->next;
 		cmp++;
 	}
 	cmp = 0;
-	while (tmp && tmp->prev)
+	if (!tmp->next)
+		cmp++;
+	if ((tmp->c != ' ' || tmp->c != '\t') && tmp->prev)
 	{
-		if (tmp->c == ' ' || tmp->c == '\t')
-			break ;
 		tmp = tmp->prev;
 		cmp++;
 	}
-	while (cmp >= 0)
-	{
-		arrow_left_right(lst, key);
-		cmp--;
-	}
+	ft_next_left(tmp, cmp, key, lst);
 }
 
 static void	ft_shift_right(int pos, t_edit **lst, char *key)
@@ -47,24 +62,24 @@ static void	ft_shift_right(int pos, t_edit **lst, char *key)
 
 	cmp = 0;
 	tmp = *lst;
-	while (tmp && tmp->next && pos >= cmp)
+	while (tmp && tmp->next && pos != cmp)
 	{
 		tmp = tmp->next;
 		cmp++;
 	}
 	cmp = 0;
-	while (tmp && tmp->next)
+	while ((tmp->c != ' ' && tmp->c != '\t') && tmp->next)
 	{
-		if (tmp->c == ' ' || tmp->c == '\t')
-			break ;
 		tmp = tmp->next;
 		cmp++;
 	}
-	while (cmp >= 0)
+	while (tmp->next && (tmp->c == ' ' || tmp->c == '\t'))
 	{
-		arrow_left_right(lst, key);
-		cmp--;
+		tmp = tmp->next;
+		cmp++;
 	}
+	while (cmp-- != 0)
+		arrow_left_right(lst, key);
 }
 
 void		ft_shift(t_edit **lst, char *key)
