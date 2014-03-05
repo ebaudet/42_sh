@@ -6,7 +6,7 @@
 /*   By: ymohl-cl <ymohl-cl@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/02/04 14:52:12 by ymohl-cl          #+#    #+#             */
-/*   Updated: 2014/03/02 17:35:06 by mmole            ###   ########.fr       */
+/*   Updated: 2014/03/05 17:58:54 by mmole            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,10 +17,14 @@
 #include "../includes/ft_minishell.h"
 #include "../libft/libft.h"
 
+#include <stdio.h>
+
 void		arrow_left_right(t_edit **lst, char *key)
 {
 	t_edit		*tmp;
+	int			col;
 
+	col = tgetnum("co");
 	tmp = *lst;
 	while (tmp->next != NULL && tmp->video == 0)
 		tmp = tmp->next;
@@ -40,6 +44,11 @@ void		arrow_left_right(t_edit **lst, char *key)
 	}
 	else if (ARROW && key[2] == 67 && key[3] == 0 && tmp->video > -1)
 	{
+
+		if ((ft_poscurseur(lst) + 3) == col) //v1
+			ft_putchar('\n');
+		else if (ft_poscurseur(lst) % col == 0 && ft_poscurseur(lst) >= (col * 2)) // v1
+			printf("\n");
 		if (tmp->video == 1 && tmp->next != NULL)
 		{
 			tmp->video = 0;
