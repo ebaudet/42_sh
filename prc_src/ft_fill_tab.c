@@ -6,7 +6,7 @@
 /*   By: wbeets <wbeets@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/03/05 13:34:27 by wbeets            #+#    #+#             */
-/*   Updated: 2014/03/05 13:49:52 by wbeets           ###   ########.fr       */
+/*   Updated: 2014/03/05 15:57:14 by wbeets           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,7 @@ char			**ft_fill_tab(char *str, int size)
 	i = 0;
 	j = 0;
 	arr = (char **)malloc((size + 1) * sizeof(char *));
+	arr[size] = '\0';
 	while (i < size)
 	{
 		arr[i] = find_word(str, &j);

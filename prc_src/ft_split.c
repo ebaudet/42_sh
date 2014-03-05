@@ -6,7 +6,7 @@
 /*   By: wbeets <wbeets@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/03/02 11:22:27 by wbeets            #+#    #+#             */
-/*   Updated: 2014/03/05 15:47:08 by wbeets           ###   ########.fr       */
+/*   Updated: 2014/03/05 15:56:19 by wbeets           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -113,7 +113,6 @@ static int		count_malloc(char *str)
 char			**ft_split(char *str)
 {
 	int		i;
-	int		j;
 	char	*s;
 	char	*s2;
 	char	**arr;
@@ -122,7 +121,6 @@ char			**ft_split(char *str)
 	s2 = remove_double_space(s);
 	free(s);
 	i = count_malloc(s2);
-	j = 0;
 	arr = ft_fill_tab(s2, i);
 	return (arr);
 }
