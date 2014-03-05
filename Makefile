@@ -6,7 +6,7 @@
 #    By: ymohl-cl <ymohl-cl@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2014/01/04 16:12:18 by ymohl-cl          #+#    #+#              #
-#    Updated: 2014/03/03 13:47:57 by wbeets           ###   ########.fr        #
+#    Updated: 2014/03/05 13:48:44 by wbeets           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -55,6 +55,8 @@ BLD_SRC =
 PRC_SRC =	ft_lexer.c\
 			ft_make_oplst.c\
 			ft_split.c\
+			is.c\
+			ft_fill_tab.c\
 
 INT_SRCS = $(addprefix int_src/, $(INT_SRC))
 BLD_SRCS = $(addprefix bld_src/, $(BLD_SRC))

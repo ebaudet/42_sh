@@ -6,7 +6,7 @@
 /*   By: wbeets <wbeets@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/03/02 11:22:27 by wbeets            #+#    #+#             */
-/*   Updated: 2014/03/02 19:17:08 by wbeets           ###   ########.fr       */
+/*   Updated: 2014/03/05 15:47:08 by wbeets           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,103 +15,114 @@
 #include <unistd.h>
 #include <stdlib.h>
 
-static int		is_op(char c)
+static char		*find_malloc_size(char *str)
 {
-	if (c == '>' || c == '<' || c == '&' || c == '|' || c == '(' || c == ')')
-		return (1);
-	else
-		return (0);
+	int		len_str;
+	char	*s;
+	int		i;
+
+	i = 0;
+	len_str = ft_strlen(str);
+	while (str[i] != '\0')
+	{
+		if (is_op(str[i]))
+		{
+			if (i != 0 && !is_space(str[i - 1]) && !is_op(str[i - 1]))
+				len_str++;
+			if (str[i + 1] != '\0' && !is_space(str[i + 1]) && !is_op(str[i + 1]))
+				len_str++;
+		}
+		i++;
+	}
+	s = (char *)malloc((1 + len_str) * sizeof(char));
+	s[len_str] = '\0';
+	return (s);
 }
 
-static int		count_malloc(char * str)
+static char		*check_str(char *str)
+{
+	int		i;
+	int		j;
+	char	*s;
+
+	i = -1;
+	j = 0;
+	s = find_malloc_size(str);
+	while (str[++i] != '\0')
+	{
+		if (is_op(str[i]))
+		{
+			if (i != 0 && !is_space(str[i - 1]) && !is_op(str[i - 1]))
+				s[j++] = ' ';
+		}
+		s[j] = str[i];
+		j++;
+		if (is_op(str[i]))
+		{
+			if ( str[i + 1] != '\0' && !is_space(str[i + 1]) && !is_op(str[i + 1]))
+				s[j++] = ' ';
+		}
+	}
+	return (s);
+}
+
+static char		*remove_double_space(char *s)
+{
+	char	*str;
+	int		i;
+	int		j;
+
+	i = 0;
+	j = 0;
+	while (s[i] != '\0')
+	{
+		if (i != 0 && is_space(s[i]) && is_space(s[i - 1]))
+			j--;
+		i++;
+		j++;
+	}
+	i = 0;
+	str = (char *)malloc((j + 1) * sizeof(char));
+	str[j] = '\0';
+	j = 0;
+	while (s[i] != '\0')
+	{
+		while (i != 0 && s[i] != '\0' && is_space(s[i]) && is_space(s[i - 1]))
+			i++;
+		str[j++] = s[i++];
+	}
+	return (str);
+}
+
+static int		count_malloc(char *str)
 {
 	int		i;
 	int		j;
 
-	j = 0;
 	i = 0;
+	j = 0;
 	while (str[i] != '\0')
 	{
-		if (is_op(str[i]) || str[i] == ' ')
+		if (is_space(str[i]))
 			j++;
 		i++;
-		while (str[i] == ' ' || is_op(str[i]))
-			i++;
 	}
 	return (j + 1);
 }
 
-static char		*find_word_2(char *str, int *i)
-{
-	int		j;
-	int		k;
-	char	*ret;
-
-	j = *i;
-	k = 0;
-	while (str[j] == ' ')
-		j++;
-	while (is_op(str[j]))
-	{
-		k++;
-		j++;
-	}
-	ret = (char *)malloc(sizeof(char) * (k + 1));
-	ret[k] = '\0';
-	*i += j - k;
-	k = 0;
-	while (*i <= j)
-	{
-		ret[k] = str[*i];
-		k++;
-		*i += 1;
-	}
-	return (ret);
-}
-
-static char		*find_word(char *str)
-{
-	static int	i = 0;
-	int			j;
-	int			k;
-	char		*ret;
-
-	j = 0;
-	k = i;
-	if (!is_op(str[i]) && str[i] != ' ')
-	{
-		while (!is_op(str[i]) && str[i] != ' ' && str[i] != '\0')
-			j++;
-		i += j;
-		ret = (char *)malloc(sizeof(char) * (j + 1));
-		ret[j] = '\0';
-		j = 0;
-		while (k < i)
-		{
-			ret[j] = str[k];
-			j++;
-			k++;
-		}
-		return (ret);
-	}
-	else
-		return(find_word_2(str, &i));
-}
-
-char	**ft_split(char *str)
+char			**ft_split(char *str)
 {
 	int		i;
 	int		j;
+	char	*s;
+	char	*s2;
 	char	**arr;
 
-	i = count_malloc(str);
+	s = check_str(str);
+	s2 = remove_double_space(s);
+	free(s);
+	i = count_malloc(s2);
 	j = 0;
-	arr = (char **)malloc(sizeof(char *) * (i + 1));
-	arr[i] = '\0';
-	while (j < i)
-	{
-		arr[j] = find_word(str);
-		j++;
-	}
+	arr = ft_fill_tab(s2, i);
 	return (arr);
 }

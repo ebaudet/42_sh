@@ -1,35 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lexer.c                                         :+:      :+:    :+:   */
+/*   is.c                                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: wbeets <wbeets@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2014/02/28 18:21:50 by wbeets            #+#    #+#             */
-/*   Updated: 2014/03/05 15:47:51 by wbeets           ###   ########.fr       */
+/*   Created: 2014/03/05 13:21:02 by wbeets            #+#    #+#             */
+/*   Updated: 2014/03/05 13:21:54 by wbeets           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "prc.h"
-#include <stdlib.h>
-#include "libft.h"
-
-int		ft_lexer(char *str)
+int		is_space(char c)
 {
-	t_op	*lst;
-//	t_tree	*tree;
-
-	lst = ft_make_oplst(str);
-	ft_putstr("\n");
-	while (lst)
-	{
-		ft_putstr(lst->str);
-		ft_putstr("\t");
-		ft_putnbr(lst->code);
-		ft_putstr("\n");
-		lst = lst->next;
-	}
-//	tree = ft_make_tree(lst);
-//	ft_exec(tree);
-	return (0);
+	return (c == ' ' || c == '\t');
 }
+
+int		is_op(char c)
+{
+	if (c == '>' || c == '<' || c == '&' || c == '|' ||
+		c == '(' || c == ')' || c == ';')
+		return (1);
+	else
+		return (0);
+}
+

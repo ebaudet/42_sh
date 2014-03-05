@@ -6,26 +6,27 @@
 /*   By: wbeets <wbeets@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/02/28 19:33:56 by wbeets            #+#    #+#             */
-/*   Updated: 2014/03/02 19:15:38 by wbeets           ###   ########.fr       */
+/*   Updated: 2014/03/04 15:02:16 by wbeets           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "prc.h"
 #include <unistd.h>
 #include <stdlib.h>
-#include <libft.h>
+#include "libft.h"
 
-static void		add_end(char *str, int code, t_op *start)
+static void		add_end(char *str, int code, t_op **start)
 {
-	t_op *tmp;
+	t_op	*tmp;
 
-	tmp = start;
-	if (!start)
+	tmp = *start;
+	if (!*start)
 	{
-		start = (t_op *)malloc(sizeof(t_op));
-		start->str = ft_strdup(str);
-		start->code = code;
-		tmp->next = NULL;
+		*start = (t_op *)malloc(sizeof(t_op));
+		(*start)->str = ft_strdup(str);
+		(*start)->code = code;
+		(*start)->next = NULL;
+		(*start)->prev = NULL;
 	}
 	else
 	{
@@ -35,10 +36,11 @@ static void		add_end(char *str, int code, t_op *start)
 		tmp->next->str = ft_strdup(str);
 		tmp->next->code = code;
 		tmp->next->next = NULL;
+		tmp->next->prev = tmp;
 	}
 }
 
-static void		make_list_item(char *str, t_op *start)
+static void		make_list_item(char *str, t_op **start)
 {
 	if (str[0] == ';')
 		add_end(str, 0, start);
@@ -69,20 +71,20 @@ t_op			*ft_make_oplst(char	*str)
 	char	*s;
 	char	**arr;
 	t_op	*start;
+	int		i;
 
+	i = 0;
 	start = NULL;
 	s = ft_strtrim(str);
 	free(str);
 	arr = ft_split(s);
 	free(s);
-	while (*arr && *arr + 1)
+	while (arr[i] != '\0')
 	{
-		make_list_item(*arr, start);
-		arr++;
-		free(*arr);
+		make_list_item(arr[i], &start);
+		free(arr[i]);
+		i++;
 	}
-	make_list_item(*arr, start);
-	free(*arr);
-	free(arr);
+	free(arr[i]);
 	return (start);
 }
