@@ -6,7 +6,7 @@
 /*   By: wbeets <wbeets@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/02/28 18:21:50 by wbeets            #+#    #+#             */
-/*   Updated: 2014/03/05 16:09:23 by wbeets           ###   ########.fr       */
+/*   Updated: 2014/03/06 11:08:12 by wbeets           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,19 +17,12 @@
 int		ft_lexer(char *str)
 {
 	t_op	*lst;
-//	t_tree	*tree;
+	t_tree	*tree;
 
 	lst = ft_make_oplst(str);
 	ft_putstr("\n");
-	while (lst)
-	{
-		ft_putstr(lst->str);
-		ft_putstr("\t");
-		ft_putnbr(lst->code);
-		ft_putstr("\n");
-		lst = lst->next;
-	}
-//	tree = ft_make_tree(lst);
+	tree = ft_make_tree(lst);
+	(void)tree;
 //	ft_exec(tree);
 	return (0);
 }

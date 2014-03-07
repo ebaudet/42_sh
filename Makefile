@@ -6,7 +6,7 @@
 #    By: ymohl-cl <ymohl-cl@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2014/01/04 16:12:18 by ymohl-cl          #+#    #+#              #
-#    Updated: 2014/03/05 13:48:44 by wbeets           ###   ########.fr        #
+#    Updated: 2014/03/06 11:25:07 by wbeets           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -57,6 +57,8 @@ PRC_SRC =	ft_lexer.c\
 			ft_split.c\
 			is.c\
 			ft_fill_tab.c\
+			ft_make_tree.c\
+			ft_fill_tree.c\
 
 INT_SRCS = $(addprefix int_src/, $(INT_SRC))
 BLD_SRCS = $(addprefix bld_src/, $(BLD_SRC))
@@ -95,8 +97,8 @@ say:
 	@echo "\033[32m  $(LIB) compilation progress\t\c\033[0m"
 
 gdb:
-	@cc $(FLAG) $(GFLAG) -o deb $(SRC) $(ADD) $(WLIB) $(LIBFT) $(INC) $(LIBFTH)
-	gdb deb
+	cc $(FLAG) $(GFLAG) -o deb $(SRC) $(ADD) $(WLIB) $(LIBFT) $(INC) $(LIBFTH)
+	lldb deb
 
 
 clean:
