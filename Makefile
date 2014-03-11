@@ -6,7 +6,7 @@
 #    By: ymohl-cl <ymohl-cl@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2014/01/04 16:12:18 by ymohl-cl          #+#    #+#              #
-#    Updated: 2014/03/06 11:25:07 by wbeets           ###   ########.fr        #
+#    Updated: 2014/03/11 09:31:07 by wbeets           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -98,7 +98,7 @@ say:
 
 gdb:
 	cc $(FLAG) $(GFLAG) -o deb $(SRC) $(ADD) $(WLIB) $(LIBFT) $(INC) $(LIBFTH)
-	lldb deb
+	gdb deb
 
 
 clean:
