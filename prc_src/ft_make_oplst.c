@@ -6,7 +6,7 @@
 /*   By: wbeets <wbeets@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/02/28 19:33:56 by wbeets            #+#    #+#             */
-/*   Updated: 2014/03/04 15:02:16 by wbeets           ###   ########.fr       */
+/*   Updated: 2014/03/11 10:50:27 by wbeets           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 #include <stdlib.h>
 #include "libft.h"
 
-static void		add_end(char *str, int code, t_op **start)
+static void		add_end(char *str, int prior, int code, t_op **start)
 {
 	t_op	*tmp;
 
@@ -25,6 +25,7 @@ static void		add_end(char *str, int code, t_op **start)
 		*start = (t_op *)malloc(sizeof(t_op));
 		(*start)->str = ft_strdup(str);
 		(*start)->code = code;
+		(*start)->prior = prior;
 		(*start)->next = NULL;
 		(*start)->prev = NULL;
 	}
@@ -37,33 +38,34 @@ static void		add_end(char *str, int code, t_op **start)
 		tmp->next->code = code;
 		tmp->next->next = NULL;
 		tmp->next->prev = tmp;
+		tmp->next->prior = prior;
 	}
 }
 
 static void		make_list_item(char *str, t_op **start)
 {
 	if (str[0] == ';')
-		add_end(str, 0, start);
+		add_end(str, 0, SEMICOL, start);
 	else if (str[0] == '>' && str[1] == '>')
-		add_end(str, 9, start);
+		add_end(str, 3, DB_AR_RIGHT, start);
 	else if (str[0] == '<' && str[1] == '<')
-		add_end(str, 7, start);
+		add_end(str, 3, DB_AR_LEFT, start);
 	else if (str[0] == '|' && str[1] == '|')
-		add_end(str, 4, start);
+		add_end(str, 2, OR, start);
 	else if (str[0] == '&' && str[1] == '&')
-		add_end(str, 3, start);
+		add_end(str, 2, AND, start);
 	else if (str[0] == '(')
-		add_end(str, 1, start);
+		add_end(str, 1, OPEN_BR, start);
 	else if (str[0] == ')')
-		add_end(str, 2, start);
+		add_end(str, 1, CLOSE_BR, start);
 	else if (str[0] == '>')
-		add_end(str, 8, start);
+		add_end(str, 3, AR_RIGHT, start);
 	else if (str[0] == '<')
-		add_end(str, 6, start);
+		add_end(str, 3, AR_LEFT, start);
 	else if (str[0] == '|')
-		add_end(str, 5, start);
+		add_end(str, 2, PIPE, start);
 	else
-		add_end(str, 10, start);
+		add_end(str, 4, WORD, start);
 }
 
 t_op			*ft_make_oplst(char	*str)
@@ -86,5 +88,6 @@ t_op			*ft_make_oplst(char	*str)
 		i++;
 	}
 	free(arr[i]);
+	free(arr);
 	return (start);
 }

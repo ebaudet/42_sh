@@ -6,7 +6,7 @@
 /*   By: wbeets <wbeets@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/03/02 11:22:27 by wbeets            #+#    #+#             */
-/*   Updated: 2014/03/05 15:56:19 by wbeets           ###   ########.fr       */
+/*   Updated: 2014/03/05 16:34:26 by wbeets           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,8 @@ static char		*find_malloc_size(char *str)
 		{
 			if (i != 0 && !is_space(str[i - 1]) && !is_op(str[i - 1]))
 				len_str++;
-			if (str[i + 1] != '\0' && !is_space(str[i + 1]) && !is_op(str[i + 1]))
+			if (str[i + 1] != '\0' && !is_space(str[i + 1]) &&
+				!is_op(str[i + 1]))
 				len_str++;
 		}
 		i++;
@@ -52,14 +53,16 @@ static char		*check_str(char *str)
 	{
 		if (is_op(str[i]))
 		{
-			if (i != 0 && !is_space(str[i - 1]) && !is_op(str[i - 1]))
+			if (i != 0 && !is_space(str[i - 1])
+			&& !is_op(str[i - 1]))
 				s[j++] = ' ';
 		}
 		s[j] = str[i];
 		j++;
 		if (is_op(str[i]))
 		{
-			if ( str[i + 1] != '\0' && !is_space(str[i + 1]) && !is_op(str[i + 1]))
+			if (str[i + 1] != '\0' && !is_space(str[i + 1])
+			&& !is_op(str[i + 1]))
 				s[j++] = ' ';
 		}
 	}
@@ -122,5 +125,6 @@ char			**ft_split(char *str)
 	free(s);
 	i = count_malloc(s2);
 	arr = ft_fill_tab(s2, i);
+	free(s2);
 	return (arr);
 }

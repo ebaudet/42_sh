@@ -6,7 +6,7 @@
 /*   By: wbeets <wbeets@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/03/03 13:45:20 by wbeets            #+#    #+#             */
-/*   Updated: 2014/03/06 11:48:16 by wbeets           ###   ########.fr       */
+/*   Updated: 2014/03/11 10:11:55 by wbeets           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ static t_op		*find_start(t_op *oplst)
 	t_op	*ret;
 	int		code;
 
-	code = 11;
+	code = 5;
 	ret = NULL;
 	tmp = oplst;
 	while (tmp)
@@ -55,6 +55,5 @@ t_tree	*ft_make_tree(t_op *oplst)
 	start = find_start(oplst);
 	init_tree(&tree, start);
 	ft_fill_tree(&tree, start);
-//	reverse_tree(&tree);
 	return (tree);
 }

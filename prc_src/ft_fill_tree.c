@@ -6,7 +6,7 @@
 /*   By: wbeets <wbeets@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/03/05 18:38:31 by wbeets            #+#    #+#             */
-/*   Updated: 2014/03/06 12:34:16 by wbeets           ###   ########.fr       */
+/*   Updated: 2014/03/11 10:16:53 by wbeets           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@ void	add_tree(t_tree **tree, t_tree *parent, t_op *lst)
 	(*tree)->right = NULL;
 	(*tree)->str = ft_strdup(lst->str);
 	(*tree)->code = lst->code;
+	(*tree)->prior = lst->prior
 }
 
 void	ft_fill_tree(t_tree **tree, t_op *lst)
@@ -55,7 +56,13 @@ void	ft_fill_tree(t_tree **tree, t_op *lst)
 		tmp = tmp->next;
 	}
 	if (!(*tree)->left && ret)
+	{
 		add_tree(&(*tree)->left, *tree, ret);
+		ft_fill_tree(&(*tree)->left, ret);
+	}
 	else if (ret)
+	{
 		add_tree(&(*tree)->right, *tree, ret);
+		ft_fill_tree(&(*tree)->right, ret);
+	}
 }
