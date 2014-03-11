@@ -6,7 +6,7 @@
 /*   By: ymohl-cl <ymohl-cl@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/02/04 13:14:22 by ymohl-cl          #+#    #+#             */
-/*   Updated: 2014/03/02 17:13:41 by mmole            ###   ########.fr       */
+/*   Updated: 2014/03/11 14:52:58 by mmole            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ typedef struct			s_hist
 	struct s_hist		*prev;
 }						t_hist;
 
-int			ft_read(t_env **env);
+int			ft_read(t_env **env, char **environ);
 int			ft_check_key(char *key, t_edit **lst_e, t_hist **hst);
 int			ft_tputs(char *str);
 int			ft_termios(t_env **environ);
