@@ -6,7 +6,7 @@
 /*   By: wbeets <wbeets@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/02/28 19:33:56 by wbeets            #+#    #+#             */
-/*   Updated: 2014/03/12 13:30:19 by wbeets           ###   ########.fr       */
+/*   Updated: 2014/03/12 16:56:27 by wbeets           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,11 +15,28 @@
 #include <stdlib.h>
 #include "libft.h"
 
-static void		add_end(char *str, int prior, int code, t_op **start)
+static void		add_end_2(char *str, int prior, int code, t_op **start)
 {
 	t_op	*tmp;
 
 	tmp = *start;
+	while (tmp->next)
+		tmp = tmp->next;
+	tmp->next = (t_op *)malloc(sizeof(t_op));
+	tmp->next->name = ft_strdup(str);
+	tmp->next->code = code;
+	tmp->next->prior = prior;
+	tmp->next->next = NULL;
+	tmp->next->top = NULL;
+	tmp->next->lft = NULL;
+	tmp->next->rgt = NULL;
+	tmp->next->argv = NULL;
+	tmp->next->stat = 0;
+	tmp->next->nbr = 0;
+}
+
+static void		add_end(char *str, int prior, int code, t_op **start)
+{
 	if (!*start)
 	{
 		*start = (t_op *)malloc(sizeof(t_op));
@@ -27,26 +44,15 @@ static void		add_end(char *str, int prior, int code, t_op **start)
 		(*start)->code = code;
 		(*start)->prior = prior;
 		(*start)->next = NULL;
-		(*start)->prev = NULL;
-		(*start)->parent = NULL;
-		(*start)->left = NULL;
-		(*start)->right = NULL;
+		(*start)->top = NULL;
+		(*start)->lft = NULL;
+		(*start)->rgt = NULL;
+		(*start)->nbr = 0;
+		(*start)->argv = NULL;
+		(*start)->stat = 0;
 	}
 	else
-	{
-		while (tmp->next)
-			tmp = tmp->next;
-		tmp->next = (t_op *)malloc(sizeof(t_op));
-		tmp->next->name = ft_strdup(str);
-		tmp->next->code = code;
-		tmp->next->prior = prior;
-		tmp->next->prev = tmp;
-		tmp->next->next = NULL;
-		tmp->next->parent = NULL;
-		tmp->next->left = NULL;
-		tmp->next->right = NULL;
-		tmp->next->argv = NULL;
-	}
+		add_end_2(str, prior, code, start);
 }
 
 static void		make_list_item(char *str, t_op **start)
