@@ -6,7 +6,7 @@
 /*   By: wbeets <wbeets@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/02/28 18:21:50 by wbeets            #+#    #+#             */
-/*   Updated: 2014/03/12 17:04:07 by wbeets           ###   ########.fr       */
+/*   Updated: 2014/03/12 18:59:22 by wbeets           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,6 +89,7 @@ static int	check_list(t_op **lst)
 int		ft_lexer(char *str, char **env)
 {
 	t_op	*lst;
+	t_op	*tree;
 	int		i;
 
 	i = 0;
@@ -100,6 +101,7 @@ int		ft_lexer(char *str, char **env)
 		/*free list*/
 		return (0);
 	}
+	tree = ft_create_tree(&lst);
 	/*
 	ft_putstr("\n");
 	while (lst)
