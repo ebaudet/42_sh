@@ -6,15 +6,12 @@
 /*   By: wbeets <wbeets@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/02/28 18:24:36 by wbeets            #+#    #+#             */
-/*   Updated: 2014/03/12 14:19:03 by wbeets           ###   ########.fr       */
+/*   Updated: 2014/03/12 16:51:21 by ymohl-cl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef FT_MINISHELL3_H
 # define FT_MINISHELL3_H
-
-/*ft_lexer.c*/
-
 # define SEMICOL 0
 # define AND 1
 # define OR 2
@@ -27,14 +24,15 @@
 typedef struct			s_op
 {
 	char				*name;
-	char				**argv;
 	int					code;
+	int					nbr;
 	int					prior;
+	int					stat;
+	char				**argv;
 	struct s_op			*next;
-	struct s_op			*prev;
-	struct s_op			*parent;
-	struct s_op			*right;
-	struct s_op			*left;
+	struct s_op			*top;
+	struct s_op			*lft;
+	struct s_op			*rgt;
 }						t_op;
 
 int		ft_lexer(char *str, char **env);
@@ -43,4 +41,6 @@ char	**ft_split(char *str);
 int		is_space(char c);
 int		is_op(char c);
 char	**ft_fill_tab(char *str, int size);
+t_op	*ft_create_tree(t_op **lst);
+
 #endif
