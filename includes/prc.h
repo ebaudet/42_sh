@@ -6,7 +6,7 @@
 /*   By: wbeets <wbeets@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/02/28 18:24:36 by wbeets            #+#    #+#             */
-/*   Updated: 2014/03/12 16:42:45 by ymohl-cl         ###   ########.fr       */
+/*   Updated: 2014/03/12 16:51:21 by ymohl-cl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ typedef struct			s_op
 	int					nbr;
 	int					prior;
 	int					stat;
-	char				**arg;
+	char				**argv;
 	struct s_op			*next;
 	struct s_op			*top;
 	struct s_op			*lft;
