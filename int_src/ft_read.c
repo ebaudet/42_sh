@@ -6,7 +6,7 @@
 /*   By: ymohl-cl <ymohl-cl@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/02/04 13:41:59 by ymohl-cl          #+#    #+#             */
-/*   Updated: 2014/03/11 14:52:07 by mmole            ###   ########.fr       */
+/*   Updated: 2014/03/12 14:27:36 by wbeets           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ static void		clean_all(char **key, t_edit **lst_e, t_hist **hst)
 	*hst = NULL;
 }
 
-/*static char		*ft_creat_string(t_edit *lst)
+static char		*ft_creat_string(t_edit *lst)
 {
 	int		i;
 	t_edit	*tmp;
@@ -72,7 +72,7 @@ static void		clean_all(char **key, t_edit **lst_e, t_hist **hst)
 	}
 	new[i] = '\0';
 	return (new);
-}*/
+}
 
 int				ft_read(t_env **env, char **environ)
 {
@@ -95,10 +95,10 @@ int				ft_read(t_env **env, char **environ)
 			return (-2);
 		ft_check_key(key, &lst_e, &hst);
 	}
-//	if ((ft_write_on_file(&lst_e)) == 0)
-//		ft_lexer(ft_creat_string(lst_e, environ));
+	if ((ft_write_on_file(&lst_e)) == 0)
+		ft_lexer(ft_creat_string(lst_e), environ);
 	clean_all(&key, &lst_e, &hst);
 	ft_putchar_fd('\n', STDIN_FILENO);
-	ft_read(env);
+	ft_read(env, environ);
 	return (0);
 }

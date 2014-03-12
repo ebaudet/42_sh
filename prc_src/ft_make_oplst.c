@@ -6,7 +6,7 @@
 /*   By: wbeets <wbeets@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/02/28 19:33:56 by wbeets            #+#    #+#             */
-/*   Updated: 2014/03/11 10:50:27 by wbeets           ###   ########.fr       */
+/*   Updated: 2014/03/12 13:30:19 by wbeets           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,22 +23,29 @@ static void		add_end(char *str, int prior, int code, t_op **start)
 	if (!*start)
 	{
 		*start = (t_op *)malloc(sizeof(t_op));
-		(*start)->str = ft_strdup(str);
+		(*start)->name = ft_strdup(str);
 		(*start)->code = code;
 		(*start)->prior = prior;
 		(*start)->next = NULL;
 		(*start)->prev = NULL;
+		(*start)->parent = NULL;
+		(*start)->left = NULL;
+		(*start)->right = NULL;
 	}
 	else
 	{
 		while (tmp->next)
 			tmp = tmp->next;
 		tmp->next = (t_op *)malloc(sizeof(t_op));
-		tmp->next->str = ft_strdup(str);
+		tmp->next->name = ft_strdup(str);
 		tmp->next->code = code;
-		tmp->next->next = NULL;
-		tmp->next->prev = tmp;
 		tmp->next->prior = prior;
+		tmp->next->prev = tmp;
+		tmp->next->next = NULL;
+		tmp->next->parent = NULL;
+		tmp->next->left = NULL;
+		tmp->next->right = NULL;
+		tmp->next->argv = NULL;
 	}
 }
 
@@ -48,16 +55,10 @@ static void		make_list_item(char *str, t_op **start)
 		add_end(str, 0, SEMICOL, start);
 	else if (str[0] == '>' && str[1] == '>')
 		add_end(str, 3, DB_AR_RIGHT, start);
-	else if (str[0] == '<' && str[1] == '<')
-		add_end(str, 3, DB_AR_LEFT, start);
 	else if (str[0] == '|' && str[1] == '|')
-		add_end(str, 2, OR, start);
+		add_end(str, 1, OR, start);
 	else if (str[0] == '&' && str[1] == '&')
-		add_end(str, 2, AND, start);
-	else if (str[0] == '(')
-		add_end(str, 1, OPEN_BR, start);
-	else if (str[0] == ')')
-		add_end(str, 1, CLOSE_BR, start);
+		add_end(str, 1, AND, start);
 	else if (str[0] == '>')
 		add_end(str, 3, AR_RIGHT, start);
 	else if (str[0] == '<')
@@ -65,7 +66,7 @@ static void		make_list_item(char *str, t_op **start)
 	else if (str[0] == '|')
 		add_end(str, 2, PIPE, start);
 	else
-		add_end(str, 4, WORD, start);
+		add_end(str, 4, COM, start);
 }
 
 t_op			*ft_make_oplst(char	*str)
