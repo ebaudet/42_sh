@@ -33,8 +33,8 @@ static void		lst_no_exist(t_edit **lst, t_hist **hst)
 	new_hst->next = *hst;
 	if (*hst)
 		(*hst)->prev = new_hst;
-//	else
-//		new_hst->prev = NULL;
+/*	else */
+/*		new_hst->prev = NULL; */
 	*hst = new_hst;
 }
 

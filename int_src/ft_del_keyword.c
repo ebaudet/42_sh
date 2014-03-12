@@ -83,4 +83,5 @@ void			ft_del_keyword(t_edit **lst, t_hist **hst)
 		video_zero(tmp, lst);
 	else
 		video_one(&tmp, lst, hst);
+	print_commande(lst);
 }

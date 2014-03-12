@@ -15,13 +15,13 @@
 #include <term.h>
 #include "../includes/ft_minishell.h"
 
-static int		put_fd(int c)
+int		put_fd(int c)
 {
 	write(STDIN_FILENO, &c, 1);
 	return (0);
 }
 
-int				ft_tputs(char *str)
+int		ft_tputs(char *str)
 {
 	if (tputs(tgetstr(str, NULL), 1, put_fd) == -1)
 		return (-1);

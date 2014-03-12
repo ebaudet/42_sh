@@ -53,3 +53,15 @@ int				ft_termios(t_env **environ)
 		return (-1);
 	return (0);
 }
+
+int				ft_envfree(char **env)
+{
+	int		i;
+
+	i = -1;
+	while (env[++i])
+		free(env[i]);
+	free(env[i]);
+	free(env);
+	return (0);
+}

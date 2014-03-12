@@ -24,7 +24,7 @@ LIB = libshell.a
 
 WLIB = -L. -lshell
 
-CC = gcc
+CC = cc
 
 CCB= llvm-gcc-4.2
 
@@ -49,6 +49,7 @@ INT_SRC =	ft_minishell.c \
 			ft_del_keyword.c \
 			ft_home.c \
 			ft_shift.c \
+			ft_print_commande.c \
 
 BLD_SRC =	
 
@@ -87,7 +88,7 @@ $(NAME): say $(OBJ)
 
 say:
 	@echo "\033[32m"
-	@cat .logo
+	@#cat .logo
 	@echo ""
 	@echo "\c\033[0m"
 	@echo "\033[33m  '.' == One file is compiled\t\033[0m"
