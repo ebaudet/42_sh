@@ -6,13 +6,37 @@
 /*   By: wbeets <wbeets@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/02/28 18:21:50 by wbeets            #+#    #+#             */
-/*   Updated: 2014/03/12 18:59:22 by wbeets           ###   ########.fr       */
+/*   Updated: 2014/03/13 13:22:08 by wbeets           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "prc.h"
 #include <stdlib.h>
 #include "libft.h"
+
+static void	free_list(t_op **lst)
+{
+	t_op	*tmp;
+	int			i;
+
+	i = 0;
+	while (*lst)
+	{
+		free((*lst)->name);
+		tmp = (*lst)->next;
+		if ((*lst)->argv)
+		{
+			while ((*lst)->argv[i] != '\0')
+			{
+				free((*lst)->argv[i]);
+				i++;
+			}
+			free((*lst)->argv);
+		}
+		free(*lst);
+		*lst = tmp;
+	}
+}
 
 static int	add_next_to_argv(t_op **lst)
 {
@@ -98,27 +122,10 @@ int		ft_lexer(char *str, char **env)
 	clean_list(&lst);
 	if (!check_list(&lst))
 	{
+		free_list(&lst);
 		/*free list*/
 		return (0);
 	}
 	tree = ft_create_tree(&lst);
-	/*
-	ft_putstr("\n");
-	while (lst)
-	{
-		ft_putstr(lst->name);
-		if (lst->argv)
-		{
-			ft_putstr(" \nin arg \t");
-			while (lst->argv[i] != '\0')
-			{
-				ft_putstr(lst->argv[i++]);
-			ft_putstr("\t");
-			}
-		}
-		i = 0;
-		lst= lst->next;
-		ft_putstr("\n");
-	}*/
 	return (1);
 }
