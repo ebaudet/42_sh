@@ -6,7 +6,7 @@
 /*   By: wbeets <wbeets@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/02/28 18:21:50 by wbeets            #+#    #+#             */
-/*   Updated: 2014/03/13 13:22:08 by wbeets           ###   ########.fr       */
+/*   Updated: 2014/03/13 19:17:21 by wbeets           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -123,9 +123,9 @@ int		ft_lexer(char *str, char **env)
 	if (!check_list(&lst))
 	{
 		free_list(&lst);
-		/*free list*/
 		return (0);
 	}
 	tree = ft_create_tree(&lst);
+	ft_exec_tree(tree);
 	return (1);
 }
