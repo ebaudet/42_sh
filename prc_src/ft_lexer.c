@@ -126,6 +126,9 @@ int		ft_lexer(char *str, char **env)
 		return (0);
 	}
 	tree = ft_create_tree(&lst);
-	ft_exec_tree(tree);
+	/*
+	** TODO : créer la fonction ft_exec_tree et l'ajouter dans le header
+	*/
+	/*ft_exec_tree(tree);*/
 	return (1);
 }
