@@ -6,7 +6,7 @@
 /*   By: ymohl-cl <ymohl-cl@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/02/04 13:14:22 by ymohl-cl          #+#    #+#             */
-/*   Updated: 2014/03/11 14:52:58 by mmole            ###   ########.fr       */
+/*   Updated: 2014/03/13 20:05:01 by mmole            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@
 # define KEY_HOME (key[0] == 27 && key[1] == 91 && key[2] == 72)
 # define KEY_END (key[0] == 27 && key[1] == 91 && key[2] == 70)
 
-# define BUF_SIZE 1024
+# define BUFF_SIZE 1024
 # define FT_FILE ".42sh_history"
 # include <term.h>
 
