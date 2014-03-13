@@ -6,7 +6,7 @@
 /*   By: ymohl-cl <ymohl-cl@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/03/11 23:19:17 by ymohl-cl          #+#    #+#             */
-/*   Updated: 2014/03/12 19:04:10 by wbeets           ###   ########.fr       */
+/*   Updated: 2014/03/13 10:02:29 by wbeets           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,7 +69,7 @@ t_op			*ft_create_tree(t_op **lst)
 	while (save)
 	{
 		save = NULL;
-		while (tmp->next)
+		while (tmp)
 		{
 			if (!save && tmp->stat == 0)
 				save = tmp;
