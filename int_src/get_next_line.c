@@ -3,97 +3,102 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ymohl-cl <ymohl-cl@student.42.fr>          +#+  +:+       +#+        */
+/*   By: wbeets <wbeets@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2013/12/17 15:47:52 by ymohl-cl          #+#    #+#             */
-/*   Updated: 2014/02/26 10:01:31 by ymohl-cl         ###   ########.fr       */
+/*   Created: 2014/03/09 17:46:59 by wbeets            #+#    #+#             */
+/*   Updated: 2014/03/13 16:13:39 by mmole            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdlib.h>
+#include "libft.h"
 #include <sys/types.h>
-#include <sys/uio.h>
+#include <sys/stat.h>
+#include <stdlib.h>
 #include <unistd.h>
 #include "../includes/ft_minishell.h"
-#include "../libft/libft.h"
 
-/*
-** This function searches character \n or '\0' and copy the buffer.
-*/
-static int		ft_search_n(char **line, char *buf, char *rest)
+static int	gnl_buf(char *buf, char *tmp, char **line)
 {
 	int		i;
-	char	*tmp;
+	char	*tmp_line;
 
 	i = 0;
-	while (buf[i] != '\n' && buf[i] != '\0')
-		i++;
-	if (buf[i] == '\n')
+	while (buf[i] != '\0')
 	{
-		if  (i != 0)
-			tmp = ft_strsub(buf, 0, i);
-		else
-			tmp = ft_strnew(0);
-		ft_strcpy(rest, buf + i + 1);
-		if (*line)
-			*line = ft_strjoin(*line, tmp);
-		else
-			*line = ft_strdup(tmp);
-		free(tmp);
-		return (1);
+		if (buf[i] == '\n')
+		{
+			tmp = ft_strcpy(tmp, (buf + i + 1));
+			buf[i] = '\0';
+			tmp_line = ft_strjoin(*line, buf);
+			if (*line)
+				ft_strdel(line);
+			*line = tmp_line;
+			return (1);
+		}
+		i++;
 	}
 	if (*line)
-		*line = ft_strjoin(*line, buf);
-	else
-		*line = ft_strdup(buf);
-	return (0);
-}
-
-/*
-** This function return the rest as the buf.
-*/
-static int		ft_end_string(char **line, char *rest)
-{
-	char		*tmp;
-
-	tmp = ft_strnew(0);
-	tmp = ft_strdup(rest);
-	if (ft_search_n(line, tmp, rest) == 1)
 	{
-		free(tmp);
-		return (1);
+		tmp_line = ft_strjoin(*line, buf);
+		ft_strdel(line);
+		*line = tmp_line;
 	}
-	free(tmp);
 	return (0);
 }
 
-/*
-** This function read the buf or rest if are.
-*/
-int				get_next_line(int const fd, char **line)
+static int	gnl_tmp(char *tmp, char **line)
 {
-	int				ret;
-	static char		*rest;
-	char			*buf;
+	int	i;
 
-	*line = ft_strnew(0);
-	if (fd < 0)
-		return (-1);
-	if (rest)
+	i = 0;
+	while ((tmp)[i] != '\0')
 	{
-		if (ft_end_string(line, rest) == 1)
+		if (tmp[i] == '\n')
+		{
+			tmp[i] = '\0';
+			*line = ft_strdup(tmp);
+			tmp = ft_strcpy(tmp, (tmp + i + 1));
 			return (1);
+		}
+		i++;
 	}
-	else
-		rest = ft_strnew(BUF_SIZE);
-	buf = (char *)malloc(sizeof(char) * BUF_SIZE + 1);
-	ft_bzero(buf, BUF_SIZE + 1);
-	while ((ret = read(fd, buf, BUF_SIZE)))
+	return (0);
+}
+
+static int	gnl_end(int ret, char **line)
+{
+	if (ret == 0)
+	{
+		if ((*line)[0] != '\0')
+			return (1);
+		return (0);
+	}
+	return (-1);
+}
+
+int			get_next_line(int const fd, char **line)
+{
+	static char	tmp[BUFF_SIZE + 1];
+	char		*buf;
+	int			ret;
+
+	if (fd < 0 || BUFF_SIZE <= 0)
+		return (-1);
+	if (gnl_tmp(tmp, line) == 1)
+		return (1);
+	*line = ft_strdup(tmp);
+	buf = (char *)malloc(BUFF_SIZE + 1);
+	while ((ret = read(fd, buf, BUFF_SIZE)) > 0)
 	{
 		buf[ret] = '\0';
-		if (ft_search_n(line, buf, rest) == 1)
+		if (gnl_buf(buf, tmp, line) == 1)
+		{
+			ft_strdel(&buf);
 			return (1);
+		}
 	}
-	free(buf);
-	return (0);
+	ft_strdel(&buf);
+	tmp[0] = '\0';
+	return (gnl_end(ret, line));
 }
+
