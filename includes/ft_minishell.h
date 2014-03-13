@@ -6,12 +6,14 @@
 /*   By: ymohl-cl <ymohl-cl@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/02/04 13:14:22 by ymohl-cl          #+#    #+#             */
-/*   Updated: 2014/03/13 20:05:01 by mmole            ###   ########.fr       */
+/*   Updated: 2014/03/14 00:02:38 by ebaudet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef FT_MINISHELL_H
 # define FT_MINISHELL_H
+
+# define ENTER (key[0] == 10 && key[1] == 0 && key[2] == 0 && key[3] == 0)
 # define ARROW (key[0] == 27 && key[1] == 91)
 # define SHIFT (key[2] == 49 && key[3] == 59)
 # define ARROW_LEFT (key[2] == 68 && key[3] == 0)
