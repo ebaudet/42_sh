@@ -32,7 +32,7 @@ void	arrow_left_right(t_edit **lst, char *key)
 	{
 		if (tmp->video == 0 && ((ft_poscurseur(lst) + 4) % col) == 0)
 		{
-			tmp->prev->video = 1;
+			tmp->video = 1;
 			ft_tputs("up");
 			i = -1;
 			while (++i < col)

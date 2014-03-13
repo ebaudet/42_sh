@@ -50,9 +50,9 @@ int		print_commande(t_edit **lst_e)
 	}
 	ft_tputs("cd"); /* Effacer jusqu’à la fin de l’écran */
 	ft_print_lste(lst_e);
+	if ((lengh % width) == 1)
+		ft_tputs("nd");
 	if ((lengh % width) == 1 && last_list_selected(lst_e) == 1)
-	{
 		ft_tputs("do");
-	}
 	return (0);
 }
