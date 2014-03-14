@@ -6,7 +6,7 @@
 /*   By: ymohl-cl <ymohl-cl@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/02/04 13:41:59 by ymohl-cl          #+#    #+#             */
-/*   Updated: 2014/03/14 00:02:36 by ebaudet          ###   ########.fr       */
+/*   Updated: 2014/03/14 16:17:27 by mmole            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,6 +60,22 @@ static char		*ft_creat_string(t_edit *lst)
 	return (new);
 }
 
+void			ft_jumprint(t_edit **lst)
+{
+	int		col;
+	int		jump;
+	int		i;
+
+	i = 0;
+	col = tgetnum("co");
+	jump = ((lengh_list(lst) + 3) / col) - ((ft_poscurseur(lst) + 3) / col); // algo de saut de ligne
+	while (i < jump)
+	{
+		ft_tputs("do");
+		i++;
+	}
+}
+
 int				ft_read(t_env **env, char **environ)
 {
 	t_hist		*hst;
@@ -76,6 +92,7 @@ int				ft_read(t_env **env, char **environ)
 			return (-2);
 		ft_check_key(key, &lst_e, &hst);
 	}
+	ft_jumprint(&lst_e);
 	if ((ft_write_on_file(&lst_e)) == 0)
 		ft_lexer(ft_creat_string(lst_e), environ);
 	clean_all(&lst_e, &hst);
