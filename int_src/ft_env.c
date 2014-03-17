@@ -6,7 +6,7 @@
 /*   By: ebaudet <ebaudet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/03/03 21:13:08 by ebaudet           #+#    #+#             */
-/*   Updated: 2014/03/03 21:13:08 by ebaudet          ###   ########.fr       */
+/*   Updated: 2014/03/14 00:42:42 by ebaudet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,8 +60,6 @@ char		*ft_getenv(char **env, char *name)
 	int		i;
 	char	loop;
 
-	ft_putendl(name);
-	ft_putnbr(ft_strlen(name));
 	i = 0;
 	loop = 'y';
 	while (*(env + i) != NULL && loop == 'y')
@@ -71,9 +69,7 @@ char		*ft_getenv(char **env, char *name)
 		else
 			i++;
 	}
-	ft_putnbr(i);
 	if (loop == 'y')
 		return (NULL);
-	ft_putendl(*(env + i) + ft_strlen(name) + 1);
 	return (*(env + i) + ft_strlen(name) + 1);
 }

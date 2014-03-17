@@ -6,7 +6,7 @@
 /*   By: ymohl-cl <ymohl-cl@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/02/07 17:50:33 by ymohl-cl          #+#    #+#             */
-/*   Updated: 2014/02/26 09:57:53 by ymohl-cl         ###   ########.fr       */
+/*   Updated: 2014/03/17 13:19:31 by mmole            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,7 +67,7 @@ static t_edit		**video_zero(t_edit *tmp, t_edit **lst)
 	return (lst);
 }
 
-void			ft_del_keyword(t_edit **lst, t_hist **hst)
+void			ft_del_keyword(t_edit **lst, t_hist **hst, struct winsize ws)
 {
 	t_edit		*tmp;
 
@@ -83,5 +83,5 @@ void			ft_del_keyword(t_edit **lst, t_hist **hst)
 		video_zero(tmp, lst);
 	else
 		video_one(&tmp, lst, hst);
-	print_commande(lst);
+	print_commande(lst, ws);
 }

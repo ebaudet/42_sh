@@ -6,13 +6,13 @@
 /*   By: wbeets <wbeets@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/02/28 18:21:50 by wbeets            #+#    #+#             */
-/*   Updated: 2014/03/13 19:17:21 by wbeets           ###   ########.fr       */
+/*   Updated: 2014/03/17 18:14:08 by ymohl-cl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "prc.h"
 #include <stdlib.h>
-#include "libft.h"
+#include "libft/libft.h"
 
 static void	free_list(t_op **lst)
 {
@@ -112,10 +112,12 @@ static int	check_list(t_op **lst)
 
 int		ft_lexer(char *str, char **env)
 {
+	int		ret;
 	t_op	*lst;
 	t_op	*tree;
 	int		i;
 
+	ret = 0;
 	i = 0;
 	(void)env;
 	lst = ft_make_oplst(str);
@@ -126,9 +128,6 @@ int		ft_lexer(char *str, char **env)
 		return (0);
 	}
 	tree = ft_create_tree(&lst);
-	/*
-	** TODO : créer la fonction ft_exec_tree et l'ajouter dans le header
-	*/
-	/*ft_exec_tree(tree);*/
+	ret = ft_read_tree(&tree, env);
 	return (1);
 }

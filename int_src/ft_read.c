@@ -6,7 +6,7 @@
 /*   By: ymohl-cl <ymohl-cl@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/02/04 13:41:59 by ymohl-cl          #+#    #+#             */
-/*   Updated: 2014/03/14 00:02:36 by ebaudet          ###   ########.fr       */
+/*   Updated: 2014/03/17 15:05:11 by ebaudet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,10 +18,10 @@
 #include "../libft/libft.h"
 #include "prc.h"
 
-static void		begin_read(t_hist **hst, t_edit **lst)
+static void		begin_read(t_hist **hst, t_edit **lst, char **env)
 {
 	(void)*lst;
-	ft_create_hst(hst);
+	ft_create_hst(hst, env);
 	ft_filled_lste("", lst, hst);
 	ft_putstr_fd("$> ", STDIN_FILENO);
 	ft_tputs("sc");
@@ -60,6 +60,25 @@ static char		*ft_creat_string(t_edit *lst)
 	return (new);
 }
 
+void			ft_jumprint(t_edit **lst)
+{
+	int				jump;
+	int				i;
+	struct winsize	ws;
+
+	get_winsize(&ws);
+	i = 0;
+	jump = ((lengh_list(lst) + 3) / ws.ws_col) - ((ft_poscurseur(lst) + 3) / ws.ws_col); // algo de saut de ligne
+	if (!((lengh_list(lst) + 3) % ws.ws_col) == 0)
+	{
+		while (i < jump)
+		{
+			ft_tputs("do");
+			i++;
+		}
+	}
+}
+
 int				ft_read(t_env **env, char **environ)
 {
 	t_hist		*hst;
@@ -68,7 +87,7 @@ int				ft_read(t_env **env, char **environ)
 
 	hst = NULL;
 	lst_e = NULL;
-	begin_read(&hst, &lst_e);
+	begin_read(&hst, &lst_e, environ);
 	while (!ENTER)
 	{
 		ft_bzero(key, 7);
@@ -76,8 +95,11 @@ int				ft_read(t_env **env, char **environ)
 			return (-2);
 		ft_check_key(key, &lst_e, &hst);
 	}
-	if ((ft_write_on_file(&lst_e)) == 0)
+	ft_jumprint(&lst_e);
+	ft_putchar('\n');
+	if ((ft_write_on_file(&lst_e, environ)) == 0)
 		ft_lexer(ft_creat_string(lst_e), environ);
+	ft_putendl("Error Command");
 	clean_all(&lst_e, &hst);
 	ft_putchar_fd('\n', STDIN_FILENO);
 	ft_read(env, environ);

@@ -14,7 +14,7 @@
 #include <fcntl.h>
 #include <stdlib.h>
 #include "../includes/ft_minishell.h"
-#include "../libft/libft.h"
+#include "libft.h"
 
 static void			add_link_tedit(char c, t_edit **lst)
 {
@@ -84,13 +84,15 @@ static void			add_line_hst(t_hist **hst, char **line)
 	new_hst->ptr = new_edit;
 }
 
-int					ft_create_hst(t_hist **hst)
+int					ft_create_hst(t_hist **hst, char **env)
 {
 	char		*line;
 	int			fd;
+	char		*file;
 
 	line = NULL;
-	fd = open(FT_FILE, O_RDONLY | O_CREAT, S_IRUSR | S_IWUSR | S_IRWXG);
+	file = ft_strjoin(ft_getenv(env, "HOME"), FT_FILE);
+	fd = open(file, O_RDONLY | O_CREAT, S_IRUSR | S_IWUSR | S_IRWXG);
 	if (fd == -1)
 		return (-1);
 	while (get_next_line(fd, &line) == 1)
@@ -100,6 +102,7 @@ int					ft_create_hst(t_hist **hst)
 		free(line);
 	}
 	close(fd);
+	free(file);
 	return (0);
 }
 

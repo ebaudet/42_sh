@@ -6,7 +6,7 @@
 #    By: ymohl-cl <ymohl-cl@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2014/01/04 16:12:18 by ymohl-cl          #+#    #+#              #
-#    Updated: 2014/03/12 00:38:52 by ymohl-cl         ###   ########.fr        #
+#    Updated: 2014/03/17 18:14:17 by ymohl-cl         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -35,21 +35,22 @@ FLAG = -Wall -Wextra -Werror
 ADD = -ltermcap
 
 INT_SRC =	ft_minishell.c \
-			ft_read.c \
 			ft_check_key.c \
-			ft_tputs.c \
-			ft_termios.c \
-			ft_filled_lste.c \
-			ft_print_lste.c \
-			ft_print_fd.c \
-			ft_create_hst.c \
-			get_next_line.c \
 			ft_clean_thist.c \
-			ft_write_on_file.c \
+			ft_create_hst.c \
 			ft_del_keyword.c \
+			ft_env.c \
+			ft_filled_lste.c \
 			ft_home.c \
-			ft_shift.c \
 			ft_print_commande.c \
+			ft_print_fd.c \
+			ft_print_lste.c \
+			ft_read.c \
+			ft_shift.c \
+			ft_termios.c \
+			ft_tputs.c \
+			ft_write_on_file.c \
+			get_next_line.c \
 
 BLD_SRC =	
 
@@ -59,6 +60,7 @@ PRC_SRC =	ft_lexer.c \
 			is.c \
 			ft_fill_tab.c \
 			ft_create_tree.c \
+			ft_read_tree.c \
 
 INT_SRCS = $(addprefix int_src/, $(INT_SRC))
 BLD_SRCS = $(addprefix bld_src/, $(BLD_SRC))

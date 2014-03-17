@@ -25,9 +25,9 @@ int		main(int argc, char **argv, char **env)
 		return (0);
 	if (!env)
 		return (-4);
-	if (ft_termios(&environ) == -1)
+	if (ft_termios(&environ, env) == -1)
 		return (-5);
-	debug = ft_read(&environ, env);
+	debug = ft_read(&environ, environ->env);
 	if (debug == -1)
 		return (-1);
 	else if (debug == -2)
