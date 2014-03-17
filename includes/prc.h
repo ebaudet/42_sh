@@ -6,7 +6,7 @@
 /*   By: wbeets <wbeets@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/02/28 18:24:36 by wbeets            #+#    #+#             */
-/*   Updated: 2014/03/12 16:51:21 by ymohl-cl         ###   ########.fr       */
+/*   Updated: 2014/03/17 18:14:19 by ymohl-cl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,5 +42,6 @@ int		is_space(char c);
 int		is_op(char c);
 char	**ft_fill_tab(char *str, int size);
 t_op	*ft_create_tree(t_op **lst);
+int		ft_read_tree(t_op **tree, char **env);
 
 #endif
