@@ -14,6 +14,7 @@
 #include <fcntl.h>
 #include <stdlib.h>
 #include "../includes/ft_minishell.h"
+#include "libft.h"
 
 static int		check_lst(t_edit **lst)
 {
@@ -27,7 +28,10 @@ static int		check_lst(t_edit **lst)
 	while (tmp->next && tmp->c != '\0')
 	{
 		if (tmp->c != ' ' && tmp->c != '\t')
+		{
 			mark = 1;
+			break ;
+		}
 		tmp = tmp->next;
 	}
 	if (mark != 1)
@@ -35,38 +39,26 @@ static int		check_lst(t_edit **lst)
 	return (0);
 }
 
-static void		write_last_tmp(char c, int fd)
+int				ft_write_on_file(t_edit **lst, char **env)
 {
-		write(fd, &c, 1);
-		write(fd, "\n", 1);
-}
-
-int				ft_write_on_file(t_edit **lst)
-{
-	int			i;
 	t_edit		*tmp;
 	int			fd;
+	char		*file;
 
-	i = 1;
-	tmp = NULL;
-	fd = open(FT_FILE, O_WRONLY | O_APPEND);
-	if (fd == -1)
+	tmp = *lst;
+	file = ft_strjoin(ft_getenv(env, "HOME"), FT_FILE);
+	if ((fd = open(file, O_WRONLY | O_APPEND)) == -1)
 		return (-1);
 	if (check_lst(lst) == -1)
 		return (-2);
-	tmp = *lst;
-	while (tmp->next != NULL)
+	while (tmp != NULL)
 	{
 		if (tmp->c)
-		{
 			write(fd, &tmp->c, 1);
-			i++;
-		}
 		tmp = tmp->next;
 	}
-	if (tmp->c)
-		write_last_tmp(tmp->c, fd);
+	write(fd, "\n", 1);
 	close(fd);
+	free(file);
 	return (0);
 }
-

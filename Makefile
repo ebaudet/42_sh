@@ -35,21 +35,22 @@ FLAG = -Wall -Wextra -Werror
 ADD = -ltermcap
 
 INT_SRC =	ft_minishell.c \
-			ft_read.c \
 			ft_check_key.c \
-			ft_tputs.c \
-			ft_termios.c \
-			ft_filled_lste.c \
-			ft_print_lste.c \
-			ft_print_fd.c \
-			ft_create_hst.c \
-			get_next_line.c \
 			ft_clean_thist.c \
-			ft_write_on_file.c \
+			ft_create_hst.c \
 			ft_del_keyword.c \
+			ft_env.c \
+			ft_filled_lste.c \
 			ft_home.c \
-			ft_shift.c \
 			ft_print_commande.c \
+			ft_print_fd.c \
+			ft_print_lste.c \
+			ft_read.c \
+			ft_shift.c \
+			ft_termios.c \
+			ft_tputs.c \
+			ft_write_on_file.c \
+			get_next_line.c \
 
 BLD_SRC =	
 

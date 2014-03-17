@@ -6,7 +6,7 @@
 /*   By: ymohl-cl <ymohl-cl@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/02/04 16:29:11 by ymohl-cl          #+#    #+#             */
-/*   Updated: 2014/02/26 10:00:50 by ymohl-cl         ###   ########.fr       */
+/*   Updated: 2014/03/17 14:40:06 by ebaudet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,30 @@ static int		cpy_term(t_env **environ)
 	return (0);
 }
 
-int				ft_termios(t_env **environ)
+static int		eb_sizeenv(char **env)
+{
+	int		i;
+
+	i = 0;
+	while (env[i])
+		i++;
+	return (i);
+}
+
+static char		**ft_envcpy(char **env)
+{
+	char	**env_cpy;
+	int		i;
+
+	env_cpy = (char **)malloc(sizeof(char *) * (eb_sizeenv(env) + 1));
+	i = -1;
+	while (env[++i])
+		env_cpy[i] = ft_strdup(env[i]);
+	env_cpy[i] = ft_strdup("");
+	return (env_cpy);
+}
+
+int				ft_termios(t_env **environ, char **env)
 {
 	char		bp[2048];
 	char		*term;
@@ -51,6 +74,7 @@ int				ft_termios(t_env **environ)
 		return (-1);
 	if (!(tgetent(bp, term)))
 		return (-1);
+	(*environ)->env = ft_envcpy(env);
 	return (0);
 }
 

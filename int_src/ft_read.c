@@ -6,7 +6,7 @@
 /*   By: ymohl-cl <ymohl-cl@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/02/04 13:41:59 by ymohl-cl          #+#    #+#             */
-/*   Updated: 2014/03/17 13:12:44 by mmole            ###   ########.fr       */
+/*   Updated: 2014/03/17 15:05:11 by ebaudet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,10 +18,10 @@
 #include "../libft/libft.h"
 #include "prc.h"
 
-static void		begin_read(t_hist **hst, t_edit **lst)
+static void		begin_read(t_hist **hst, t_edit **lst, char **env)
 {
 	(void)*lst;
-	ft_create_hst(hst);
+	ft_create_hst(hst, env);
 	ft_filled_lste("", lst, hst);
 	ft_putstr_fd("$> ", STDIN_FILENO);
 	ft_tputs("sc");
@@ -87,7 +87,7 @@ int				ft_read(t_env **env, char **environ)
 
 	hst = NULL;
 	lst_e = NULL;
-	begin_read(&hst, &lst_e);
+	begin_read(&hst, &lst_e, environ);
 	while (!ENTER)
 	{
 		ft_bzero(key, 7);
@@ -97,7 +97,7 @@ int				ft_read(t_env **env, char **environ)
 	}
 	ft_jumprint(&lst_e);
 	ft_putchar('\n');
-	if ((ft_write_on_file(&lst_e)) == 0)
+	if ((ft_write_on_file(&lst_e, environ)) == 0)
 		ft_lexer(ft_creat_string(lst_e), environ);
 	ft_putendl("Error Command");
 	clean_all(&lst_e, &hst);
