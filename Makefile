@@ -6,7 +6,7 @@
 #    By: ymohl-cl <ymohl-cl@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2014/01/04 16:12:18 by ymohl-cl          #+#    #+#              #
-#    Updated: 2014/03/17 18:21:06 by ymohl-cl         ###   ########.fr        #
+#    Updated: 2014/03/17 20:48:15 by ymohl-cl         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -52,7 +52,7 @@ INT_SRC =	ft_minishell.c \
 			ft_write_on_file.c \
 			get_next_line.c \
 
-BLD_SRC =	
+BLD_SRC =	ft_builtins.c \
 
 PRC_SRC =	ft_lexer.c \
 			ft_make_oplst.c \
@@ -119,6 +119,5 @@ createfolder:
 	@mkdir -p .obj/int_src
 	@mkdir -p .obj/bld_src
 	@mkdir -p .obj/prc_src
-
 
 re: fclean all

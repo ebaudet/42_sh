@@ -6,7 +6,7 @@
 /*   By: wbeets <wbeets@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/02/28 18:21:50 by wbeets            #+#    #+#             */
-/*   Updated: 2014/03/17 18:29:14 by ymohl-cl         ###   ########.fr       */
+/*   Updated: 2014/03/17 19:24:02 by ymohl-cl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -128,6 +128,6 @@ int		ft_lexer(char *str, char **env)
 		return (0);
 	}
 	tree = ft_create_tree(&lst);
-	ret = ft_read_tree(&tree, env);
+	ret = ft_read_tree(tree, env);
 	return (1);
 }

@@ -6,14 +6,14 @@
 /*   By: wbeets <wbeets@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/03/13 14:41:35 by wbeets            #+#    #+#             */
-/*   Updated: 2014/03/13 15:16:10 by wbeets           ###   ########.fr       */
+/*   Updated: 2014/03/17 20:41:34 by ymohl-cl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <unistd.h>
 #include "libft.h"
 
-int		ft_exceve(char *cmd, char **argv, char **env)
+int		ft_execve(char *cmd, char **argv, char **env)
 {
 	pid_t	fork_return;
 	char	**paths;
@@ -21,6 +21,7 @@ int		ft_exceve(char *cmd, char **argv, char **env)
 	int		i;
 	int		ret;
 
+	ret = 0;
 	i = -1;
 	if ((ret = ft_builtin(cmd, argv, env) == -1))
 	{
