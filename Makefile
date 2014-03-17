@@ -6,7 +6,7 @@
 #    By: ymohl-cl <ymohl-cl@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2014/01/04 16:12:18 by ymohl-cl          #+#    #+#              #
-#    Updated: 2014/03/17 18:14:17 by ymohl-cl         ###   ########.fr        #
+#    Updated: 2014/03/17 18:21:06 by ymohl-cl         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -61,6 +61,8 @@ PRC_SRC =	ft_lexer.c \
 			ft_fill_tab.c \
 			ft_create_tree.c \
 			ft_read_tree.c \
+			ft_opcode_tree.c \
+			ft_execve.c \
 
 INT_SRCS = $(addprefix int_src/, $(INT_SRC))
 BLD_SRCS = $(addprefix bld_src/, $(BLD_SRC))
