@@ -6,7 +6,7 @@
 /*   By: ebaudet <ebaudet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/03/12 20:29:06 by ebaudet           #+#    #+#             */
-/*   Updated: 2014/03/14 00:02:44 by ebaudet          ###   ########.fr       */
+/*   Updated: 2014/03/17 13:15:30 by mmole            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,29 +30,27 @@ int		last_list_selected(t_edit **lst_e)
 	return (1);
 }
 
-int		print_commande(t_edit **lst_e)
+int		print_commande(t_edit **lst_e, struct winsize ws)
 {
-	int		width;
 	int		i;
 	int		lengh;
 	int		pos;
 
 	lengh = lengh_list(lst_e);
-	width = tgetnum("co");
 	pos = position_cursor(lst_e);
 	lengh += 4;
 	i = 0;
 	ft_tputs("rc"); /* Restaurer la position enregistrée du curseur */
-	while (i < (lengh / width))
+	while (i < (lengh / ws.ws_col))
 	{
 		ft_tputs("dw"); /* Déplacer le curseur d’une ligne vers le haut */
 		i++;
 	}
 	ft_tputs("cd"); /* Effacer jusqu’à la fin de l’écran */
 	ft_print_lste(lst_e);
-	if ((lengh % width) == 1)
+	if ((lengh % ws.ws_col) == 1)
 		ft_tputs("nd");
-	if ((lengh % width) == 1 && last_list_selected(lst_e) == 1)
+	if ((lengh % ws.ws_col) == 1 && last_list_selected(lst_e) == 1)
 		ft_tputs("do");
 	return (0);
 }

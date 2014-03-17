@@ -6,7 +6,7 @@
 /*   By: ymohl-cl <ymohl-cl@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/02/04 14:52:12 by ymohl-cl          #+#    #+#             */
-/*   Updated: 2014/03/05 17:58:54 by mmole            ###   ########.fr       */
+/*   Updated: 2014/03/17 13:17:13 by mmole            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,24 +18,22 @@
 #include "libft.h"
 #include <sys/ioctl.h>
 
-void	arrow_left_right(t_edit **lst, char *key)
+void	arrow_left_right(t_edit **lst, char *key, struct winsize ws)
 {
 	t_edit		*tmp;
-	int			col;
-
 	int			i;
-	col = tgetnum("co");
+
 	tmp = *lst;
 	while (tmp->next != NULL && tmp->video == 0)
 		tmp = tmp->next;
 	if (ARROW && ARROW_LEFT && tmp->video > -1)
 	{
-		if (tmp->video == 0 && ((ft_poscurseur(lst) + 4) % col) == 0)
+		if (tmp->video == 0 && ((ft_poscurseur(lst) + 4) % ws.ws_col) == 0)
 		{
 			tmp->video = 1;
 			ft_tputs("up");
 			i = -1;
-			while (++i < col)
+			while (++i < ws.ws_col)
 				ft_tputs("nd");
 		}
 		else if (tmp->video == 0)
@@ -52,7 +50,7 @@ void	arrow_left_right(t_edit **lst, char *key)
 	}
 	else if (ARROW && ARROW_RIGHT && tmp->video > -1)
 	{
-		if (tmp->video == 1 && ((ft_poscurseur(lst) + 4) % col) == 0)
+		if (tmp->video == 1 && ((ft_poscurseur(lst) + 4) % ws.ws_col) == 0)
 		{
 			tmp->video = 0;
 			if (tmp->next != NULL)
@@ -71,7 +69,7 @@ void	arrow_left_right(t_edit **lst, char *key)
 	}
 }
 
-void	arrow_up_down(t_edit **lst, t_hist **hst, char *key)
+void	arrow_up_down(t_edit **lst, t_hist **hst, char *key, struct winsize ws)
 {
 	t_hist		*tmp;
 
@@ -107,6 +105,8 @@ void	arrow_up_down(t_edit **lst, t_hist **hst, char *key)
 		ft_tputs("cd");
 		ft_print_lste(lst);
 	}
+	if (((ft_poscurseur(lst) + 4) % ws.ws_col) == 0)
+		ft_tputs("do");
 }
 
 int		lengh_list(t_edit **lst_e)
@@ -139,21 +139,29 @@ int		position_cursor(t_edit **lst_e)
 	return (position);
 }
 
-int		add_new_char(char *key, t_edit **lst_e, t_hist **hst)
+int		add_new_char(char *key, t_edit **lst_e, t_hist **hst, struct winsize ws)
 {
 	ft_filled_lste(key, lst_e, hst);
-	print_commande(lst_e);
+	print_commande(lst_e, ws);
 	return (0);
+}
+
+void	get_winsize(struct winsize *ws)
+{
+	ioctl(1, TIOCGWINSZ, ws);
 }
 
 int		ft_check_key(char *key, t_edit **lst_e, t_hist **hst)
 {
+	struct winsize	ws;
+
+	get_winsize(&ws);
 	if (key)
 	{
 		if (ARROW && (ARROW_LEFT || ARROW_RIGHT))
-			arrow_left_right(lst_e, key);
+			arrow_left_right(lst_e, key, ws);
 		else if (ARROW && (ARROW_UP || ARROW_DOWN))
-			arrow_up_down(lst_e, hst, key);
+			arrow_up_down(lst_e, hst, key, ws);
 		else if (ARROW && DELETE_R)
 		{
 			ft_filled_lste("~", lst_e, hst);
@@ -163,15 +171,15 @@ int		ft_check_key(char *key, t_edit **lst_e, t_hist **hst)
 			ft_print_lste(lst_e);
 		}
 		else if (DELETE)
-			ft_del_keyword(lst_e, hst);
+			ft_del_keyword(lst_e, hst, ws);
 		else if (ft_isprint(*key))
-			add_new_char(key, lst_e, hst);
+			add_new_char(key, lst_e, hst, ws);
 		else if (KEY_HOME)
-			ft_home(lst_e);
+			ft_home(lst_e, ws);
 		else if (KEY_END)
-			ft_end(lst_e);
+			ft_end(lst_e, ws);
 		else if (ARROW && SHIFT && key[4] == 50 && (key[5] == 68 || key[5] == 67))
-			ft_shift(lst_e, key);
+			ft_shift(lst_e, key, ws);
 	}
 	else
 		return (-1);

@@ -6,7 +6,7 @@
 /*   By: mmole <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/03/01 13:14:49 by mmole             #+#    #+#             */
-/*   Updated: 2014/03/03 18:53:36 by mmole            ###   ########.fr       */
+/*   Updated: 2014/03/17 12:49:14 by mmole            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,10 +18,8 @@ int		ft_poscurseur(t_edit **lst)
 {
 	t_edit	*tmp;
 	int		i;
-	int		Col;
 
 	i = 0;
-	Col = tgetnum("co");
 	tmp = *lst;
 	while (!(tmp->video) && tmp->next)
 	{
@@ -33,7 +31,7 @@ int		ft_poscurseur(t_edit **lst)
 	return (0);
 }
 
-void	ft_home(t_edit **lst)
+void	ft_home(t_edit **lst, struct winsize ws)
 {
 	int		pos;
 	char	key[4];
@@ -45,12 +43,12 @@ void	ft_home(t_edit **lst)
 	key[3] = 0;
 	while ((pos) >= 0)
 	{
-		arrow_left_right(lst, key);
+		arrow_left_right(lst, key, ws);
 		pos--;
 	}
 }
 
-void	ft_end(t_edit **lst)
+void	ft_end(t_edit **lst, struct winsize ws)
 {
 	int		pos;
 	char	key[4];
@@ -71,7 +69,7 @@ void	ft_end(t_edit **lst)
 	key[3] = 0;
 	while ((pos) < max)
 	{
-		arrow_left_right(lst, key);
+		arrow_left_right(lst, key, ws);
 		pos++;
 	}
 }

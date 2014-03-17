@@ -6,14 +6,14 @@
 /*   By: mmole <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/03/02 16:40:26 by mmole             #+#    #+#             */
-/*   Updated: 2014/03/03 19:34:59 by mmole            ###   ########.fr       */
+/*   Updated: 2014/03/17 12:52:35 by mmole            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/ft_minishell.h"
 #include "../libft/libft.h"
 
-static void	ft_next_left(t_edit *tmp, int cmp, char *key, t_edit **lst)
+static void	ft_next_left(t_edit *tmp, int cmp, char *key, t_edit **lst, struct winsize ws)
 {
 	while ((tmp->c == ' ' || tmp->c == '\t') && tmp->prev)
 	{
@@ -27,12 +27,12 @@ static void	ft_next_left(t_edit *tmp, int cmp, char *key, t_edit **lst)
 	}
 	while (cmp != 0)
 	{
-		arrow_left_right(lst, key);
+		arrow_left_right(lst, key, ws);
 		cmp--;
 	}
 }
 
-static void	ft_shift_left(int pos, t_edit **lst, char *key)
+static void	ft_shift_left(int pos, t_edit **lst, char *key, struct winsize ws)
 {
 	t_edit	*tmp;
 	int		cmp;
@@ -52,10 +52,10 @@ static void	ft_shift_left(int pos, t_edit **lst, char *key)
 		tmp = tmp->prev;
 		cmp++;
 	}
-	ft_next_left(tmp, cmp, key, lst);
+	ft_next_left(tmp, cmp, key, lst, ws);
 }
 
-static void	ft_shift_right(int pos, t_edit **lst, char *key)
+static void	ft_shift_right(int pos, t_edit **lst, char *key, struct winsize ws)
 {
 	t_edit	*tmp;
 	int		cmp;
@@ -79,10 +79,10 @@ static void	ft_shift_right(int pos, t_edit **lst, char *key)
 		cmp++;
 	}
 	while (cmp-- != 0)
-		arrow_left_right(lst, key);
+		arrow_left_right(lst, key, ws);
 }
 
-void		ft_shift(t_edit **lst, char *key)
+void		ft_shift(t_edit **lst, char *key, struct winsize ws)
 {
 	int	pos;
 
@@ -93,7 +93,7 @@ void		ft_shift(t_edit **lst, char *key)
 		key[1] = 91;
 		key[2] = 68;
 		key[3] = 0;
-		ft_shift_left(pos, lst, key);
+		ft_shift_left(pos, lst, key, ws);
 	}
 	else
 	{
@@ -101,6 +101,6 @@ void		ft_shift(t_edit **lst, char *key)
 		key[1] = 91;
 		key[2] = 67;
 		key[3] = 0;
-		ft_shift_right(pos, lst, key);
+		ft_shift_right(pos, lst, key, ws);
 	}
 }
