@@ -6,13 +6,13 @@
 /*   By: wbeets <wbeets@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/02/28 18:21:50 by wbeets            #+#    #+#             */
-/*   Updated: 2014/03/17 18:14:08 by ymohl-cl         ###   ########.fr       */
+/*   Updated: 2014/03/17 18:29:14 by ymohl-cl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "prc.h"
 #include <stdlib.h>
-#include "libft/libft.h"
+#include "libft.h"
 
 static void	free_list(t_op **lst)
 {
