@@ -6,7 +6,7 @@
 /*   By: wbeets <wbeets@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/03/13 14:41:35 by wbeets            #+#    #+#             */
-/*   Updated: 2014/03/17 20:41:34 by ymohl-cl         ###   ########.fr       */
+/*   Updated: 2014/03/18 01:36:57 by ymohl-cl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,9 +21,9 @@ int		ft_execve(char *cmd, char **argv, char **env)
 	int		i;
 	int		ret;
 
-	ret = 0;
+	ret = -1;
 	i = -1;
-	if ((ret = ft_builtin(cmd, argv, env) == -1))
+	if (ret == -1)
 	{
 		fork_return = fork();
 		if (fork_return == 0)

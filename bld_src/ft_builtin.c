@@ -6,10 +6,11 @@
 /*   By: gpetrov <gpetrov@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/03/07 17:25:03 by gpetrov           #+#    #+#             */
-/*   Updated: 2014/03/13 17:25:49 by gpetrov          ###   ########.fr       */
+/*   Updated: 2014/03/18 01:34:26 by ymohl-cl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "prc.h"
 #include "header.h"
 
 int		ft_builtin_help(t_data *data)
@@ -51,7 +52,7 @@ int		ft_builtin(t_data *data)
 	return (0);
 }
 
-int		ft_exec_cmd(t_data *data)
+int		ft_exec_cmd(t_data *data) //ne pas utiliser
 {
 	int		ret;
 
