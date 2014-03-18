@@ -6,7 +6,7 @@
 /*   By: wbeets <wbeets@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/02/28 18:21:50 by wbeets            #+#    #+#             */
-/*   Updated: 2014/03/17 19:24:02 by ymohl-cl         ###   ########.fr       */
+/*   Updated: 2014/03/18 19:14:56 by wbeets           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,10 +51,11 @@ static int	add_next_to_argv(t_op **lst)
 		i++;
 		tmp = tmp->next;
 	}
-	if ( i != 0 && ((*lst)->argv = (char **)malloc((i + 1) * sizeof(char *))))
+	if (((*lst)->argv = (char **)malloc((i + 2) * sizeof(char *))))
 	{
-		(*lst)->argv[i] = '\0';
-		i = 0;
+		(*lst)->argv[i + 1] = '\0';
+		(*lst)->argv[0] = ft_strdup((*lst)->name);
+		i = 1;
 		tmp = *lst;
 		while (tmp->next && tmp->next->prior == 4)
 		{
@@ -71,14 +72,12 @@ static int	add_next_to_argv(t_op **lst)
 static int		clean_list(t_op **lst)
 {
 	t_op	*tmp;
+
 	tmp = *lst;
 	while (tmp)
 	{
 		if (tmp->prior == 3 || tmp->prior == 4)
-		{
-			if (tmp->next && tmp->next->code == COM)
-				add_next_to_argv(&tmp);
-		}
+			add_next_to_argv(&tmp);
 		tmp = tmp->next;
 	}
 	return (1);

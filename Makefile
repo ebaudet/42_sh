@@ -6,7 +6,7 @@
 #    By: ymohl-cl <ymohl-cl@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2014/01/04 16:12:18 by ymohl-cl          #+#    #+#              #
-#    Updated: 2014/03/18 01:35:39 by ymohl-cl         ###   ########.fr        #
+#    Updated: 2014/03/18 17:08:05 by wbeets           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -52,7 +52,7 @@ INT_SRC =	ft_minishell.c \
 			ft_write_on_file.c \
 			get_next_line.c \
 
-BLD_SRC =
+BLD_SRC =	ft_builtin.c\
 
 PRC_SRC =	ft_lexer.c \
 			ft_make_oplst.c \

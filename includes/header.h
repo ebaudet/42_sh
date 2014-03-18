@@ -6,7 +6,7 @@
 /*   By: gpetrov <gpetrov@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/01/24 15:49:20 by gpetrov           #+#    #+#             */
-/*   Updated: 2014/03/12 18:18:36 by gpetrov          ###   ########.fr       */
+/*   Updated: 2014/03/18 17:58:16 by wbeets           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,35 +19,13 @@
 # include <termios.h>
 # include <curses.h>
 # include <term.h>
-# include "libft.h"
 
 /*
 ** Struct
 */
 
-typedef struct		s_env
-{
-	char			*str;
-	struct s_env	*next;
-}					t_env;
 
-typedef struct		s_list
-{
-	char			c;
-	int				printed;
-	int				index;
-	struct s_list	*next;
-	struct s_list	*prev;
-}					t_list;
-
-typedef struct		s_li
-{
-	int				first;
-	struct s_list	*ptr;
-	struct s_li		*next;
-	struct s_li		*prev;
-}					t_li;
-
+/*
 typedef struct	s_data
 {
 	int			in_history;
@@ -71,11 +49,11 @@ typedef struct	s_data
 	t_li		*charly2;
 	t_li		*hist;
 }				t_data;
-
+*/
 /*
 ** Prototypes
 */
-
+/*
 int		ft_get_cmd(t_data *data);
 char	*ft_get_user(char **tabl, t_data *data);
 int		ft_count_c(char *str, char c);
@@ -91,36 +69,41 @@ void	ft_set_prompt(t_data *data);
 void	ft_print_tab(char **tabl);
 
 char	*ft_make_string(t_list *list);
-
+*/
 /*
 **	Builtins
 */
 
-int		ft_check_if_already_exist(t_data *data, char *arg);
+int		ft_check_if_already_exist(char **env, char *arg);
 int		ft_find_equal(char *str);
-int		ft_change_value(t_data *data, char *arg, int i);
-int		ft_env(t_data *data, char **arg);
-void	ft_env_add(t_data *data, char **arg);
-int		ft_val_to_env(t_data *data, char **arg);
+int		ft_change_value(char *arg, char **env, int i);
+int		ft_env(char **env, char **arg);
+void	ft_env_add(char **env, char **arg);
+int		ft_val_to_env(char **env, char **arg);
 char	**ft_env_copy(char **env);
 void	ft_env_display(char **envi);
 void	ft_free_env(char **envi);
-void	ft_setenv(t_data *data, char **arg);
+void	ft_setenv(char **env, char **arg);
 int		ft_check_args(char **arg);
-int		ft_checkenv(t_data *data, char *str);
-int		ft_unsetenv(t_data *data, char **arg);
-int		ft_checkenv_2(t_data *data, char **arg);
-int		ft_checkenv_3(t_data *data, char **arg);
-int		ft_checkenv_4(t_data *data, char **arg);
-int		ft_echo(t_data *data, char **arg);
-int		ft_echo_help(t_data *data, char **arg);
-int		ft_echo_check_env(t_data *data, char *val);
+int		ft_checkenv(char **env, char *str);
+int		ft_unsetenv(char **env, char **arg);
+void	ft_checkenv_case2(char **env, char **arg, int i);
+int		ft_checkenv_2(char **env, char **arg);
+int		ft_checkenv_3(char **env, char **arg);
+int		ft_checkenv_4(char **env, char **arg);
+int		ft_echo(char **arg, char **env);
+int		ft_echo_help(char **arg, char **env);
+int		ft_echo_check_env(char **env, char *val);
+int		ft_echo_check_env2(char **env, char *val);
 int		ft_echo_value(char *line);
+int		ft_del_env(char **env, int i);
+int		ft_builtin(char *cmd, char **argv, char **env);
+int		ft_builtin_help(char *cmd, char **argv, char **env);
 
 /*
 **	termcaps
 */
-
+/*
 int		tputs_putchar(int c);
 void	raw_term_mode(void);
 void	default_term_mode(void);
@@ -136,15 +119,15 @@ void	ft_cursor_move_offset(t_data *data);
 int		is_delete(char *buf, t_data *data);
 int		is_return(char *buf, t_data *data);
 void	key_return(t_data *data);
-
+*/
 /*
 **	List
 */
-
+/*
 void	ft_add_elem(t_list **list, char c, t_data *data);
 void	ft_print_list(t_list *list, t_data *data);
 t_list	*del_elem(t_list *list, t_data *data);
 t_li	*add_list(t_li *list, t_data *data);
 void	ft_print_history(t_li *list, t_data *data);
-
+*/
 #endif

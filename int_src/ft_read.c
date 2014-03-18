@@ -6,7 +6,7 @@
 /*   By: ymohl-cl <ymohl-cl@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/02/04 13:41:59 by ymohl-cl          #+#    #+#             */
-/*   Updated: 2014/03/17 15:05:11 by ebaudet          ###   ########.fr       */
+/*   Updated: 2014/03/18 18:53:06 by wbeets           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,7 +99,6 @@ int				ft_read(t_env **env, char **environ)
 	ft_putchar('\n');
 	if ((ft_write_on_file(&lst_e, environ)) == 0)
 		ft_lexer(ft_creat_string(lst_e), environ);
-	ft_putendl("Error Command");
 	clean_all(&lst_e, &hst);
 	ft_putchar_fd('\n', STDIN_FILENO);
 	ft_read(env, environ);

@@ -6,7 +6,7 @@
 /*   By: ymohl-cl <ymohl-cl@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/02/04 16:29:11 by ymohl-cl          #+#    #+#             */
-/*   Updated: 2014/03/17 14:40:06 by ebaudet          ###   ########.fr       */
+/*   Updated: 2014/03/18 18:49:54 by wbeets           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@
 #include <stdlib.h>
 #include "../includes/ft_minishell.h"
 #include "../libft/libft.h"
+#include "header.h"
 
 static int		cpy_term(t_env **environ)
 {
@@ -35,7 +36,7 @@ static int		cpy_term(t_env **environ)
 		return (-1);
 	return (0);
 }
-
+/*
 static int		eb_sizeenv(char **env)
 {
 	int		i;
@@ -55,10 +56,10 @@ static char		**ft_envcpy(char **env)
 	i = -1;
 	while (env[++i])
 		env_cpy[i] = ft_strdup(env[i]);
-	env_cpy[i] = ft_strdup("");
+	env_cpy[i] = '\0';
 	return (env_cpy);
 }
-
+*/
 int				ft_termios(t_env **environ, char **env)
 {
 	char		bp[2048];
@@ -74,7 +75,7 @@ int				ft_termios(t_env **environ, char **env)
 		return (-1);
 	if (!(tgetent(bp, term)))
 		return (-1);
-	(*environ)->env = ft_envcpy(env);
+	(*environ)->env = ft_env_copy(env);
 	return (0);
 }
 
