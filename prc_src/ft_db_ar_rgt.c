@@ -1,41 +1,40 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_opcode_tree.c                                   :+:      :+:    :+:   */
+/*   ft_db_ar_rgt.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ymohl-cl <ymohl-cl@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2014/03/17 18:47:24 by ymohl-cl          #+#    #+#             */
-/*   Updated: 2014/03/19 01:39:07 by ymohl-cl         ###   ########.fr       */
+/*   Created: 2014/03/19 01:12:22 by ymohl-cl          #+#    #+#             */
+/*   Updated: 2014/03/19 01:34:47 by ymohl-cl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "prc.h"
+#include <fcntl.h>
+#include <unistd.h>
 #include "libft.h"
+#include "prc.h"
 
-int			ft_opcode_tree(t_op **tmp, char **env)
+int			ft_db_ar_rgt(t_op **tmp)
 {
+	int		i;
 	int		ret;
 
+	i = 1;
 	ret = 0;
-	(void)env;
-	if ((*tmp)->code == 0)
-		;
-//		ret = ft_semicol();
-	else if ((*tmp)->code == 1)
-		;
-//		ret = ft_and();
-	else if ((*tmp)->code == 2)
-		;
-//		ret = ft_or();
-	else if ((*tmp)->code == 3)
-		;
-//		ret = ft_pipe();
-	else if ((*tmp)->code == 4)
-		ret = ft_ar_lft(tmp);
-	else if ((*tmp)->code == 5)
-		ret = ft_ar_rgt(tmp);
-	else if ((*tmp)->code == 6)
-		ret = ft_db_ar_rgt(tmp);
+	if ((*tmp)->argv[1])
+	{
+		(*tmp)->fd_out = open((*tmp)->argv[1], O_CREAT | O_WRONLY | O_APPEND, 0644);
+		if ((*tmp)->fd_out == -1)
+			ret = -1;
+	}
+	while ((*tmp)->argv[++i])
+	{
+		ft_putstr((*tmp)->name);
+		ft_putstr("no such files or directory\n");
+		ret = -1;
+	}
+	if (ret < 0)
+		return (ret);
 	return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: ymohl-cl <ymohl-cl@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/03/17 17:45:52 by ymohl-cl          #+#    #+#             */
-/*   Updated: 2014/03/18 18:57:18 by wbeets           ###   ########.fr       */
+/*   Updated: 2014/03/19 00:36:28 by ymohl-cl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,10 +57,7 @@ int				ft_read_tree(t_op *tree, char **env)
 			save = change_tmp(tmp);
 			tmp->stat = 0;
 			ret = ft_read_tree(tmp, env);
-			ft_putstr("returned to ");
-			ft_putstr(tmp->name);
-			ft_putstr("\n");
-			ret = ft_execve(tmp->name, tmp->argv, env);
+			ret = ft_execve(&tmp, tmp->name, tmp->argv, env);
 			tmp = save;
 		}
 		else

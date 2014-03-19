@@ -1,7 +1,27 @@
-donc voila, cette fois c'est push :D
-La lecture de l'arbre est ok
-Il reste a implementer l'execution des commandes et des op_code
-Faut voir avec Georges pour qu'il mettent toute ca partie buidtins au propre
-car pas exploitable pour le moment.
-Voila a tout a l'heure, je suis rentree tard a 4h du mat donc je sais pas a quel je re
-mais a tout :D
+COUCOU !! :D
+Alors j'ai fais l'ajout de tous les chevrons
+<
+>
+>>
+ca fonctionne bien, il y a un peu de debeug a faire concernant les retours si
+un fichier existe pas par exemple.
+Sinon tu peux test, les fonctionnalites de bases marche tres bien.
+Pour se faire, j'ai du ajoute dans le ft_execve deux fonction statique qui
+ouvre un fd avec dup2 et qui le ferme toujours avec dup2 apres
+l execution d'une commande donc Don't PANIC it's normaly :D
+La procedure pour le pipe risque d'etre un peu complique a mettre en place
+au vue de notre procedure de lecture de l'arbre ...
+Surement qu'on devra effectuer l'etape de pipe au moment de l'execution de
+la premiere commande qui le lie.
+J'ai egalement ajoute une variable fd_out et fd_in dans la structure t_op.
+tu peux faire le OR et le AND si tu veux, dans le fichier ft_op_code_tree
+tu trouvera le nom des fonctions en commentaires.
+On aura surement besoin d'une derniere variable qui nous permettra de savoir si
+on doit executer une commande ou non lors de la de-stack afin de gerer nos
+operateur correctement :D
+C'est a peu pres tout pour moi pour l'instant, j'espere que tu as bien tout
+compris et que je n'ai pas ete trop brouillon dans mes explications.
+
+Bien cordialement l'ami ;)
+
+Bon courage et a TOUT !!

@@ -6,7 +6,7 @@
 /*   By: wbeets <wbeets@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/03/13 14:41:35 by wbeets            #+#    #+#             */
-/*   Updated: 2014/03/18 18:24:39 by wbeets           ###   ########.fr       */
+/*   Updated: 2014/03/19 00:36:31 by ymohl-cl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,59 @@
 #include <sys/wait.h>
 #include "header.h"
 
-int		ft_execve(char *cmd, char **argv, char **env)
+static int		open_dup(t_op **link)
+{
+	int		ret;
+	t_op	*tmp;
+
+	ret = 0;
+	tmp = *link;
+	if (tmp->top)
+	{
+		tmp = tmp->top;
+		if (tmp->fd_out > 1)
+		{
+			if ((ret = dup2(tmp->fd_out, 1)) == -1)
+				return (ret);
+		}
+		if (tmp->fd_in > 0)
+		{
+			if ((ret = dup2(tmp->fd_in, 0)) == -1)
+				return (ret);
+		}
+	}
+	return (ret);
+}
+
+static int		close_dup(t_op **link)
+{
+	int		ret;
+	t_op	*tmp;
+
+	ret = 0;
+	tmp = *link;
+	if (tmp->top)
+	{
+		tmp = tmp->top;
+		if (tmp->fd_out > 1)
+		{
+			if ((ret = dup2(1, tmp->fd_out)) == -1)
+				return (ret);
+			if ((ret = close(tmp->fd_out)) == -1)
+				return (ret);
+		}
+		if (tmp->fd_in > 0)
+		{
+			if ((ret = dup2(0, tmp->fd_in)) == -1)
+				return (ret);
+			if ((ret = close(tmp->fd_in)) == -1)
+				return (ret);
+		}
+	}
+	return (ret);
+}
+
+int				ft_execve(t_op **link, char *cmd, char **argv, char **env)
 {
 	pid_t	fork_return;
 	char	**paths;
@@ -36,9 +88,9 @@ int		ft_execve(char *cmd, char **argv, char **env)
 			while (paths[++i] != '\0')
 			{
 				tmp = ft_strjoin(paths[i], cmd);
-				ft_putstr(tmp);
-				ft_putstr("\n");
+				open_dup(link);
 				execve(tmp, argv, env);
+				close_dup(link);
 				free(tmp);
 			}
 			ft_putstr("not a regular command\n");
