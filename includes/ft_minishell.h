@@ -6,7 +6,7 @@
 /*   By: ymohl-cl <ymohl-cl@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/02/04 13:14:22 by ymohl-cl          #+#    #+#             */
-/*   Updated: 2014/03/25 17:27:34 by wbeets           ###   ########.fr       */
+/*   Updated: 2014/03/25 22:05:04 by gpetrov          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,7 @@
 # define BUFF_SIZE 1024
 # define FT_FILE "/.42sh_history"
 # include <term.h>
+# include "header.h"
 
 typedef struct			s_env
 {
@@ -52,10 +53,10 @@ typedef struct			s_hist
 	struct s_hist		*prev;
 }						t_hist;
 
-typedef struct	s_data
-{
-		char		**env;
-}				t_data;
+/* typedef struct	s_data */
+/* { */
+/* 	char		**env; */
+/* }				t_data; */
 
 int			ft_read(t_env **env, t_data *environ);
 int			ft_filled_lste(char *key, t_edit **lst, t_hist **hst);
