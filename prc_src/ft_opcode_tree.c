@@ -6,7 +6,7 @@
 /*   By: ymohl-cl <ymohl-cl@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/03/17 18:47:24 by ymohl-cl          #+#    #+#             */
-/*   Updated: 2014/03/25 10:04:06 by wbeets           ###   ########.fr       */
+/*   Updated: 2014/03/25 10:44:17 by wbeets           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,8 +20,7 @@ int			ft_opcode_tree(t_op **tmp, char **env)
 	ret = 0;
 	(void)env;
 	if ((*tmp)->code == 0)
-		;
-//		ret = ft_semicol();
+		ret = ft_semicol(tmp, env);
 	else if ((*tmp)->code == 1)
 		ret = ft_and(tmp, env);
 	else if ((*tmp)->code == 2)
@@ -31,10 +30,10 @@ int			ft_opcode_tree(t_op **tmp, char **env)
 //		ret = ft_pipe();
 	else if ((*tmp)->code == 4)
 		ret = ft_ar_lft(tmp, env);
-/*	else if ((*tmp)->code == 5)
-		ret = ft_ar_rgt(tmp);
+	else if ((*tmp)->code == 5)
+		ret = ft_ar_rgt(tmp, env);
 	else if ((*tmp)->code == 6)
-		ret = ft_db_ar_rgt(tmp);*/
+		ret = ft_db_ar_rgt(tmp, env);
 	return (0);
 }
 
