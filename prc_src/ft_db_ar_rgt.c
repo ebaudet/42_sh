@@ -6,7 +6,7 @@
 /*   By: ymohl-cl <ymohl-cl@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/03/19 01:12:22 by ymohl-cl          #+#    #+#             */
-/*   Updated: 2014/03/25 10:38:10 by ymohl-cl         ###   ########.fr       */
+/*   Updated: 2014/03/25 10:53:16 by ymohl-cl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,9 @@ int			ft_db_ar_rgt(t_op **tmp, char **env)
 	int		fd;
 	int		i;
 	int		ret;
+	int		save;
 
+	save = dup(1);
 	fd = -1;
 	i = 1;
 	ret = 0;
@@ -38,13 +40,13 @@ int			ft_db_ar_rgt(t_op **tmp, char **env)
 	}
 	if (ret > -1)
 	{
-		if ((ret = dup2(fd, 1)) == -1)
+		if ((ret = dup2(fd, save)) == -1)
 			return (ret);
 		if ((*tmp)->rgt)
 			ft_read_tree((*tmp)->rgt, env);
 		else if ((*tmp)->lft)
 			ft_read_tree((*tmp)->lft, env);
-		if ((ret = dup2(1, fd)) == -1)
+		if ((ret = dup2(save, fd)) == -1)
 			return (ret);
 		if ((ret = close(fd)) == -1)
 			return (ret);
