@@ -6,7 +6,7 @@
 /*   By: wbeets <wbeets@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/02/28 18:24:36 by wbeets            #+#    #+#             */
-/*   Updated: 2014/03/19 01:38:45 by ymohl-cl         ###   ########.fr       */
+/*   Updated: 2014/03/25 00:23:59 by ymohl-cl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,8 +28,6 @@ typedef struct			s_op
 	int					nbr;
 	int					prior;
 	int					stat;
-	int					fd_in;
-	int					fd_out;
 	char				**argv;
 	struct s_op			*next;
 	struct s_op			*top;
@@ -45,11 +43,11 @@ int		is_op(char c);
 char	**ft_fill_tab(char *str, int size);
 t_op	*ft_create_tree(t_op **lst);
 int		ft_read_tree(t_op *tree, char **env);
-int		ft_execve(t_op **link, char *cmd, char **argv, char **env);
+int		ft_execve(char *cmd, char **argv, char **env);
 int		ft_opcode_tree(t_op **tmp, char **env);
 char	**ft_get_path(char **tabs);
-int		ft_ar_rgt(t_op **tmp);
-int		ft_db_ar_rgt(t_op **tmp);
-int		ft_ar_lft(t_op **tmp);
+//int		ft_ar_rgt(t_op **tmp);
+//int		ft_db_ar_rgt(t_op **tmp);
+int		ft_ar_lft(t_op **tmp, char **env);
 
 #endif

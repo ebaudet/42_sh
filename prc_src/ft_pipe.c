@@ -1,34 +1,13 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_read_tree.c                                     :+:      :+:    :+:   */
+/*   ft_pipe.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ymohl-cl <ymohl-cl@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2014/03/17 17:45:52 by ymohl-cl          #+#    #+#             */
-/*   Updated: 2014/03/25 00:21:04 by ymohl-cl         ###   ########.fr       */
+/*   Created: 2014/03/24 21:22:40 by ymohl-cl          #+#    #+#             */
+/*   Updated: 2014/03/25 00:04:07 by ymohl-cl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdlib.h>
-#include "prc.h"
-#include "libft.h"
 
-int				ft_read_tree(t_op *tree, char **env)
-{
-	int		ret;
-
-	ret = 0;
-	if (!tree)
-		return (-1);
-	if (tree)
-	{
-		if (tree->code < 7)
-			ret = ft_opcode_tree(&tree, env);
-		else if (tree->code == 7)
-			ret = ft_execve(tree->name, tree->argv, env);
-		if (ret < 0)
-			return (ret);
-	}
-	return (0);
-}

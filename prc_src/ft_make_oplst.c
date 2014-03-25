@@ -6,7 +6,7 @@
 /*   By: wbeets <wbeets@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/02/28 19:33:56 by wbeets            #+#    #+#             */
-/*   Updated: 2014/03/19 01:34:22 by ymohl-cl         ###   ########.fr       */
+/*   Updated: 2014/03/25 00:30:31 by ymohl-cl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,8 +33,6 @@ static void		add_end_2(char *str, int prior, int code, t_op **start)
 	tmp->next->argv = NULL;
 	tmp->next->stat = 0;
 	tmp->next->nbr = 0;
-	tmp->next->fd_out = 1;
-	tmp->next->fd_in = 0;
 }
 
 static void		add_end(char *str, int prior, int code, t_op **start)
@@ -52,8 +50,6 @@ static void		add_end(char *str, int prior, int code, t_op **start)
 		(*start)->nbr = 0;
 		(*start)->argv = NULL;
 		(*start)->stat = 0;
-		(*start)->fd_out = 1;
-		(*start)->fd_in = 0;
 	}
 	else
 		add_end_2(str, prior, code, start);

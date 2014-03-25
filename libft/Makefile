@@ -6,7 +6,7 @@
 #    By: ymohl-cl <ymohl-cl@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2013/11/19 17:20:28 by ymohl-cl          #+#    #+#              #
-#    Updated: 2014/01/04 17:03:17 by ymohl-cl         ###   ########.fr        #
+#    Updated: 2014/03/24 21:50:35 by ymohl-cl         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -73,7 +73,6 @@ SRC =	ft_memset.c \
 		ft_lstdelone.c \
 		ft_lstdel.c \
 		ft_lstiter.c \
-		ft_lstmap.c \
 
 OBJ = $(SRC:.c=.o)
 

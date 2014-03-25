@@ -1,34 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_read_tree.c                                     :+:      :+:    :+:   */
+/*   ft_change_tmp.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ymohl-cl <ymohl-cl@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2014/03/17 17:45:52 by ymohl-cl          #+#    #+#             */
-/*   Updated: 2014/03/25 00:21:04 by ymohl-cl         ###   ########.fr       */
+/*   Created: 2014/03/25 00:04:15 by ymohl-cl          #+#    #+#             */
+/*   Updated: 2014/03/25 00:05:06 by ymohl-cl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdlib.h>
 #include "prc.h"
-#include "libft.h"
 
-int				ft_read_tree(t_op *tree, char **env)
+t_op			*change_tmp(t_op *tmp)
 {
-	int		ret;
+	t_op		*new;
 
-	ret = 0;
-	if (!tree)
-		return (-1);
-	if (tree)
+	new = NULL;
+	if (tmp->lft && tmp->lft->stat == 1)
+		new = tmp->lft;
+	else if (tmp->rgt && tmp->rgt->stat == 1)
+		new = tmp->rgt;
+	else if (tmp->top)
+		new = tmp->top;
+	if (!tmp->top && tmp->rgt && tmp->lft && tmp->rgt->stat == 0
+		&& tmp->lft->stat == 0)
 	{
-		if (tree->code < 7)
-			ret = ft_opcode_tree(&tree, env);
-		else if (tree->code == 7)
-			ret = ft_execve(tree->name, tree->argv, env);
-		if (ret < 0)
-			return (ret);
+		new = NULL;
 	}
-	return (0);
+	return (new);
 }
+

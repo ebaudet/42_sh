@@ -6,7 +6,7 @@
 /*   By: wbeets <wbeets@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/03/13 14:41:35 by wbeets            #+#    #+#             */
-/*   Updated: 2014/03/19 00:36:31 by ymohl-cl         ###   ########.fr       */
+/*   Updated: 2014/03/25 09:11:23 by ymohl-cl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@
 #include <sys/wait.h>
 #include "header.h"
 
-static int		open_dup(t_op **link)
+/*static int		open_dup(t_op **link)
 {
 	int		ret;
 	t_op	*tmp;
@@ -67,9 +67,9 @@ static int		close_dup(t_op **link)
 		}
 	}
 	return (ret);
-}
+}*/
 
-int				ft_execve(t_op **link, char *cmd, char **argv, char **env)
+int				ft_execve(char *cmd, char **argv, char **env)
 {
 	pid_t	fork_return;
 	char	**paths;
@@ -88,9 +88,9 @@ int				ft_execve(t_op **link, char *cmd, char **argv, char **env)
 			while (paths[++i] != '\0')
 			{
 				tmp = ft_strjoin(paths[i], cmd);
-				open_dup(link);
+//				open_dup(link);
 				execve(tmp, argv, env);
-				close_dup(link);
+//				close_dup(link);
 				free(tmp);
 			}
 			ft_putstr("not a regular command\n");
