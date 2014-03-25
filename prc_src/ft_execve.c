@@ -6,7 +6,7 @@
 /*   By: wbeets <wbeets@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/03/13 14:41:35 by wbeets            #+#    #+#             */
-/*   Updated: 2014/03/25 09:11:23 by ymohl-cl         ###   ########.fr       */
+/*   Updated: 2014/03/25 10:07:05 by wbeets           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,7 +95,7 @@ int				ft_execve(char *cmd, char **argv, char **env)
 			}
 			ft_putstr("not a regular command\n");
 			execve(cmd, argv, env);
-			exit(0);
+			return (-1);
 		}
 		else
 		{

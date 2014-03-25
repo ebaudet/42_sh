@@ -6,7 +6,7 @@
 /*   By: wbeets <wbeets@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/02/28 18:24:36 by wbeets            #+#    #+#             */
-/*   Updated: 2014/03/25 09:55:25 by ymohl-cl         ###   ########.fr       */
+/*   Updated: 2014/03/25 10:45:54 by wbeets           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,6 +49,8 @@ char	**ft_get_path(char **tabs);
 int		ft_ar_rgt(t_op **tmp, char **env);
 int		ft_db_ar_rgt(t_op **tmp, char **env);
 int		ft_ar_lft(t_op **tmp, char **env);
+int		ft_and(t_op **and, char **env);
+int		ft_or(t_op **and, char **env);
 int		ft_semicol(t_op **tmp, char **env);
 
 #endif

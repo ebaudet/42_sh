@@ -6,7 +6,7 @@
 /*   By: ymohl-cl <ymohl-cl@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/03/17 18:47:24 by ymohl-cl          #+#    #+#             */
-/*   Updated: 2014/03/25 10:54:13 by ymohl-cl         ###   ########.fr       */
+/*   Updated: 2014/03/25 10:56:29 by ymohl-cl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,11 +22,9 @@ int			ft_opcode_tree(t_op **tmp, char **env)
 	if ((*tmp)->code == 0)
 		ret = ft_semicol(tmp, env);
 	else if ((*tmp)->code == 1)
-		;
-//		ret = ft_and();
+		ret = ft_and(tmp, env);
 	else if ((*tmp)->code == 2)
-		;
-//		ret = ft_or();
+		ret = ft_or(tmp, env);
 	else if ((*tmp)->code == 3)
 		;
 //		ret = ft_pipe();
