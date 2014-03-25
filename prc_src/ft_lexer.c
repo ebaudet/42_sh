@@ -6,7 +6,7 @@
 /*   By: wbeets <wbeets@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/02/28 18:21:50 by wbeets            #+#    #+#             */
-/*   Updated: 2014/03/18 19:14:56 by wbeets           ###   ########.fr       */
+/*   Updated: 2014/03/25 16:52:10 by ymohl-cl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,11 +46,8 @@ static int	add_next_to_argv(t_op **lst)
 
 	i = 0;
 	tmp = *lst;
-	while (tmp->next && tmp->next->prior == 4)
-	{
-		i++;
+	while (tmp->next && tmp->next->prior == 4 && ++i)
 		tmp = tmp->next;
-	}
 	if (((*lst)->argv = (char **)malloc((i + 2) * sizeof(char *))))
 	{
 		(*lst)->argv[i + 1] = '\0';
