@@ -6,7 +6,7 @@
 /*   By: ymohl-cl <ymohl-cl@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/03/17 17:45:52 by ymohl-cl          #+#    #+#             */
-/*   Updated: 2014/03/25 00:21:04 by ymohl-cl         ###   ########.fr       */
+/*   Updated: 2014/03/25 10:08:37 by wbeets           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,8 +27,6 @@ int				ft_read_tree(t_op *tree, char **env)
 			ret = ft_opcode_tree(&tree, env);
 		else if (tree->code == 7)
 			ret = ft_execve(tree->name, tree->argv, env);
-		if (ret < 0)
-			return (ret);
 	}
-	return (0);
+	return (ret);
 }

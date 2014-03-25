@@ -6,7 +6,7 @@
 #    By: ymohl-cl <ymohl-cl@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2014/01/04 16:12:18 by ymohl-cl          #+#    #+#              #
-#    Updated: 2014/03/25 00:22:49 by ymohl-cl         ###   ########.fr        #
+#    Updated: 2014/03/25 10:01:11 by wbeets           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -64,6 +64,8 @@ PRC_SRC =	ft_lexer.c \
 			ft_opcode_tree.c \
 			ft_execve.c \
 			ft_ar_lft.c \
+			ft_and.c \
+			ft_or.c \
 #			ft_ar_rgt.c \
 			ft_db_ar_rgt.c \
 
