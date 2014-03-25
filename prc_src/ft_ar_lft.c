@@ -6,7 +6,7 @@
 /*   By: ymohl-cl <ymohl-cl@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/03/19 01:11:10 by ymohl-cl          #+#    #+#             */
-/*   Updated: 2014/03/25 09:10:33 by ymohl-cl         ###   ########.fr       */
+/*   Updated: 2014/03/25 10:14:48 by ymohl-cl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,8 +41,6 @@ int			ft_ar_lft(t_op **tmp, char **env)
 				ft_read_tree((*tmp)->rgt, env);
 			else if ((*tmp)->lft)
 				ft_read_tree((*tmp)->lft, env);
-			else
-				return (-1);
 			if ((ret = dup2(0, fd)) == -1)
 				return (ret);
 			if ((ret = close(fd)) == -1)

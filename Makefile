@@ -6,7 +6,7 @@
 #    By: ymohl-cl <ymohl-cl@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2014/01/04 16:12:18 by ymohl-cl          #+#    #+#              #
-#    Updated: 2014/03/25 00:22:49 by ymohl-cl         ###   ########.fr        #
+#    Updated: 2014/03/25 09:55:05 by ymohl-cl         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -64,8 +64,9 @@ PRC_SRC =	ft_lexer.c \
 			ft_opcode_tree.c \
 			ft_execve.c \
 			ft_ar_lft.c \
-#			ft_ar_rgt.c \
+			ft_ar_rgt.c \
 			ft_db_ar_rgt.c \
+			ft_semicol.c \
 
 INT_SRCS = $(addprefix int_src/, $(INT_SRC))
 BLD_SRCS = $(addprefix bld_src/, $(BLD_SRC))
