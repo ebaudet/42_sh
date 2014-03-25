@@ -6,7 +6,7 @@
 /*   By: ymohl-cl <ymohl-cl@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/03/17 17:45:52 by ymohl-cl          #+#    #+#             */
-/*   Updated: 2014/03/25 10:44:36 by wbeets           ###   ########.fr       */
+/*   Updated: 2014/03/25 17:15:54 by wbeets           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 #include "prc.h"
 #include "libft.h"
 
-int				ft_read_tree(t_op *tree, char **env)
+int				ft_read_tree(t_op *tree, t_data *env)
 {
 	int		ret;
 

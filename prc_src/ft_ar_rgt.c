@@ -6,7 +6,7 @@
 /*   By: ymohl-cl <ymohl-cl@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/03/18 20:55:27 by ymohl-cl          #+#    #+#             */
-/*   Updated: 2014/03/25 10:38:08 by ymohl-cl         ###   ########.fr       */
+/*   Updated: 2014/03/25 17:48:41 by wbeets           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 #include "libft.h"
 #include "prc.h"
 
-int			ft_ar_rgt(t_op **tmp, char **env)
+int			ft_ar_rgt(t_op **tmp, t_data *env)
 {
 	int		fd;
 	int		i;

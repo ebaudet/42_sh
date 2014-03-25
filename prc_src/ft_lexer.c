@@ -6,7 +6,7 @@
 /*   By: wbeets <wbeets@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/02/28 18:21:50 by wbeets            #+#    #+#             */
-/*   Updated: 2014/03/18 19:14:56 by wbeets           ###   ########.fr       */
+/*   Updated: 2014/03/25 17:31:03 by wbeets           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -109,7 +109,7 @@ static int	check_list(t_op **lst)
 	return (1);
 }
 
-int		ft_lexer(char *str, char **env)
+int		ft_lexer(char *str, t_data *env)
 {
 	int		ret;
 	t_op	*lst;
@@ -118,7 +118,6 @@ int		ft_lexer(char *str, char **env)
 
 	ret = 0;
 	i = 0;
-	(void)env;
 	lst = ft_make_oplst(str);
 	clean_list(&lst);
 	if (!check_list(&lst))

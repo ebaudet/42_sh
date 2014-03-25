@@ -6,13 +6,13 @@
 /*   By: ymohl-cl <ymohl-cl@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/03/25 09:52:21 by ymohl-cl          #+#    #+#             */
-/*   Updated: 2014/03/25 10:03:28 by ymohl-cl         ###   ########.fr       */
+/*   Updated: 2014/03/25 17:38:32 by wbeets           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "prc.h"
 
-int			ft_semicol(t_op **tmp, char **env)
+int			ft_semicol(t_op **tmp, t_data *env)
 {
 	ft_read_tree((*tmp)->rgt, env);
 	ft_read_tree((*tmp)->lft, env);

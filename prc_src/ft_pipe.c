@@ -6,7 +6,7 @@
 /*   By: ymohl-cl <ymohl-cl@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/03/24 21:22:40 by ymohl-cl          #+#    #+#             */
-/*   Updated: 2014/03/25 14:18:16 by wbeets           ###   ########.fr       */
+/*   Updated: 2014/03/25 17:47:56 by wbeets           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 #include <stdlib.h>
 #include "libft.h"
 
-int		ft_pipe(t_op **tmp, char **env)
+int		ft_pipe(t_op **tmp, t_data *env)
 {
 	int		fd[2];
 	int		fork_ret;

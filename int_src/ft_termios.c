@@ -6,7 +6,7 @@
 /*   By: ymohl-cl <ymohl-cl@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/02/04 16:29:11 by ymohl-cl          #+#    #+#             */
-/*   Updated: 2014/03/18 18:49:54 by wbeets           ###   ########.fr       */
+/*   Updated: 2014/03/25 18:02:12 by wbeets           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,8 @@
 #include <stdlib.h>
 #include "../includes/ft_minishell.h"
 #include "../libft/libft.h"
-#include "header.h"
+
+char	**ft_env_copy(char **env);
 
 static int		cpy_term(t_env **environ)
 {

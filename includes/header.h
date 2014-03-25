@@ -6,24 +6,17 @@
 /*   By: gpetrov <gpetrov@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/01/24 15:49:20 by gpetrov           #+#    #+#             */
-/*   Updated: 2014/03/18 17:58:16 by wbeets           ###   ########.fr       */
+/*   Updated: 2014/03/25 19:51:24 by wbeets           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef HEADER_H
 # define HEADER_H
-# define MAX_KEY_STRING 5
 
-# include <sys/uio.h>
-# include <signal.h>
-# include <termios.h>
-# include <curses.h>
-# include <term.h>
-
-/*
-** Struct
-*/
-
+typedef struct 	s_data
+{
+	char 		**env;
+}				t_data;
 
 /*
 typedef struct	s_data
@@ -77,13 +70,13 @@ char	*ft_make_string(t_list *list);
 int		ft_check_if_already_exist(char **env, char *arg);
 int		ft_find_equal(char *str);
 int		ft_change_value(char *arg, char **env, int i);
-int		ft_env(char **env, char **arg);
-void	ft_env_add(char **env, char **arg);
-int		ft_val_to_env(char **env, char **arg);
+int		ft_env(t_data *data, char **arg);
+void	ft_env_add(t_data *data, char **arg);
+int		ft_val_to_env(t_data *data, char **arg);
 char	**ft_env_copy(char **env);
 void	ft_env_display(char **envi);
 void	ft_free_env(char **envi);
-void	ft_setenv(char **env, char **arg);
+void	ft_setenv(t_data *data, char **arg);
 int		ft_check_args(char **arg);
 int		ft_checkenv(char **env, char *str);
 int		ft_unsetenv(char **env, char **arg);
@@ -97,8 +90,8 @@ int		ft_echo_check_env(char **env, char *val);
 int		ft_echo_check_env2(char **env, char *val);
 int		ft_echo_value(char *line);
 int		ft_del_env(char **env, int i);
-int		ft_builtin(char *cmd, char **argv, char **env);
-int		ft_builtin_help(char *cmd, char **argv, char **env);
+int		ft_builtin(char *cmd, char **argv, t_data *data);
+int		ft_builtin_help(char *cmd, char **argv, t_data *data);
 
 /*
 **	termcaps

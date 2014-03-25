@@ -6,7 +6,7 @@
 /*   By: ymohl-cl <ymohl-cl@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/02/04 13:41:59 by ymohl-cl          #+#    #+#             */
-/*   Updated: 2014/03/18 18:53:06 by wbeets           ###   ########.fr       */
+/*   Updated: 2014/03/25 17:59:16 by wbeets           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,8 @@
 #include <stdlib.h>
 #include "../includes/ft_minishell.h"
 #include "../libft/libft.h"
-#include "prc.h"
+
+int		ft_lexer(char *str, t_data *env);
 
 static void		begin_read(t_hist **hst, t_edit **lst, char **env)
 {
@@ -79,7 +80,7 @@ void			ft_jumprint(t_edit **lst)
 	}
 }
 
-int				ft_read(t_env **env, char **environ)
+int				ft_read(t_env **env, t_data *environ)
 {
 	t_hist		*hst;
 	t_edit		*lst_e;
@@ -87,7 +88,7 @@ int				ft_read(t_env **env, char **environ)
 
 	hst = NULL;
 	lst_e = NULL;
-	begin_read(&hst, &lst_e, environ);
+	begin_read(&hst, &lst_e, environ->env);
 	while (!ENTER)
 	{
 		ft_bzero(key, 7);
@@ -97,7 +98,7 @@ int				ft_read(t_env **env, char **environ)
 	}
 	ft_jumprint(&lst_e);
 	ft_putchar('\n');
-	if ((ft_write_on_file(&lst_e, environ)) == 0)
+	if ((ft_write_on_file(&lst_e, environ->env)) == 0)
 		ft_lexer(ft_creat_string(lst_e), environ);
 	clean_all(&lst_e, &hst);
 	ft_putchar_fd('\n', STDIN_FILENO);

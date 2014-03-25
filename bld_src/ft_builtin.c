@@ -6,25 +6,24 @@
 /*   By: gpetrov <gpetrov@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/03/07 17:25:03 by gpetrov           #+#    #+#             */
-/*   Updated: 2014/03/18 18:37:58 by wbeets           ###   ########.fr       */
+/*   Updated: 2014/03/25 18:04:22 by wbeets           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "prc.h"
 #include "header.h"
 #include <stdlib.h>
 #include "libft.h"
 
-int		ft_builtin_help(char *cmd, char **argv, char **env)
+int		ft_builtin_help(char *cmd, char **argv, t_data *data)
 {
 	if (ft_strcmp(cmd, "echo") == 0)
 	{
-		ft_echo(argv, env);
+		ft_echo(argv, data->env);
 		return (1);
 	}
 	else if (ft_strcmp(cmd, "env") == 0)
 	{
-		ft_env(env, argv);
+		ft_env(data, argv);
 		return (1);
 	}
 	else if (ft_strcmp(cmd, "exit") == 0)
@@ -32,27 +31,29 @@ int		ft_builtin_help(char *cmd, char **argv, char **env)
 	return (0);
 }
 
-int		ft_builtin(char *cmd, char **argv, char **env)
+int		ft_builtin(char *cmd, char **argv, t_data *data)
 {
 	if (ft_strcmp(cmd, "setenv") == 0 && argv[1])
 	{
-		ft_setenv(env, argv);
+		ft_setenv(data, argv);
 		return (1);
 	}
 	else if (ft_strcmp(cmd, "unsetenv") == 0 && argv[1])
 	{
-		ft_unsetenv(env, argv);
+		ft_unsetenv(data->env, argv);
 		return (1);
 	}
 /*	else if (ft_strcmp(cmd, "cd") == 0)
 	{
 		ft_cd_help(cmd, argv, env);
 		return (1);
-	}*/
-	else if (ft_builtin_help(cmd, argv, env) == 1)
+	}
+*/
+	else if (ft_builtin_help(cmd, argv, data) == 1)
 		return (1);
 	return (-1);
 }
+
 /*
 int		ft_exec_cmd(t_data *data) //ne pas utiliser
 {
@@ -133,7 +134,7 @@ int		ft_check_if_already_exist(char **env, char *arg)
 	return (0);
 }
 
-void	ft_env_add(char **env, char **arg)
+void	ft_env_add(t_data *data, char **arg)
 {
 	int		j;
 	int		i;
@@ -141,19 +142,19 @@ void	ft_env_add(char **env, char **arg)
 
 	i = -1;
 	j = 0;
-	tmp = env;
-	if (ft_check_if_already_exist(env, arg[1]) == 1)
+	tmp = data->env;
+	if (ft_check_if_already_exist(data->env, arg[1]) == 1)
 		return ;
-	while (env[j] != 0)
+	while (data->env[j] != 0)
 		j++;
-	env = (char **)malloc(sizeof(char *) * (j + 3));
+	data->env = (char **)malloc(sizeof(char *) * (j + 3));
 	while (tmp[++i] != 0)
-		env[i] = ft_strdup(tmp[i]);
-	env[i] = ft_strdup(arg[1]);
-	env[i + 1] = 0;
+		data->env[i] = ft_strdup(tmp[i]);
+	data->env[i] = ft_strdup(arg[1]);
+	data->env[i + 1] = 0;
 }
 
-int		ft_val_to_env(char **env, char **arg)
+int		ft_val_to_env(t_data *data, char **arg)
 {
 	int		i;
 
@@ -162,7 +163,7 @@ int		ft_val_to_env(char **env, char **arg)
 	{
 		if (arg[1][i] == '=')
 		{
-			ft_env_add(env, arg);
+			ft_env_add(data, arg);
 			return (1);
 		}
 	}
@@ -172,12 +173,12 @@ int		ft_val_to_env(char **env, char **arg)
 	return (0);
 }
 
-int		ft_env(char **env, char **arg)
+int		ft_env(t_data *data, char **arg)
 {
 	if (!arg[1])
-		ft_env_display(env);
+		ft_env_display(data->env);
 	else
-		ft_val_to_env(env, arg);
+		ft_val_to_env(data, arg);
 	return (0);
 }
 
@@ -217,9 +218,8 @@ int		ft_echo_value(char *line)
 	tmp = (char *)malloc(sizeof(char) * ft_strlen(line));
 	while (line[i] != '=')
 		i++;
-	i++;
 	while (line[i] != 0)
-		tmp[++j] = line[i++];
+		tmp[++j] = line[++i];
 	tmp[i] = 0;
 	ft_putstr(tmp);
 	free(tmp);
@@ -293,7 +293,7 @@ int		ft_echo_check_env(char **env, char *val)
 			return (1);
 		}
 	}
-	/* if (ft_echo_check_env(data, val) == 1) */ /* Chek for uncapitalize arg */
+	/* if (ft_echo_check_env(data, val) == 1) */ /* Chek for uncapitalized arg */
 	/* 	return (1); */
 	return (-1);
 }
@@ -312,9 +312,10 @@ int		ft_echo_help(char **arg, char **env)
 	{
 		if (arg[i][0] == '$')
 		{
-			tmp = (char *)malloc(sizeof(char) * ft_strlen(arg[i]));
+			tmp = (char *)malloc(sizeof(char) * (ft_strlen(arg[i]) + 1));
 			while (arg[i][++k] != 0)
 				tmp[++j] = arg[i][k];
+			tmp[j - 1] = 0;
 			if (ft_echo_check_env(env, tmp) == -1)
 			{
 				ft_putstr(tmp);
@@ -461,7 +462,7 @@ int		ft_check_args(char **arg)
 	return (0);
 }
 
-void	ft_setenv(char **env, char **arg)
+void	ft_setenv(t_data *data, char **arg)
 {
 	int		j;
 	int		i;
@@ -470,25 +471,23 @@ void	ft_setenv(char **env, char **arg)
 
 	i = -1;
 	j = 0;
-	if (ft_check_args(arg) == -1)
+	/* if (ft_check_args(arg) == -1) */
+	/* 	return ; */
+	tmp = data->env;
+	if (ft_checkenv_2(data->env, arg) == 1)
 		return ;
-	tmp = env;
-	if (ft_checkenv_2(env, arg) == 1)
-		return ;
-	while (env[j] != 0)
+	while (data->env[j] != 0)
 		j++;
-	env = (char **)malloc(sizeof(char *) * (j + 2));
+	data->env = (char **)malloc(sizeof(char *) * (j + 2));
 	while (tmp[++i] != 0)
-	{
-		env[i] = ft_strdup(tmp[i]);
-		free(tmp[i]);
-	}
-	free(tmp);
+		data->env[i] = tmp[i];/* ft_strdup(tmp[i]); */
 	temp = ft_strcat(arg[1], "=");
 	if (arg[2])
 		temp = ft_strcat(temp, arg[2]);
-	env[i] = temp;
-	env[i + 1] = 0;
+	data->env[i] = ft_strdup(temp);
+	data->env[i + 1] = 0;
+	free(temp);
+	ft_env_display(data->env);
 }
 
 int		ft_checkenv(char **env, char *str)

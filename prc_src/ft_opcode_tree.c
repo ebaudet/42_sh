@@ -6,14 +6,14 @@
 /*   By: ymohl-cl <ymohl-cl@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/03/17 18:47:24 by ymohl-cl          #+#    #+#             */
-/*   Updated: 2014/03/25 12:43:00 by wbeets           ###   ########.fr       */
+/*   Updated: 2014/03/25 17:16:32 by wbeets           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "prc.h"
 #include "libft.h"
 
-int			ft_opcode_tree(t_op **tmp, char **env)
+int			ft_opcode_tree(t_op **tmp, t_data *env)
 {
 	int		ret;
 
