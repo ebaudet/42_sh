@@ -6,7 +6,7 @@
 /*   By: wbeets <wbeets@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/03/13 14:41:35 by wbeets            #+#    #+#             */
-/*   Updated: 2014/03/25 19:57:35 by wbeets           ###   ########.fr       */
+/*   Updated: 2014/03/25 20:02:10 by wbeets           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,15 +27,15 @@ static int		lunch_cmd(char *cmd, char **argv, t_data *env)
 	i = -1;
 	tmp = NULL;
 	paths = NULL;
-	paths = ft_get_path(env);
+	paths = ft_get_path(env->env);
 	while (paths[++i] != '\0')
 	{
 		tmp = ft_strjoin(paths[i], cmd);
-		execve(tmp, argv, env);
+		execve(tmp, argv, env->env);
 		free(tmp);
 	}
 	ft_putstr("not a regular command\n");
-	execve(cmd, argv, env);
+	execve(cmd, argv, env->env);
 	exit(-1);
 }
 
