@@ -6,23 +6,32 @@
 /*   By: ymohl-cl <ymohl-cl@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/02/04 13:12:59 by ymohl-cl          #+#    #+#             */
-/*   Updated: 2014/03/25 17:59:25 by wbeets           ###   ########.fr       */
+/*   Updated: 2014/03/25 22:07:24 by gpetrov          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdlib.h>
 #include "ft_minishell.h"
 #include "libft.h"
+#include "header.h"
 
-char	**ft_env_copy(char **env);
+char			**ft_env_copy(char **env);
 
-int		main(int argc, char **argv, char **env)
+static	void	ft_save_some_env_values(t_data *data, char **env)
+{
+	data->env = ft_env_copy(env);
+	data->home = getenv("HOME");
+	data->old_pwd = getenv("OLD_PWD");
+	data->pwd = getenv("PWD");
+}
+
+int				main(int argc, char **argv, char **env)
 {
 	t_env		*environ;
 	int			debug;
 	t_data		envi;
 
-	envi.env = ft_env_copy(env);
+	ft_save_some_env_values(&envi, env);
 	debug = 0;
 	(void)argv;
 	if (argc > 1)
