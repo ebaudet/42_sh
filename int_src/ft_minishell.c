@@ -11,8 +11,9 @@
 /* ************************************************************************** */
 
 #include <stdlib.h>
-#include "../includes/ft_minishell.h"
-#include "../libft/libft.h"
+#include "ft_minishell.h"
+#include "libft.h"
+#include "header.h"
 
 int		main(int argc, char **argv, char **env)
 {
