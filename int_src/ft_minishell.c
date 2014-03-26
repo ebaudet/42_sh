@@ -6,7 +6,7 @@
 /*   By: ymohl-cl <ymohl-cl@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/02/04 13:12:59 by ymohl-cl          #+#    #+#             */
-/*   Updated: 2014/03/25 22:07:24 by gpetrov          ###   ########.fr       */
+/*   Updated: 2014/03/26 16:35:51 by wbeets           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,6 @@
 #include "ft_minishell.h"
 #include "libft.h"
 #include "header.h"
-
-char			**ft_env_copy(char **env);
 
 static	void	ft_save_some_env_values(t_data *data, char **env)
 {

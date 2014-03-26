@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
-/*                                                        :::      :::::::::  */
-/*   ft_filled_lste.c                                    :+:      :+:    :+:  */
+/*                                                        :::      ::::::::   */
+/*   ft_filled_lste.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ymohl-cl <ymohl-cl@student.42.fr>          +#+  +:+       +#+        */
+/*   By: wbeets <wbeets@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2014/02/04 21:22:13 by ymohl-cl          #+#    #+#             */
-/*   Updated: 2014/02/26 09:58:39 by ymohl-cl         ###   ########.fr       */
+/*   Created: 2014/03/26 16:49:22 by wbeets            #+#    #+#             */
+/*   Updated: 2014/03/26 16:49:25 by wbeets           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,8 +33,6 @@ static void		lst_no_exist(t_edit **lst, t_hist **hst)
 	new_hst->next = *hst;
 	if (*hst)
 		(*hst)->prev = new_hst;
-/*	else */
-/*		new_hst->prev = NULL; */
 	*hst = new_hst;
 }
 

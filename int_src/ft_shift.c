@@ -6,14 +6,14 @@
 /*   By: mmole <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/03/02 16:40:26 by mmole             #+#    #+#             */
-/*   Updated: 2014/03/26 15:43:59 by wbeets           ###   ########.fr       */
+/*   Updated: 2014/03/26 16:58:12 by wbeets           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/ft_minishell.h"
 #include "../libft/libft.h"
 
-static void	ft_next_left(t_edit *tmp, t_help *help, t_edit **lst, struct winsize ws)
+static void	ft_n_lft(t_edit *tmp, t_help *help, t_edit **lst, struct winsize ws)
 {
 	while ((tmp->c == ' ' || tmp->c == '\t') && tmp->prev)
 	{
@@ -35,7 +35,7 @@ static void	ft_next_left(t_edit *tmp, t_help *help, t_edit **lst, struct winsize
 static void	ft_shift_left(int pos, t_edit **lst, char *key, struct winsize ws)
 {
 	t_edit	*tmp;
-	t_help	help;;
+	t_help	help;
 
 	help.cmp = 0;
 	help.key = key;
@@ -53,7 +53,7 @@ static void	ft_shift_left(int pos, t_edit **lst, char *key, struct winsize ws)
 		tmp = tmp->prev;
 		help.cmp++;
 	}
-	ft_next_left(tmp, &help, lst, ws);
+	ft_n_lft(tmp, &help, lst, ws);
 }
 
 static void	ft_shift_right(int pos, t_edit **lst, char *key, struct winsize ws)

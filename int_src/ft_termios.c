@@ -6,7 +6,7 @@
 /*   By: ymohl-cl <ymohl-cl@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/02/04 16:29:11 by ymohl-cl          #+#    #+#             */
-/*   Updated: 2014/03/25 18:02:12 by wbeets           ###   ########.fr       */
+/*   Updated: 2014/03/26 16:55:33 by wbeets           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,9 @@
 #include <fcntl.h>
 #include <term.h>
 #include <stdlib.h>
-#include "../includes/ft_minishell.h"
-#include "../libft/libft.h"
-
-char	**ft_env_copy(char **env);
+#include "ft_minishell.h"
+#include "libft.h"
+#include "header.h"
 
 static int		cpy_term(t_env **environ)
 {
@@ -37,30 +36,7 @@ static int		cpy_term(t_env **environ)
 		return (-1);
 	return (0);
 }
-/*
-static int		eb_sizeenv(char **env)
-{
-	int		i;
 
-	i = 0;
-	while (env[i])
-		i++;
-	return (i);
-}
-
-static char		**ft_envcpy(char **env)
-{
-	char	**env_cpy;
-	int		i;
-
-	env_cpy = (char **)malloc(sizeof(char *) * (eb_sizeenv(env) + 1));
-	i = -1;
-	while (env[++i])
-		env_cpy[i] = ft_strdup(env[i]);
-	env_cpy[i] = '\0';
-	return (env_cpy);
-}
-*/
 int				ft_termios(t_env **environ, char **env)
 {
 	char		bp[2048];

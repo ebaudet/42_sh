@@ -6,7 +6,7 @@
 /*   By: ebaudet <ebaudet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/03/12 20:29:06 by ebaudet           #+#    #+#             */
-/*   Updated: 2014/03/26 15:30:45 by wbeets           ###   ########.fr       */
+/*   Updated: 2014/03/26 16:38:55 by wbeets           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,6 @@
 #include <term.h>
 #include "ft_minishell.h"
 #include "libft.h"
-
 
 int		last_list_selected(t_edit **lst_e)
 {
@@ -40,13 +39,13 @@ int		print_commande(t_edit **lst_e, struct winsize ws)
 	pos = position_cursor(lst_e);
 	lengh += 4;
 	i = 0;
-	ft_tputs("rc"); /* Restaurer la position enregistrée du curseur */
+	ft_tputs("rc");
 	while (i < (lengh / ws.ws_col))
 	{
-		ft_tputs("dw"); /* Déplacer le curseur d’une ligne vers le haut */
+		ft_tputs("dw");
 		i++;
 	}
-	ft_tputs("cd"); /* Effacer jusqu’à la fin de l’écran */
+	ft_tputs("cd");
 	ft_print_lste(lst_e);
 	if ((lengh % ws.ws_col) == 1)
 		ft_tputs("nd");

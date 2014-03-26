@@ -6,7 +6,7 @@
 /*   By: wbeets <wbeets@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/03/09 17:46:59 by wbeets            #+#    #+#             */
-/*   Updated: 2014/03/13 16:13:39 by mmole            ###   ########.fr       */
+/*   Updated: 2014/03/26 16:56:01 by wbeets           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 #include <sys/stat.h>
 #include <stdlib.h>
 #include <unistd.h>
-#include "../includes/ft_minishell.h"
+#include "ft_minishell.h"
 
 static int	gnl_buf(char *buf, char *tmp, char **line)
 {
@@ -101,4 +101,3 @@ int			get_next_line(int const fd, char **line)
 	tmp[0] = '\0';
 	return (gnl_end(ret, line));
 }
-
