@@ -6,7 +6,7 @@
 #    By: ymohl-cl <ymohl-cl@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2014/01/04 16:12:18 by ymohl-cl          #+#    #+#              #
-#    Updated: 2014/03/26 16:00:27 by ymohl-cl         ###   ########.fr        #
+#    Updated: 2014/03/26 22:49:46 by ymohl-cl         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -111,7 +111,7 @@ $(NAME): say $(OBJ)
 
 say:
 	@echo "\033[32m"
-	@#cat .logo
+	@cat .logo
 	@echo ""
 	@echo "\c\033[0m"
 	@echo "\033[33m  '.' == One file is compiled\t\033[0m"
