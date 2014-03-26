@@ -6,7 +6,7 @@
 /*   By: ymohl-cl <ymohl-cl@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/03/19 01:12:22 by ymohl-cl          #+#    #+#             */
-/*   Updated: 2014/03/26 11:20:13 by ymohl-cl         ###   ########.fr       */
+/*   Updated: 2014/03/26 16:52:20 by ymohl-cl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ static int		so_much_arg(t_op **tmp, int i)
 	return (-1);
 }
 
-int			ft_db_ar_rgt(t_op **tmp, t_data *env)
+int				ft_db_ar_rgt(t_op **tmp, t_data *env)
 {
 	int		fd;
 	int		ret;

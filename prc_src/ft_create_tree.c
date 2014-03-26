@@ -6,7 +6,7 @@
 /*   By: ymohl-cl <ymohl-cl@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/03/11 23:19:17 by ymohl-cl          #+#    #+#             */
-/*   Updated: 2014/03/13 10:02:29 by wbeets           ###   ########.fr       */
+/*   Updated: 2014/03/26 16:53:06 by ymohl-cl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ static void		check_left(t_op **tmp, t_op **save)
 		(*save)->top = *tmp;
 	}
 	else
-	*tmp = (*tmp)->lft;
+		*tmp = (*tmp)->lft;
 }
 
 static void		check_right(t_op **tmp, t_op **save)

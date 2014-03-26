@@ -6,7 +6,7 @@
 /*   By: wbeets <wbeets@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/02/28 18:21:50 by wbeets            #+#    #+#             */
-/*   Updated: 2014/03/26 11:15:43 by ymohl-cl         ###   ########.fr       */
+/*   Updated: 2014/03/26 16:50:40 by ymohl-cl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@
 static void			free_list(t_op **lst)
 {
 	t_op	*tmp;
-	int			i;
+	int		i;
 
 	i = 0;
 	while (*lst)
@@ -106,7 +106,7 @@ static int			check_list(t_op **lst)
 	return (1);
 }
 
-int				ft_lexer(char *str, t_data *env)
+int					ft_lexer(char *str, t_data *env)
 {
 	int		ret;
 	t_op	*lst;

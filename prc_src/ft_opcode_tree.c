@@ -6,7 +6,7 @@
 /*   By: ymohl-cl <ymohl-cl@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/03/17 18:47:24 by ymohl-cl          #+#    #+#             */
-/*   Updated: 2014/03/25 17:16:32 by wbeets           ###   ########.fr       */
+/*   Updated: 2014/03/26 16:50:13 by ymohl-cl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,4 +35,3 @@ int			ft_opcode_tree(t_op **tmp, t_data *env)
 		ret = ft_db_ar_rgt(tmp, env);
 	return (ret);
 }
-

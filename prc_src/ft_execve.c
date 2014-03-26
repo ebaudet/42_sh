@@ -6,7 +6,7 @@
 /*   By: wbeets <wbeets@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/03/13 14:41:35 by wbeets            #+#    #+#             */
-/*   Updated: 2014/03/25 20:02:10 by wbeets           ###   ########.fr       */
+/*   Updated: 2014/03/26 16:50:01 by ymohl-cl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,6 @@
 #include <sys/wait.h>
 #include "prc.h"
 #include "libft.h"
-
-int				ft_builtin(char *cmd, char **argv, t_data *env);
 
 static int		lunch_cmd(char *cmd, char **argv, t_data *env)
 {

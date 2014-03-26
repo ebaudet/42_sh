@@ -6,7 +6,7 @@
 /*   By: ymohl-cl <ymohl-cl@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2013/11/29 14:33:47 by ymohl-cl          #+#    #+#             */
-/*   Updated: 2013/12/01 19:53:36 by ymohl-cl         ###   ########.fr       */
+/*   Updated: 2014/03/26 17:02:11 by ymohl-cl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,7 +64,7 @@ char			*ft_itoa(int n)
 		len = 1;
 	min_str = ft_mall_str(len);
 	if (n < 0)
-		n = n * - 1;
+		n = n * -1;
 	while (n > 10)
 	{
 		result = n % 10;

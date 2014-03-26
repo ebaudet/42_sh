@@ -6,7 +6,7 @@
 /*   By: wbeets <wbeets@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/03/05 13:34:27 by wbeets            #+#    #+#             */
-/*   Updated: 2014/03/26 11:06:29 by ymohl-cl         ###   ########.fr       */
+/*   Updated: 2014/03/26 16:38:16 by ymohl-cl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ static char		*find_word(char *str, int *i)
 	ret = (char *)malloc((j + 1) * sizeof(char));
 	ret[j] = '\0';
 	j = 0;
-	while(*i < k)
+	while (*i < k)
 	{
 		ret[j] = str[*i];
 		j++;

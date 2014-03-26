@@ -6,7 +6,7 @@
 /*   By: ymohl-cl <ymohl-cl@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2013/11/21 22:25:22 by ymohl-cl          #+#    #+#             */
-/*   Updated: 2013/12/01 18:48:51 by ymohl-cl         ###   ########.fr       */
+/*   Updated: 2014/03/26 17:00:27 by ymohl-cl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,8 +22,8 @@ int		ft_strcmp(const char *s1, const char *s2)
 	while (*((unsigned char *)s1 + i)
 			!= '\0' && *((unsigned char *)s2 + i) != '\0')
 	{
-			if (*((unsigned char *)s1 + i) == *((unsigned char *)s2 + i))
-				i++;
+		if (*((unsigned char *)s1 + i) == *((unsigned char *)s2 + i))
+			i++;
 		else
 			break ;
 	}

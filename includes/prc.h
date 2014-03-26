@@ -6,7 +6,7 @@
 /*   By: wbeets <wbeets@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/02/28 18:24:36 by wbeets            #+#    #+#             */
-/*   Updated: 2014/03/26 14:51:01 by ymohl-cl         ###   ########.fr       */
+/*   Updated: 2014/03/26 16:49:07 by ymohl-cl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@
 # define AR_RIGHT 5
 # define DB_AR_RIGHT 6
 # define COM 7
+# include "header.h"
 
 typedef struct			s_op
 {
@@ -34,11 +35,6 @@ typedef struct			s_op
 	struct s_op			*lft;
 	struct s_op			*rgt;
 }						t_op;
-
-typedef struct			s_data
-{
-	char				**env;
-}						t_data;
 
 /*
 ** Functions for build lexer and parser.
