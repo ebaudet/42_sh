@@ -6,7 +6,7 @@
 /*   By: ymohl-cl <ymohl-cl@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/02/04 13:14:22 by ymohl-cl          #+#    #+#             */
-/*   Updated: 2014/03/26 14:31:28 by ymohl-cl         ###   ########.fr       */
+/*   Updated: 2014/03/26 15:35:55 by wbeets           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,6 +53,12 @@ typedef struct			s_hist
 	struct s_hist		*prev;
 }						t_hist;
 
+typedef struct			s_help
+{
+	char				*key;
+	int					cmp;
+}						t_help;
+
 int			ft_read(t_env **env, t_data *environ);
 int			ft_filled_lste(char *key, t_edit **lst, t_hist **hst);
 void		ft_print_lste(t_edit **lst);
@@ -64,7 +70,7 @@ int			ft_write_on_file(t_edit **lst, char **env);
 void		ft_del_keyword(t_edit **lst, t_hist **hst, struct winsize ws);
 void		ft_home(t_edit **lst, struct winsize ws);
 void		ft_end(t_edit **lst, struct winsize ws);
-int			ft_poscurseur(t_edit **lst);
+int			ft_pcur(t_edit **lst);
 void		ft_shift(t_edit **lst, char *key, struct winsize ws);
 
 /*
@@ -72,7 +78,7 @@ void		ft_shift(t_edit **lst, char *key, struct winsize ws);
 */
 void		arrow_left_right(t_edit **lst, char *key, struct winsize ws);
 void		arrow_up_down(t_edit **lst, t_hist **hst, char *key, struct winsize ws);
-int			lengh_list(t_edit **lst_e);
+int			l_list(t_edit **lst_e);
 int			position_cursor(t_edit **lst_e);
 int			add_new_char(char *key, t_edit **lst_e, t_hist **hst, struct winsize ws);
 int			ft_check_key(char *key, t_edit **lst_e, t_hist **hst);

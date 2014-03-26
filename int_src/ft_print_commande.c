@@ -6,7 +6,7 @@
 /*   By: ebaudet <ebaudet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/03/12 20:29:06 by ebaudet           #+#    #+#             */
-/*   Updated: 2014/03/17 13:15:30 by mmole            ###   ########.fr       */
+/*   Updated: 2014/03/26 15:30:45 by wbeets           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ int		print_commande(t_edit **lst_e, struct winsize ws)
 	int		lengh;
 	int		pos;
 
-	lengh = lengh_list(lst_e);
+	lengh = l_list(lst_e);
 	pos = position_cursor(lst_e);
 	lengh += 4;
 	i = 0;

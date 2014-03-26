@@ -6,7 +6,7 @@
 /*   By: ymohl-cl <ymohl-cl@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/02/04 14:52:12 by ymohl-cl          #+#    #+#             */
-/*   Updated: 2014/03/26 14:43:41 by ymohl-cl         ###   ########.fr       */
+/*   Updated: 2014/03/26 15:28:40 by wbeets           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,11 +55,11 @@ void	arrow_up_down(t_edit **lst, t_hist **hst, char *key, struct winsize ws)
 		ft_tputs("cd");
 		ft_print_lste(lst);
 	}
-	if (((ft_poscurseur(lst) + 4) % ws.ws_col) == 0)
+	if (((ft_pcur(lst) + 4) % ws.ws_col) == 0)
 		ft_tputs("do");
 }
 
-int		lengh_list(t_edit **lst_e)
+int		l_list(t_edit **lst_e)
 {
 	int		lengh;
 	t_edit	*tmp;

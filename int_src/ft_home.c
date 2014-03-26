@@ -6,7 +6,7 @@
 /*   By: mmole <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/03/01 13:14:49 by mmole             #+#    #+#             */
-/*   Updated: 2014/03/26 15:00:46 by ymohl-cl         ###   ########.fr       */
+/*   Updated: 2014/03/26 15:29:11 by wbeets           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 #include "../includes/ft_minishell.h"
 #include "../libft/libft.h"
 
-int		ft_poscurseur(t_edit **lst)
+int		ft_pcur(t_edit **lst)
 {
 	t_edit	*tmp;
 	int		i;
@@ -36,7 +36,7 @@ void	ft_home(t_edit **lst, struct winsize ws)
 	int		pos;
 	char	key[4];
 
-	pos = ft_poscurseur(lst);
+	pos = ft_pcur(lst);
 	key[0] = 27;
 	key[1] = 91;
 	key[2] = 68;
@@ -62,7 +62,7 @@ void	ft_end(t_edit **lst, struct winsize ws)
 		tmp = tmp->next;
 		max++;
 	}
-	pos = ft_poscurseur(lst);
+	pos = ft_pcur(lst);
 	key[0] = 27;
 	key[1] = 91;
 	key[2] = 67;

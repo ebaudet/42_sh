@@ -6,7 +6,7 @@
 /*   By: ymohl-cl <ymohl-cl@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/02/07 17:50:33 by ymohl-cl          #+#    #+#             */
-/*   Updated: 2014/03/17 13:19:31 by mmole            ###   ########.fr       */
+/*   Updated: 2014/03/26 15:08:04 by wbeets           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,17 @@
 #include <stdlib.h>
 #include "../includes/ft_minishell.h"
 #include "../libft/libft.h"
+#include <sys/ioctl.h>
+
+static void		video_one_cont(t_edit **tmp)
+{
+	(*tmp)->c = '\0';
+	(*tmp)->prev->next = (*tmp)->next;
+	(*tmp)->next->prev = (*tmp)->prev;
+	free(*tmp);
+	ft_tputs("le");
+	ft_tputs("dc");
+}
 
 static void		video_one(t_edit **tmp, t_edit **lst, t_hist **hst)
 {
@@ -36,14 +47,7 @@ static void		video_one(t_edit **tmp, t_edit **lst, t_hist **hst)
 		ft_tputs("dc");
 	}
 	else
-	{
-		(*tmp)->c = '\0';
-		(*tmp)->prev->next = (*tmp)->next;
-		(*tmp)->next->prev = (*tmp)->prev;
-		free(*tmp);
-		ft_tputs("le");
-		ft_tputs("dc");
-	}
+		video_one_cont(tmp);
 }
 
 static t_edit		**video_zero(t_edit *tmp, t_edit **lst)

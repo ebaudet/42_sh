@@ -6,7 +6,7 @@
 /*   By: ymohl-cl <ymohl-cl@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/02/04 13:41:59 by ymohl-cl          #+#    #+#             */
-/*   Updated: 2014/03/25 17:59:16 by wbeets           ###   ########.fr       */
+/*   Updated: 2014/03/26 15:26:10 by wbeets           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,8 +69,8 @@ void			ft_jumprint(t_edit **lst)
 
 	get_winsize(&ws);
 	i = 0;
-	jump = ((lengh_list(lst) + 3) / ws.ws_col) - ((ft_poscurseur(lst) + 3) / ws.ws_col); // algo de saut de ligne
-	if (!((lengh_list(lst) + 3) % ws.ws_col) == 0)
+	jump = ((l_list(lst) + 3) / ws.ws_col) - ((ft_pcur(lst) + 3) / ws.ws_col);
+	if (!((l_list(lst) + 3) % ws.ws_col) == 0)
 	{
 		while (i < jump)
 		{
@@ -101,7 +101,6 @@ int				ft_read(t_env **env, t_data *environ)
 	if ((ft_write_on_file(&lst_e, environ->env)) == 0)
 		ft_lexer(ft_creat_string(lst_e), environ);
 	clean_all(&lst_e, &hst);
-	ft_putchar_fd('\n', STDIN_FILENO);
 	ft_read(env, environ);
 	return (0);
 }

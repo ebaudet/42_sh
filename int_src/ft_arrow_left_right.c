@@ -6,7 +6,7 @@
 /*   By: ymohl-cl <ymohl-cl@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/03/26 14:15:54 by ymohl-cl          #+#    #+#             */
-/*   Updated: 2014/03/26 15:02:42 by ymohl-cl         ###   ########.fr       */
+/*   Updated: 2014/03/26 15:26:46 by wbeets           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ static void		arrow_left(t_edit **tmp, t_edit **lst, struct winsize ws)
 	int		i;
 
 	i = 0;
-	if ((*tmp)->video == 0 && ((ft_poscurseur(lst) + 4) % ws.ws_col) == 0)
+	if ((*tmp)->video == 0 && ((ft_pcur(lst) + 4) % ws.ws_col) == 0)
 	{
 		(*tmp)->video = 1;
 		ft_tputs("up");
@@ -42,7 +42,7 @@ static void		arrow_left(t_edit **tmp, t_edit **lst, struct winsize ws)
 
 static void		arrow_right(t_edit **tmp, t_edit **lst, struct winsize ws)
 {
-	if ((*tmp)->video == 1 && ((ft_poscurseur(lst) + 4) % ws.ws_col) == 0)
+	if ((*tmp)->video == 1 && ((ft_pcur(lst) + 4) % ws.ws_col) == 0)
 	{
 		(*tmp)->video = 0;
 		if ((*tmp)->next != NULL)
