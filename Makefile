@@ -6,7 +6,7 @@
 #    By: ymohl-cl <ymohl-cl@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2014/01/04 16:12:18 by ymohl-cl          #+#    #+#              #
-#    Updated: 2014/03/26 14:31:19 by ymohl-cl         ###   ########.fr        #
+#    Updated: 2014/03/26 15:39:06 by ymohl-cl         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -37,6 +37,11 @@ ADD = -ltermcap
 INT_SRC =	ft_minishell.c \
 			ft_check_key.c \
 			ft_arrow_left_right.c \
+			ft_up_down.c \
+			get_winsize.c \
+			add_new_char.c \
+			position_cursor.c \
+			lengh_list.c \
 			ft_clean_thist.c \
 			ft_create_hst.c \
 			ft_del_keyword.c \
