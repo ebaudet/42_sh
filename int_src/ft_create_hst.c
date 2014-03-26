@@ -6,7 +6,7 @@
 /*   By: ymohl-cl <ymohl-cl@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/02/06 15:44:02 by ymohl-cl          #+#    #+#             */
-/*   Updated: 2014/03/05 16:32:07 by ymohl-cl         ###   ########.fr       */
+/*   Updated: 2014/03/26 16:33:14 by wbeets           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -105,4 +105,3 @@ int					ft_create_hst(t_hist **hst, char **env)
 	free(file);
 	return (0);
 }
-

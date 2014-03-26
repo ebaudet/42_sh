@@ -6,7 +6,7 @@
 /*   By: ymohl-cl <ymohl-cl@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/02/07 17:50:33 by ymohl-cl          #+#    #+#             */
-/*   Updated: 2014/03/26 15:08:04 by wbeets           ###   ########.fr       */
+/*   Updated: 2014/03/26 16:34:03 by wbeets           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,7 @@ static void		video_one(t_edit **tmp, t_edit **lst, t_hist **hst)
 		video_one_cont(tmp);
 }
 
-static t_edit		**video_zero(t_edit *tmp, t_edit **lst)
+static t_edit	**video_zero(t_edit *tmp, t_edit **lst)
 {
 	if (tmp->prev == NULL)
 	{

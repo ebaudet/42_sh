@@ -6,13 +6,13 @@
 /*   By: ymohl-cl <ymohl-cl@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/02/04 14:52:12 by ymohl-cl          #+#    #+#             */
-/*   Updated: 2014/03/26 15:56:54 by wbeets           ###   ########.fr       */
+/*   Updated: 2014/03/26 17:21:54 by wbeets           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <sys/ioctl.h>
 #include "ft_minishell.h"
-#include "libft/libft.h"
+#include "libft.h"
 
 static void		key_is_ok(char *key, t_edit **lst_e, t_hist **hst)
 {

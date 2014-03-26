@@ -6,7 +6,7 @@
 /*   By: ymohl-cl <ymohl-cl@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/02/04 13:41:59 by ymohl-cl          #+#    #+#             */
-/*   Updated: 2014/03/26 15:26:10 by wbeets           ###   ########.fr       */
+/*   Updated: 2014/03/26 17:21:27 by wbeets           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,8 @@
 #include <term.h>
 #include <unistd.h>
 #include <stdlib.h>
-#include "../includes/ft_minishell.h"
-#include "../libft/libft.h"
-
-int		ft_lexer(char *str, t_data *env);
+#include "ft_minishell.h"
+#include "libft.h"
 
 static void		begin_read(t_hist **hst, t_edit **lst, char **env)
 {
@@ -84,10 +82,11 @@ int				ft_read(t_env **env, t_data *environ)
 {
 	t_hist		*hst;
 	t_edit		*lst_e;
-	char		key[7] = {0, 0, 0, 0, 0, 0, 0};
+	char		key[7];
 
 	hst = NULL;
 	lst_e = NULL;
+	ft_bzero(key, 7);
 	begin_read(&hst, &lst_e, environ->env);
 	while (!ENTER)
 	{
