@@ -6,7 +6,7 @@
 /*   By: ymohl-cl <ymohl-cl@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/02/04 13:14:22 by ymohl-cl          #+#    #+#             */
-/*   Updated: 2014/03/26 17:39:46 by wbeets           ###   ########.fr       */
+/*   Updated: 2014/03/26 17:43:27 by wbeets           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@
 # define FT_FILE "/.42sh_history"
 # include <term.h>
 # include "header.h"
-# include "ft_ministruct.h"
+# include "ft_mini_struct.h"
 
 int		ft_read(t_env **env, t_data *environ);
 int		ft_lexer(char *str, t_data *env);
