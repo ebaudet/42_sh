@@ -6,7 +6,7 @@
 /*   By: ymohl-cl <ymohl-cl@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/02/04 14:52:12 by ymohl-cl          #+#    #+#             */
-/*   Updated: 2014/03/26 11:22:57 by ymohl-cl         ###   ########.fr       */
+/*   Updated: 2014/03/26 14:43:41 by ymohl-cl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,56 +18,6 @@
 #include "ft_minishell.h"
 #include "libft.h"
 
-void	arrow_left_right(t_edit **lst, char *key, struct winsize ws)
-{
-	t_edit		*tmp;
-	int			i;
-
-	tmp = *lst;
-	while (tmp->next != NULL && tmp->video == 0)
-		tmp = tmp->next;
-	if (ARROW && ARROW_LEFT && tmp->video > -1)
-	{
-		if (tmp->video == 0 && ((ft_poscurseur(lst) + 4) % ws.ws_col) == 0)
-		{
-			tmp->video = 1;
-			ft_tputs("up");
-			i = -1;
-			while (++i < ws.ws_col)
-				ft_tputs("nd");
-		}
-		else if (tmp->video == 0)
-		{
-			tmp->video = 1;
-			ft_tputs("le");
-		}
-		else if (tmp->video == 1 && tmp->prev != NULL)
-		{
-			tmp->video = 0;
-			tmp->prev->video = 1;
-			ft_tputs("le");
-		}
-	}
-	else if (ARROW && ARROW_RIGHT && tmp->video > -1)
-	{
-		if (tmp->video == 1 && ((ft_poscurseur(lst) + 4) % ws.ws_col) == 0)
-		{
-			tmp->video = 0;
-			if (tmp->next != NULL)
-			{
-				tmp->next->video = 1;
-			}
-			ft_tputs("do");
-		}
-		else if (tmp->video == 1)
-		{
-			tmp->video = 0;
-			if (tmp->next != NULL)
-				tmp->next->video = 1;
-			ft_tputs("nd");
-		}
-	}
-}
 
 void	arrow_up_down(t_edit **lst, t_hist **hst, char *key, struct winsize ws)
 {
@@ -159,7 +109,7 @@ int		ft_check_key(char *key, t_edit **lst_e, t_hist **hst)
 	if (key)
 	{
 		if (ARROW && (ARROW_LEFT || ARROW_RIGHT))
-			arrow_left_right(lst_e, key, ws);
+			ft_arrow_left_right(lst_e, key, ws);
 		else if (ARROW && (ARROW_UP || ARROW_DOWN))
 			arrow_up_down(lst_e, hst, key, ws);
 		else if (ARROW && DELETE_R)

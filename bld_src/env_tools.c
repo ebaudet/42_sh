@@ -6,7 +6,7 @@
 /*   By: gpetrov <gpetrov@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/03/25 22:34:23 by gpetrov           #+#    #+#             */
-/*   Updated: 2014/03/25 22:39:30 by gpetrov          ###   ########.fr       */
+/*   Updated: 2014/03/26 11:28:42 by ymohl-cl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,7 +74,7 @@ char	**ft_env_copy(char **env)
 
 void	ft_free_env(char **envi)
 {
-	int	i;
+	int		i;
 
 	i = -1;
 	while (envi[++i])

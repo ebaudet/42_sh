@@ -6,7 +6,7 @@
 /*   By: ymohl-cl <ymohl-cl@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/03/24 21:22:40 by ymohl-cl          #+#    #+#             */
-/*   Updated: 2014/03/26 10:56:57 by ymohl-cl         ###   ########.fr       */
+/*   Updated: 2014/03/26 14:13:22 by ymohl-cl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ static int		fork_child(int fork_ret2, int *fd, t_op **tmp, t_data *env)
 	if (fork_ret2 == 0)
 	{
 		close(fd[1]);
-		dup2(fd[0],0);
+		dup2(fd[0], 0);
 		ft_read_tree((*tmp)->lft, env);
 		exit (0);
 	}

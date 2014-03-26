@@ -6,7 +6,7 @@
 /*   By: gpetrov <gpetrov@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/03/25 22:40:04 by gpetrov           #+#    #+#             */
-/*   Updated: 2014/03/25 23:03:10 by gpetrov          ###   ########.fr       */
+/*   Updated: 2014/03/26 11:29:20 by ymohl-cl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,8 +95,8 @@ int		ft_echo_help(char **arg, char **env)
 
 int		ft_echo(char **arg, char **env)
 {
-	int	i;
-	int	offset;
+	int		i;
+	int		offset;
 
 	i = 0;
 	offset = 1;

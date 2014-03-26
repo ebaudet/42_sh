@@ -6,7 +6,7 @@
 /*   By: mmole <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/03/02 16:40:26 by mmole             #+#    #+#             */
-/*   Updated: 2014/03/17 12:52:35 by mmole            ###   ########.fr       */
+/*   Updated: 2014/03/26 15:01:53 by ymohl-cl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ static void	ft_next_left(t_edit *tmp, int cmp, char *key, t_edit **lst, struct w
 	}
 	while (cmp != 0)
 	{
-		arrow_left_right(lst, key, ws);
+		ft_arrow_left_right(lst, key, ws);
 		cmp--;
 	}
 }
@@ -79,7 +79,7 @@ static void	ft_shift_right(int pos, t_edit **lst, char *key, struct winsize ws)
 		cmp++;
 	}
 	while (cmp-- != 0)
-		arrow_left_right(lst, key, ws);
+		ft_arrow_left_right(lst, key, ws);
 }
 
 void		ft_shift(t_edit **lst, char *key, struct winsize ws)

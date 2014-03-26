@@ -6,7 +6,7 @@
 /*   By: wbeets <wbeets@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/02/28 18:24:36 by wbeets            #+#    #+#             */
-/*   Updated: 2014/03/26 11:15:00 by ymohl-cl         ###   ########.fr       */
+/*   Updated: 2014/03/26 14:51:01 by ymohl-cl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ typedef struct			s_data
 /*
 ** Functions for build lexer and parser.
 */
-t_op	*ft_make_oplst(char	*str);
+t_op	*ft_make_oplst(char *str);
 int		ft_lexer(char *str, t_data *env);
 char	**ft_split(char *str);
 int		is_space(char c);
@@ -65,8 +65,8 @@ int		ft_execve(char *cmd, char **argv, t_data *env);
 int		ft_ar_rgt(t_op **tmp, t_data *env);
 int		ft_db_ar_rgt(t_op **tmp, t_data *env);
 int		ft_ar_lft(t_op **tmp, t_data *env);
-int		ft_and(t_op **and, t_data *env);
-int		ft_or(t_op **and, t_data *env);
+int		ft_and(t_op **tmp, t_data *env);
+int		ft_or(t_op **tmp, t_data *env);
 int		ft_semicol(t_op **tmp, t_data *env);
 int		ft_pipe(t_op **tmp, t_data *env);
 
