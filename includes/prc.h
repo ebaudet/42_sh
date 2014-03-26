@@ -6,12 +6,12 @@
 /*   By: wbeets <wbeets@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/02/28 18:24:36 by wbeets            #+#    #+#             */
-/*   Updated: 2014/03/26 17:33:34 by ymohl-cl         ###   ########.fr       */
+/*   Updated: 2014/03/26 17:39:33 by ymohl-cl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FT_MINISHELL3_H
-# define FT_MINISHELL3_H
+#ifndef PRC_H
+# define PRC_H
 # define SEMICOL 0
 # define AND 1
 # define OR 2
