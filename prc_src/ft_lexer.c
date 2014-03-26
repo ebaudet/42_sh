@@ -6,15 +6,15 @@
 /*   By: wbeets <wbeets@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/02/28 18:21:50 by wbeets            #+#    #+#             */
-/*   Updated: 2014/03/25 19:58:20 by wbeets           ###   ########.fr       */
+/*   Updated: 2014/03/26 11:15:43 by ymohl-cl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "prc.h"
 #include <stdlib.h>
+#include "prc.h"
 #include "libft.h"
 
-static void	free_list(t_op **lst)
+static void			free_list(t_op **lst)
 {
 	t_op	*tmp;
 	int			i;
@@ -38,7 +38,7 @@ static void	free_list(t_op **lst)
 	}
 }
 
-static int	add_next_to_argv(t_op **lst)
+static int			add_next_to_argv(t_op **lst)
 {
 	t_op	*tmp;
 	t_op	*tmp2;
@@ -66,7 +66,7 @@ static int	add_next_to_argv(t_op **lst)
 	return (0);
 }
 
-static int		clean_list(t_op **lst)
+static int			clean_list(t_op **lst)
 {
 	t_op	*tmp;
 
@@ -80,7 +80,7 @@ static int		clean_list(t_op **lst)
 	return (1);
 }
 
-static int	check_list(t_op **lst)
+static int			check_list(t_op **lst)
 {
 	t_op	*tmp;
 	int		i;
@@ -106,7 +106,7 @@ static int	check_list(t_op **lst)
 	return (1);
 }
 
-int		ft_lexer(char *str, t_data *env)
+int				ft_lexer(char *str, t_data *env)
 {
 	int		ret;
 	t_op	*lst;

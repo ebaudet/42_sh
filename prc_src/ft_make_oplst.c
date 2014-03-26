@@ -6,13 +6,13 @@
 /*   By: wbeets <wbeets@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/02/28 19:33:56 by wbeets            #+#    #+#             */
-/*   Updated: 2014/03/25 00:30:31 by ymohl-cl         ###   ########.fr       */
+/*   Updated: 2014/03/26 11:08:13 by ymohl-cl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "prc.h"
 #include <unistd.h>
 #include <stdlib.h>
+#include "prc.h"
 #include "libft.h"
 
 static void		add_end_2(char *str, int prior, int code, t_op **start)
@@ -75,7 +75,7 @@ static void		make_list_item(char *str, t_op **start)
 		add_end(str, 4, COM, start);
 }
 
-t_op			*ft_make_oplst(char	*str)
+t_op			*ft_make_oplst(char *str)
 {
 	char	*s;
 	char	**arr;

@@ -6,12 +6,12 @@
 /*   By: wbeets <wbeets@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/03/05 13:34:27 by wbeets            #+#    #+#             */
-/*   Updated: 2014/03/05 15:57:14 by wbeets           ###   ########.fr       */
+/*   Updated: 2014/03/26 11:06:29 by ymohl-cl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "prc.h"
 #include <stdlib.h>
+#include "prc.h"
 
 static char		*find_word(char *str, int *i)
 {

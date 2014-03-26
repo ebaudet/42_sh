@@ -6,7 +6,7 @@
 /*   By: ymohl-cl <ymohl-cl@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/02/04 14:52:12 by ymohl-cl          #+#    #+#             */
-/*   Updated: 2014/03/17 13:17:13 by mmole            ###   ########.fr       */
+/*   Updated: 2014/03/26 11:22:57 by ymohl-cl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,9 @@
 #include <unistd.h>
 #include <fcntl.h>
 #include <term.h>
+#include <sys/ioctl.h>
 #include "ft_minishell.h"
 #include "libft.h"
-#include <sys/ioctl.h>
 
 void	arrow_left_right(t_edit **lst, char *key, struct winsize ws)
 {
@@ -37,7 +37,7 @@ void	arrow_left_right(t_edit **lst, char *key, struct winsize ws)
 				ft_tputs("nd");
 		}
 		else if (tmp->video == 0)
-		{				
+		{
 			tmp->video = 1;
 			ft_tputs("le");
 		}

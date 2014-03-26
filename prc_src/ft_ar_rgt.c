@@ -6,7 +6,7 @@
 /*   By: ymohl-cl <ymohl-cl@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/03/18 20:55:27 by ymohl-cl          #+#    #+#             */
-/*   Updated: 2014/03/25 19:54:47 by wbeets           ###   ########.fr       */
+/*   Updated: 2014/03/26 11:18:53 by ymohl-cl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,12 +14,6 @@
 #include <unistd.h>
 #include "libft.h"
 #include "prc.h"
-
-static void		print_two_string(char *s1, char *s2)
-{
-	ft_putstr(s1);
-	ft_putstr(s2);
-}
 
 static int		do_dup(int fd, t_op **tmp, t_data *env)
 {
@@ -41,13 +35,21 @@ static int		do_dup(int fd, t_op **tmp, t_data *env)
 	return (0);
 }
 
-int			ft_ar_rgt(t_op **tmp, t_data *env)
+static int		so_much_arg(t_op **tmp, int i)
+{
+	ft_putstr((*tmp)->argv[i]);
+	ft_putstr("no such files or directory\n");
+	return (-1);
+}
+
+int				ft_ar_rgt(t_op **tmp, t_data *env)
 {
 	int		fd;
 	int		ret;
 	int		i;
 
-	i = ret = 1;
+	i = 1;
+	ret = 0;
 	fd = -1;
 	if ((*tmp)->argv[1])
 	{
@@ -56,10 +58,7 @@ int			ft_ar_rgt(t_op **tmp, t_data *env)
 			ret = -1;
 	}
 	while ((*tmp)->argv[++i])
-	{
-		print_two_string((*tmp)->name, "no such files or directory\n");
-		ret = -1;
-	}
+		ret = so_much_arg(tmp, i);
 	if (ret > -1)
 	{
 		if ((ret = do_dup(fd, tmp, env)) < 0)

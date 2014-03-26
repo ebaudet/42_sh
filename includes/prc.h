@@ -6,7 +6,7 @@
 /*   By: wbeets <wbeets@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/02/28 18:24:36 by wbeets            #+#    #+#             */
-/*   Updated: 2014/03/25 17:49:00 by wbeets           ###   ########.fr       */
+/*   Updated: 2014/03/26 11:15:00 by ymohl-cl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,22 +35,33 @@ typedef struct			s_op
 	struct s_op			*rgt;
 }						t_op;
 
-typedef struct	s_data
+typedef struct			s_data
 {
-		char		**env;
-}				t_data;
+	char				**env;
+}						t_data;
 
-int		ft_lexer(char *str, t_data *env);
+/*
+** Functions for build lexer and parser.
+*/
 t_op	*ft_make_oplst(char	*str);
+int		ft_lexer(char *str, t_data *env);
 char	**ft_split(char *str);
 int		is_space(char c);
 int		is_op(char c);
+char	**ft_get_path(char **tabs);
 char	**ft_fill_tab(char *str, int size);
 t_op	*ft_create_tree(t_op **lst);
+
+/*
+** Functions for read and execute the grammatical tree.
+*/
 int		ft_read_tree(t_op *tree, t_data *env);
-int		ft_execve(char *cmd, char **argv, t_data *env);
 int		ft_opcode_tree(t_op **tmp, t_data *env);
-char	**ft_get_path(char **tabs);
+int		ft_execve(char *cmd, char **argv, t_data *env);
+
+/*
+** Functions that op_code, see on define.
+*/
 int		ft_ar_rgt(t_op **tmp, t_data *env);
 int		ft_db_ar_rgt(t_op **tmp, t_data *env);
 int		ft_ar_lft(t_op **tmp, t_data *env);
