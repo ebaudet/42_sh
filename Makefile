@@ -6,7 +6,7 @@
 #    By: ymohl-cl <ymohl-cl@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2014/01/04 16:12:18 by ymohl-cl          #+#    #+#              #
-#    Updated: 2014/03/26 15:39:06 by ymohl-cl         ###   ########.fr        #
+#    Updated: 2014/03/26 16:00:27 by ymohl-cl         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -41,7 +41,7 @@ INT_SRC =	ft_minishell.c \
 			get_winsize.c \
 			add_new_char.c \
 			position_cursor.c \
-			lengh_list.c \
+			l_list.c \
 			ft_clean_thist.c \
 			ft_create_hst.c \
 			ft_del_keyword.c \

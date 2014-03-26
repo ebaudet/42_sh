@@ -6,7 +6,7 @@
 /*   By: ymohl-cl <ymohl-cl@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/02/04 13:14:22 by ymohl-cl          #+#    #+#             */
-/*   Updated: 2014/03/26 15:51:57 by wbeets           ###   ########.fr       */
+/*   Updated: 2014/03/26 16:00:11 by ymohl-cl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,7 +78,7 @@ void	ft_shift(t_edit **lst, char *key, struct winsize ws);
 */
 void	arrow_left_right(t_edit **lst, char *key, struct winsize ws);
 void	arrow_up_down(t_edit **lst, t_hist **hst, char *key, struct winsize ws);
-int		lengh_list(t_edit **lst_e);
+int		l_list(t_edit **lst_e);
 int		position_cursor(t_edit **lst_e);
 int		add_new_char(char *key, t_edit **lst, t_hist **hst, struct winsize ws);
 int		ft_check_key(char *key, t_edit **lst_e, t_hist **hst);
