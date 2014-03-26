@@ -6,7 +6,7 @@
 /*   By: ymohl-cl <ymohl-cl@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/02/04 13:14:22 by ymohl-cl          #+#    #+#             */
-/*   Updated: 2014/03/26 16:43:12 by wbeets           ###   ########.fr       */
+/*   Updated: 2014/03/26 17:39:46 by wbeets           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,35 +29,7 @@
 # define FT_FILE "/.42sh_history"
 # include <term.h>
 # include "header.h"
-
-typedef struct			s_env
-{
-	struct termios		term;
-	char				**env;
-	struct termios		term_cpy;
-}						t_env;
-
-typedef struct			s_edit
-{
-	char				c;
-	int					video;
-	struct s_edit		*next;
-	struct s_edit		*prev;
-}						t_edit;
-
-typedef struct			s_hist
-{
-	int					valid;
-	struct s_edit		*ptr;
-	struct s_hist		*next;
-	struct s_hist		*prev;
-}						t_hist;
-
-typedef struct			s_help
-{
-	char				*key;
-	int					cmp;
-}						t_help;
+# include "ft_ministruct.h"
 
 int		ft_read(t_env **env, t_data *environ);
 int		ft_lexer(char *str, t_data *env);
@@ -115,4 +87,4 @@ char	*ft_getenv(char **env, char *name);
 */
 void	ft_error(char *msg);
 
-#endif /* !FT_MINISHELL_H */
+#endif
