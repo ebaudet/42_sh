@@ -6,7 +6,7 @@
 /*   By: wbeets <wbeets@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/02/28 18:21:50 by wbeets            #+#    #+#             */
-/*   Updated: 2014/03/26 16:50:40 by ymohl-cl         ###   ########.fr       */
+/*   Updated: 2014/03/26 18:04:13 by wbeets           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,10 +94,11 @@ static int			check_list(t_op **lst)
 		if (tmp->code == AR_LEFT || tmp->code == AR_RIGHT
 		|| tmp->code == DB_AR_RIGHT)
 		{
-			if (!tmp->argv)
+			if (!tmp->argv[1])
 			{
-				ft_putstr_fd("error redirection error near ", 2);
+				ft_putstr_fd("Redirection error near \" ", 2);
 				ft_putstr_fd(tmp->name, 2);
+				ft_putstr_fd("\"\n", 2);
 				return (0);
 			}
 		}
