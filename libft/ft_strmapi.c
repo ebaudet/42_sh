@@ -6,7 +6,7 @@
 /*   By: ymohl-cl <ymohl-cl@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2013/11/26 17:21:48 by ymohl-cl          #+#    #+#             */
-/*   Updated: 2013/12/01 18:50:07 by ymohl-cl         ###   ########.fr       */
+/*   Updated: 2014/03/26 17:10:28 by ymohl-cl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ char	*ft_strmapi(char const *s, char (*f)(unsigned int, char))
 		str = ft_strnew(len);
 		while (s[i] != '\0')
 		{
-			str[i] = (*f)((unsigned int)i, *((char *) s + i));
+			str[i] = (*f)((unsigned int)i, *((char *)s + i));
 			i++;
 		}
 		return (str);

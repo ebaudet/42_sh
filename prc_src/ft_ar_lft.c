@@ -6,7 +6,7 @@
 /*   By: ymohl-cl <ymohl-cl@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/03/19 01:11:10 by ymohl-cl          #+#    #+#             */
-/*   Updated: 2014/03/25 19:53:31 by wbeets           ###   ########.fr       */
+/*   Updated: 2014/03/26 16:53:39 by ymohl-cl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,6 @@
 #include <unistd.h>
 #include "libft.h"
 #include "prc.h"
-
 
 static int		do_dup(int fd, t_op **tmp, t_data *env)
 {
@@ -36,7 +35,7 @@ static int		do_dup(int fd, t_op **tmp, t_data *env)
 	return (0);
 }
 
-int			ft_ar_lft(t_op **tmp, t_data *env)
+int				ft_ar_lft(t_op **tmp, t_data *env)
 {
 	int		fd;
 	int		ret;

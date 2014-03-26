@@ -6,7 +6,7 @@
 /*   By: wbeets <wbeets@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/03/24 16:01:26 by wbeets            #+#    #+#             */
-/*   Updated: 2014/03/26 10:57:20 by ymohl-cl         ###   ########.fr       */
+/*   Updated: 2014/03/26 16:53:55 by ymohl-cl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,4 +21,3 @@ int		ft_and(t_op **and, t_data *env)
 		ret = ft_read_tree((*and)->lft, env);
 	return (ret);
 }
-
