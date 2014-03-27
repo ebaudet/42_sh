@@ -6,7 +6,7 @@
 /*   By: gpetrov <gpetrov@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/03/25 22:52:25 by gpetrov           #+#    #+#             */
-/*   Updated: 2014/03/27 23:03:08 by ymohl-cl         ###   ########.fr       */
+/*   Updated: 2014/03/27 23:29:45 by ymohl-cl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 #include "header.h"
 #include "libft.h"
 
-void	ft_checkenv_case2(char **env, char **arg, int i)
+void			ft_checkenv_case2(char **env, char **arg, int i)
 {
 	char	*tmp;
 	int		j;
@@ -36,7 +36,7 @@ void	ft_checkenv_case2(char **env, char **arg, int i)
 	free(tmp);
 }
 
-int		ft_check_args(char **arg)
+int				ft_check_args(char **arg)
 {
 	int		i;
 
@@ -59,7 +59,7 @@ static void		free_tmp(char **tmp1, char **tmp2)
 	*tmp2 = NULL;
 }
 
-void	ft_setenv(t_data *data, char **arg)
+void			ft_setenv(t_data *data, char **arg)
 {
 	int		j;
 	int		i;
@@ -88,7 +88,7 @@ void	ft_setenv(t_data *data, char **arg)
 	free_tmp(&temp, &temp2);
 }
 
-int		ft_checkenv(char **env, char *str)
+int				ft_checkenv(char **env, char *str)
 {
 	int		i;
 
