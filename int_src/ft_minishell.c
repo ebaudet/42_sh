@@ -6,7 +6,7 @@
 /*   By: ymohl-cl <ymohl-cl@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/02/04 13:12:59 by ymohl-cl          #+#    #+#             */
-/*   Updated: 2014/03/27 08:56:39 by wbeets           ###   ########.fr       */
+/*   Updated: 2014/03/27 14:23:57 by wbeets           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,10 @@ int				main(int argc, char **argv, char **env)
 	if (argc > 1)
 		return (0);
 	if (!env)
+	{
+		ft_putstr_fd("laucnhing a shell whitout an env is dangerous", 2);
 		return (-4);
+	}
 	if (ft_termios(&environ, envi.env) == -1)
 		return (-5);
 	debug = ft_read(&environ, &envi);
