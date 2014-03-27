@@ -6,7 +6,7 @@
 /*   By: ebaudet <ebaudet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/03/03 21:13:08 by ebaudet           #+#    #+#             */
-/*   Updated: 2014/03/14 00:42:42 by ebaudet          ###   ########.fr       */
+/*   Updated: 2014/03/27 16:05:13 by wbeets           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,8 +39,8 @@ char		**ft_get_path(t_data *env)
 
 	if ((tmp = ft_strsplit(env->path, ':')) == NULL)
 		return (NULL);
-	i = ft_count_c(env->path, ':') + 1;
-	if ((path = (char **)malloc(i * sizeof(char *))) == NULL)
+	i = ft_count_c(getenv("PATH"), ':') + 1;
+	if ((path = (char **)malloc((i + 1) * sizeof(char *))) == NULL)
 		return (NULL);
 	j = 0;
 	while (j < i)
