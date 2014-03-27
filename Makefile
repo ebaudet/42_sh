@@ -6,7 +6,7 @@
 #    By: ymohl-cl <ymohl-cl@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2014/01/04 16:12:18 by ymohl-cl          #+#    #+#              #
-#    Updated: 2014/03/26 22:49:46 by ymohl-cl         ###   ########.fr        #
+#    Updated: 2014/03/27 13:05:00 by wbeets           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -81,6 +81,7 @@ PRC_SRC =	ft_lexer.c \
 			ft_db_ar_rgt.c \
 			ft_semicol.c \
 			ft_pipe.c \
+			ft_check_pipes.c \
 
 INT_SRCS = $(addprefix int_src/, $(INT_SRC))
 BLD_SRCS = $(addprefix bld_src/, $(BLD_SRC))

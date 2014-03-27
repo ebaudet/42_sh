@@ -6,7 +6,7 @@
 /*   By: wbeets <wbeets@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/02/28 18:24:36 by wbeets            #+#    #+#             */
-/*   Updated: 2014/03/26 17:39:33 by ymohl-cl         ###   ########.fr       */
+/*   Updated: 2014/03/27 13:04:25 by wbeets           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,5 +65,6 @@ int					ft_and(t_op **tmp, t_data *env);
 int					ft_or(t_op **tmp, t_data *env);
 int					ft_semicol(t_op **tmp, t_data *env);
 int					ft_pipe(t_op **tmp, t_data *env);
+int					ft_check_pipes(t_op **lst);
 
 #endif

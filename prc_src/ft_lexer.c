@@ -6,7 +6,7 @@
 /*   By: wbeets <wbeets@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/02/28 18:21:50 by wbeets            #+#    #+#             */
-/*   Updated: 2014/03/26 18:50:14 by ymohl-cl         ###   ########.fr       */
+/*   Updated: 2014/03/27 13:38:08 by wbeets           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -104,6 +104,8 @@ static int			check_list(t_op **lst)
 		}
 		tmp = tmp->next;
 	}
+	if (ft_check_pipes(lst) == 0)
+		return (0);
 	return (1);
 }
 

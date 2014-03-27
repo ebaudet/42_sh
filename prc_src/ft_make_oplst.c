@@ -6,7 +6,7 @@
 /*   By: wbeets <wbeets@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/02/28 19:33:56 by wbeets            #+#    #+#             */
-/*   Updated: 2014/03/26 21:33:13 by ymohl-cl         ###   ########.fr       */
+/*   Updated: 2014/03/27 12:59:02 by wbeets           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,7 +69,7 @@ static void		make_list_item(char *str, t_op **start)
 		add_end(str, 3, AR_RIGHT, start);
 	else if (str[0] == '<' && str[1] != '<')
 		add_end(str, 3, AR_LEFT, start);
-	else if (str[0] == '|')
+	else if (str[0] == '|' && str[1] == '\0')
 		add_end(str, 2, PIPE, start);
 	else
 		add_end(str, 4, COM, start);
