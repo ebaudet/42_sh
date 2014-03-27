@@ -6,7 +6,7 @@
 /*   By: wbeets <wbeets@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/02/28 18:21:50 by wbeets            #+#    #+#             */
-/*   Updated: 2014/03/27 15:39:23 by wbeets           ###   ########.fr       */
+/*   Updated: 2014/03/27 22:03:54 by wbeets           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,7 @@ static void			free_list(t_op **lst)
 				free((*lst)->argv[i]);
 				i++;
 			}
+			i = 0;
 			free((*lst)->argv);
 		}
 		free(*lst);
@@ -46,7 +47,7 @@ static int			add_next_to_argv(t_op **lst)
 
 	i = 0;
 	tmp = *lst;
-	while (tmp->next && tmp->next->prior == 4 && ++i)
+	while (tmp->prior > 2 && tmp->next && tmp->next->prior == 4 && ++i)
 		tmp = tmp->next;
 	if (((*lst)->argv = (char **)malloc((i + 2) * sizeof(char *))))
 	{
@@ -54,7 +55,7 @@ static int			add_next_to_argv(t_op **lst)
 		(*lst)->argv[0] = ft_strdup((*lst)->name);
 		i = 1;
 		tmp = *lst;
-		while (tmp->next && tmp->next->prior == 4)
+		while (tmp->prior > 2 && tmp->next && tmp->next->prior == 4)
 		{
 			(*lst)->argv[i] = tmp->next->name;
 			i++;
@@ -73,8 +74,7 @@ static int			clean_list(t_op **lst)
 	tmp = *lst;
 	while (tmp)
 	{
-		if (tmp->prior == 3 || tmp->prior == 4)
-			add_next_to_argv(&tmp);
+		add_next_to_argv(&tmp);
 		tmp = tmp->next;
 	}
 	return (1);
@@ -92,7 +92,7 @@ static int			check_list(t_op **lst)
 		tmp->nbr = i;
 		i++;
 		if (tmp->code == AR_LEFT || tmp->code == AR_RIGHT
-		|| tmp->code == DB_AR_RIGHT)
+			|| tmp->code == DB_AR_RIGHT)
 		{
 			if (!tmp->argv[1])
 			{
