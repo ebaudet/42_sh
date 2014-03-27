@@ -6,7 +6,7 @@
 /*   By: gpetrov <gpetrov@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/03/07 17:25:03 by gpetrov           #+#    #+#             */
-/*   Updated: 2014/03/25 22:57:06 by gpetrov          ###   ########.fr       */
+/*   Updated: 2014/03/27 13:01:51 by gpetrov          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,13 +35,29 @@ int		ft_builtin_help(char *cmd, char **argv, t_data *data)
 void	ft_cd_help(t_data *data, char **argv)
 {
 	if (!argv[1])
-		chdir(data->home);
+	{
+		if (chdir(data->home) == -1)
+			ft_putstr("cd: permission denied\n");
+	}
 	else if (ft_strcmp(argv[1], "~") == 0)
-		chdir(data->home);
+	{
+		if (chdir(data->home) == -1)
+			ft_putstr("cd: permission denied\n");
+	}
 	else if (ft_strcmp(argv[1], "-") == 0)
-		chdir(data->old_pwd);
+	{
+		if (chdir(data->old_pwd) == -1)
+			ft_putstr("cd: permission denied\n");
+	}
 	else
-		chdir(argv[1]);
+	{
+		if (chdir(argv[1]) == -1)
+		{
+			ft_putstr("cd: permission denied: ");
+			ft_putstr(argv[1]);
+			ft_putchar('\n');
+		}
+	}
 	data->old_pwd = data->pwd;
 }
 
