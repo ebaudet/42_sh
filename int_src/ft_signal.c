@@ -6,7 +6,7 @@
 /*   By: ymohl-cl <ymohl-cl@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/03/27 17:16:30 by ymohl-cl          #+#    #+#             */
-/*   Updated: 2014/03/27 20:29:29 by ymohl-cl         ###   ########.fr       */
+/*   Updated: 2014/03/27 20:38:21 by wbeets           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@
 #include <signal.h>
 #include "ft_minishell.h"
 #include "libft.h"
+#include <sys/ioctl.h>
 
 static void		sig_tstp(t_env **env)
 {
