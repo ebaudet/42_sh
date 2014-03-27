@@ -45,8 +45,9 @@ int				ft_write_on_file(t_edit **lst, char **env)
 	int			fd;
 	char		*file;
 
+	(void)env;
 	tmp = *lst;
-	file = ft_strjoin(ft_getenv(env, "HOME"), FT_FILE);
+	file = ft_strjoin(getenv("HOME"), FT_FILE);
 	if ((fd = open(file, O_WRONLY | O_APPEND)) == -1)
 		return (-1);
 	if (check_lst(lst) == -1)
