@@ -6,7 +6,7 @@
 /*   By: gpetrov <gpetrov@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/03/25 22:52:25 by gpetrov           #+#    #+#             */
-/*   Updated: 2014/03/25 23:12:06 by gpetrov          ###   ########.fr       */
+/*   Updated: 2014/03/27 23:03:08 by ymohl-cl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,12 +43,20 @@ int		ft_check_args(char **arg)
 	i = 0;
 	while (arg[i])
 		i++;
-	if (i > 3)
+	if (i != 3)
 	{
-		ft_putstr("setenv: Too many arguments.\n");
+		ft_putstr("usage: setenv [var1] [var2].\n");
 		return (-1);
 	}
 	return (0);
+}
+
+static void		free_tmp(char **tmp1, char **tmp2)
+{
+	free(*tmp1);
+	free(*tmp2);
+	*tmp1 = NULL;
+	*tmp2 = NULL;
 }
 
 void	ft_setenv(t_data *data, char **arg)
@@ -57,7 +65,9 @@ void	ft_setenv(t_data *data, char **arg)
 	int		i;
 	char	**tmp;
 	char	*temp;
+	char	*temp2;
 
+	temp = NULL;
 	i = -1;
 	j = 0;
 	if (ft_check_args(arg) == -1)
@@ -70,12 +80,12 @@ void	ft_setenv(t_data *data, char **arg)
 	data->env = (char **)malloc(sizeof(char *) * (j + 2));
 	while (tmp[++i] != 0)
 		data->env[i] = tmp[i];
-	temp = ft_strcat(arg[1], "=");
+	temp2 = ft_strjoin(arg[1], "=");
 	if (arg[2])
-		temp = ft_strcat(temp, arg[2]);
+		temp = ft_strjoin(temp2, arg[2]);
 	data->env[i] = ft_strdup(temp);
 	data->env[i + 1] = 0;
-	free(temp);
+	free_tmp(&temp, &temp2);
 }
 
 int		ft_checkenv(char **env, char *str)
