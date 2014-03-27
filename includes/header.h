@@ -22,6 +22,7 @@ typedef struct	s_data
 	char		*home;
 	char		*old_pwd;
 	char		*pwd;
+	char 		*path;
 }				t_data;
 
 /*
@@ -46,8 +47,8 @@ void			ft_free_env(char **envi);
 ** ft_echo.c
 */
 int				ft_echo(char **arg, char **env);
-int				ft_echo_help(char **arg, char **env);
-void			ft_echo_help_norm(int *i, int *k, int *j);
+int				ft_echo_help(char *arg, char **env);
+void			ft_echo_help_norm(int *k, int *j);
 int				ft_echo_check_env(char **env, char *val);
 int				ft_echo_check_env2(char **env, char *val);
 
