@@ -3,101 +3,81 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: wbeets <wbeets@student.42.fr>              +#+  +:+       +#+        */
+/*   By: wtrembla <wtrembla@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2014/03/09 17:46:59 by wbeets            #+#    #+#             */
-/*   Updated: 2014/03/26 16:56:01 by wbeets           ###   ########.fr       */
+/*   Created: 2013/12/02 20:11:39 by wtrembla          #+#    #+#             */
+/*   Updated: 2014/03/27 13:55:39 by gpetrov          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
-#include <sys/types.h>
-#include <sys/stat.h>
 #include <stdlib.h>
+#include <sys/types.h>
+#include <sys/uio.h>
 #include <unistd.h>
-#include "ft_minishell.h"
+#include "get_next_line.h"
 
-static int	gnl_buf(char *buf, char *tmp, char **line)
+static char		*ft_line_read(char *str, int fin)
 {
+	size_t		i;
+	char		*line;
+
+	i = 0;
+	while (str[i] != fin)
+		i++;
+	line = ft_strnew(i);
+	i = 0;
+	while (str[i] != fin)
+	{
+		line[i] = str[i];
+		i++;
+	}
+	line[i] = '\0';
+	return (line);
+}
+
+static char		*organize_str(char *str)
+{
+	char	*new_str;
 	int		i;
-	char	*tmp_line;
 
 	i = 0;
-	while (buf[i] != '\0')
-	{
-		if (buf[i] == '\n')
-		{
-			tmp = ft_strcpy(tmp, (buf + i + 1));
-			buf[i] = '\0';
-			tmp_line = ft_strjoin(*line, buf);
-			if (*line)
-				ft_strdel(line);
-			*line = tmp_line;
-			return (1);
-		}
+	while (str[i] != '\n' && str[i])
 		i++;
-	}
-	if (*line)
+	if ((str[i] && !str[i + 1]) || !str[i])
 	{
-		tmp_line = ft_strjoin(*line, buf);
-		ft_strdel(line);
-		*line = tmp_line;
+		ft_strdel(&str);
+		return (NULL);
 	}
-	return (0);
+	new_str = ft_strdup(str + i + 1);
+	ft_strdel(&str);
+	return (new_str);
 }
 
-static int	gnl_tmp(char *tmp, char **line)
+int				get_next_line(int const fd, char **line)
 {
-	int	i;
+	char			buf[BUF_SIZE + 1];
+	char			*tmp;
+	int				ret;
+	char			*ptr;
+	static char		*str;
 
-	i = 0;
-	while ((tmp)[i] != '\0')
+	if (!str)
+		str = ft_strnew(1);
+	ret = 2;
+	while ((tmp = str) && !(ft_strchr(tmp, '\n')))
 	{
-		if (tmp[i] == '\n')
-		{
-			tmp[i] = '\0';
-			*line = ft_strdup(tmp);
-			tmp = ft_strcpy(tmp, (tmp + i + 1));
-			return (1);
-		}
-		i++;
-	}
-	return (0);
-}
-
-static int	gnl_end(int ret, char **line)
-{
-	if (ret == 0)
-	{
-		if ((*line)[0] != '\0')
-			return (1);
-		return (0);
-	}
-	return (-1);
-}
-
-int			get_next_line(int const fd, char **line)
-{
-	static char	tmp[BUFF_SIZE + 1];
-	char		*buf;
-	int			ret;
-
-	if (fd < 0 || BUFF_SIZE <= 0)
-		return (-1);
-	if (gnl_tmp(tmp, line) == 1)
-		return (1);
-	*line = ft_strdup(tmp);
-	buf = (char *)malloc(BUFF_SIZE + 1);
-	while ((ret = read(fd, buf, BUFF_SIZE)) > 0)
-	{
+		if ((ret = read(fd, buf, BUF_SIZE)) == -1 || BUF_SIZE <= 0)
+			return (-1);
 		buf[ret] = '\0';
-		if (gnl_buf(buf, tmp, line) == 1)
-		{
-			ft_strdel(&buf);
-			return (1);
-		}
+		ptr = str;
+		str = ft_strjoin(str, buf);
+		free(ptr);
+		if (ret == 0 && *str == '\0')
+			return (0);
+		else if (ret == 0 && *str)
+			break ;
 	}
-	ft_strdel(&buf);
-	tmp[0] = '\0';
-	return (gnl_end(ret, line));
+	*line = ft_line_read(str, ret > 0 ? '\n' : '\0');
+	str = organize_str(str);
+	return (1);
 }
