@@ -6,7 +6,7 @@
 /*   By: ebaudet <ebaudet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/03/12 20:29:06 by ebaudet           #+#    #+#             */
-/*   Updated: 2014/03/26 16:38:55 by wbeets           ###   ########.fr       */
+/*   Updated: 2014/03/26 21:54:59 by wbeets           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,11 +40,6 @@ int		print_commande(t_edit **lst_e, struct winsize ws)
 	lengh += 4;
 	i = 0;
 	ft_tputs("rc");
-	while (i < (lengh / ws.ws_col))
-	{
-		ft_tputs("dw");
-		i++;
-	}
 	ft_tputs("cd");
 	ft_print_lste(lst_e);
 	if ((lengh % ws.ws_col) == 1)

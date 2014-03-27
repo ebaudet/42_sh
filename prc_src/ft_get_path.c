@@ -6,11 +6,12 @@
 /*   By: gpetrov <gpetrov@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/03/17 18:41:50 by gpetrov           #+#    #+#             */
-/*   Updated: 2014/03/17 18:42:19 by gpetrov          ###   ########.fr       */
+/*   Updated: 2014/03/27 14:02:25 by wbeets           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "header.h"
+#include "libft.h"
 
 char	**ft_get_path(char **tabs)
 {
@@ -21,7 +22,7 @@ char	**ft_get_path(char **tabs)
 	int		k;
 
 	k = -1;
-	while (tab[++k])
+	while (tabs[++k])
 		if (ft_strncmp(tabs[k], "PATH", 4) == 0)
 			break ;
 	tmp = ft_strsplit(tabs[k] + 5, ':');
