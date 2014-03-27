@@ -6,7 +6,7 @@
 /*   By: ymohl-cl <ymohl-cl@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/03/27 17:16:30 by ymohl-cl          #+#    #+#             */
-/*   Updated: 2014/03/27 21:12:29 by ymohl-cl         ###   ########.fr       */
+/*   Updated: 2014/03/27 21:25:08 by ymohl-cl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 #include <unistd.h>
 #include <stdlib.h>
 #include <signal.h>
+#include <sys/ioctl.h>
 #include "ft_minishell.h"
 #include "libft.h"
 

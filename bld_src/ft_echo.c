@@ -6,7 +6,7 @@
 /*   By: gpetrov <gpetrov@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/03/25 22:40:04 by gpetrov           #+#    #+#             */
-/*   Updated: 2014/03/27 14:17:17 by ymohl-cl         ###   ########.fr       */
+/*   Updated: 2014/03/27 20:48:14 by gpetrov          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,9 +95,9 @@ int		ft_echo(char **arg, char **env)
 	mark = 0;
 	i = 0;
 	offset = 1;
-	if (arg[1] && arg[1][0] && arg[1][1] && arg[1][0] == '-' && arg[1][1] == 'n')
+	if (arg[1] && arg[1][0] && arg[1][1] &&
+	arg[1][0] == '-' && arg[1][1] == 'n' && (i = 1))
 			mark = 1;
-	i++;
 	while (arg[++i])
 	{
 		if (offset == 0)
