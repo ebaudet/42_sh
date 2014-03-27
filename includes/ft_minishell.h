@@ -6,7 +6,7 @@
 /*   By: ymohl-cl <ymohl-cl@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/02/04 13:14:22 by ymohl-cl          #+#    #+#             */
-/*   Updated: 2014/03/27 19:12:50 by ymohl-cl         ###   ########.fr       */
+/*   Updated: 2014/03/27 21:22:48 by ymohl-cl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,8 @@
 # include "ft_mini_struct.h"
 
 int		ft_read(t_env **env, t_data *environ);
+void	ft_jumprint(t_edit **lst);
+char	*ft_creat_string(t_edit *lst);
 int		ft_lexer(char *str, t_data *env);
 int		ft_filled_lste(char *key, t_edit **lst, t_hist **hst);
 void	ft_print_lste(t_edit **lst);

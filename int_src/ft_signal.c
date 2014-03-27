@@ -6,7 +6,7 @@
 /*   By: ymohl-cl <ymohl-cl@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/03/27 17:16:30 by ymohl-cl          #+#    #+#             */
-/*   Updated: 2014/03/27 20:38:21 by wbeets           ###   ########.fr       */
+/*   Updated: 2014/03/27 21:32:01 by wbeets           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,7 +67,7 @@ static void		sig_int(t_edit **lst)
 	}
 }
 
-void		ft_signal(t_env **env, t_edit **lst, int value, t_hist **hst)
+void			ft_signal(t_env **env, t_edit **lst, int value, t_hist **hst)
 {
 	(void)hst;
 	if (value == 1)
@@ -79,5 +79,3 @@ void		ft_signal(t_env **env, t_edit **lst, int value, t_hist **hst)
 	else if (value == 4)
 		exit(0);
 }
-
-
