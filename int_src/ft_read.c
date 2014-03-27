@@ -6,7 +6,7 @@
 /*   By: ymohl-cl <ymohl-cl@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/02/04 13:41:59 by ymohl-cl          #+#    #+#             */
-/*   Updated: 2014/03/27 21:22:41 by ymohl-cl         ###   ########.fr       */
+/*   Updated: 2014/03/27 21:34:21 by ymohl-cl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,8 +34,7 @@ static void		clean_all(t_edit **lst_e, t_hist **hst)
 	*hst = NULL;
 }
 
-
-static int		after_while(t_env **ev, t_data *en, t_edit **lst, t_hist **hst )
+static int		after_while(t_env **ev, t_data *en, t_edit **lst, t_hist **hst)
 {
 	if (ft_sigleton(0) == 3)
 	{
