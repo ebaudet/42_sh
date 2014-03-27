@@ -90,8 +90,9 @@ int					ft_create_hst(t_hist **hst, char **env)
 	int			fd;
 	char		*file;
 
+	(void)env;
 	line = NULL;
-	file = ft_strjoin(ft_getenv(env, "HOME"), FT_FILE);
+	file = ft_strjoin(getenv("HOME"), FT_FILE);
 	fd = open(file, O_RDONLY | O_CREAT, S_IRUSR | S_IWUSR | S_IRWXG);
 	if (fd == -1)
 		return (-1);

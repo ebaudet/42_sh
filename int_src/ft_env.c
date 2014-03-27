@@ -37,9 +37,10 @@ char		**ft_get_path(char **env)
 	int		i;
 	int		j;
 
-	if ((tmp = ft_strsplit(ft_getenv(env, "PATH"), ':')) == NULL)
+	(void)env;
+	if ((tmp = ft_strsplit(getenv("PATH"), ':')) == NULL)
 		return (NULL);
-	i = ft_count_c(ft_getenv(env, "PATH"), ':') + 1;
+	i = ft_count_c(getenv("PATH"), ':') + 1;
 	if ((path = (char **)malloc(i * sizeof(char *))) == NULL)
 		return (NULL);
 	j = 0;
@@ -53,23 +54,4 @@ char		**ft_get_path(char **env)
 	path[i] = NULL;
 	free(tmp);
 	return (path);
-}
-
-char		*ft_getenv(char **env, char *name)
-{
-	int		i;
-	char	loop;
-
-	i = 0;
-	loop = 'y';
-	while (*(env + i) != NULL && loop == 'y')
-	{
-		if (ft_strncmp(*(env + i), name, ft_strlen(name)) == 0)
-			loop = 'n';
-		else
-			i++;
-	}
-	if (loop == 'y')
-		return (NULL);
-	return (*(env + i) + ft_strlen(name) + 1);
 }

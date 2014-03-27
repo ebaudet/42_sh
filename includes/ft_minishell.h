@@ -76,11 +76,6 @@ int		ft_tputs(char *str);
 int		ft_termios(t_env **environ, char **env);
 int		ft_envfree(char **env);
 
-/*
-** ft_env.c
-*/
-char	**ft_get_path(char **env);
-char	*ft_getenv(char **env, char *name);
 
 /*
 ** print_error.c
