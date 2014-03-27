@@ -6,7 +6,7 @@
 /*   By: ymohl-cl <ymohl-cl@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/02/04 16:29:11 by ymohl-cl          #+#    #+#             */
-/*   Updated: 2014/03/26 16:55:33 by wbeets           ###   ########.fr       */
+/*   Updated: 2014/03/27 16:40:31 by ymohl-cl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,13 +44,14 @@ int				ft_termios(t_env **environ, char **env)
 
 	term = NULL;
 	*environ = (t_env *)malloc(sizeof(t_env));
+	(*environ)->buf = bp;
 	if (!*environ)
 		return (-1);
 	if (cpy_term(environ) < 0)
 		return (-1);
 	if (!(term = getenv("TERM")))
 		return (-1);
-	if (!(tgetent(bp, term)))
+	if (!(tgetent((*environ)->buf, term)))
 		return (-1);
 	(*environ)->env = ft_env_copy(env);
 	return (0);

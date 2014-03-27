@@ -6,7 +6,7 @@
 /*   By: ymohl-cl <ymohl-cl@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/02/04 13:41:59 by ymohl-cl          #+#    #+#             */
-/*   Updated: 2014/03/26 17:21:27 by wbeets           ###   ########.fr       */
+/*   Updated: 2014/03/27 20:09:07 by ymohl-cl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@
 #include <stdlib.h>
 #include "ft_minishell.h"
 #include "libft.h"
+#include <sys/ioctl.h>
 
 static void		begin_read(t_hist **hst, t_edit **lst, char **env)
 {
@@ -80,26 +81,47 @@ void			ft_jumprint(t_edit **lst)
 
 int				ft_read(t_env **env, t_data *environ)
 {
+	int			value;
 	t_hist		*hst;
 	t_edit		*lst_e;
 	char		key[7];
 
+	value = 0;
 	hst = NULL;
 	lst_e = NULL;
 	ft_bzero(key, 7);
 	begin_read(&hst, &lst_e, environ->env);
-	while (!ENTER)
+	while (!ENTER && ft_sigleton(0) != 3)
 	{
 		ft_bzero(key, 7);
-		if (read(0, key, 6) == -1)
-			return (-2);
-		ft_check_key(key, &lst_e, &hst);
+		if ((value = ft_sigleton(0)) > 0)
+			ft_signal(env, &lst_e, value, &hst);
+		else
+		{
+			if (read(0, key, 6) == -1)
+				return (-2);
+			if (ft_sigleton(0) == 0)
+				ft_check_key(key, &lst_e, &hst);
+			if ((value = ft_sigleton(0)) == 3)
+				ft_signal(env, &lst_e, value, &hst);
+		}
 	}
-	ft_jumprint(&lst_e);
-	ft_putchar('\n');
-	if ((ft_write_on_file(&lst_e, environ->env)) == 0)
-		ft_lexer(ft_creat_string(lst_e), environ);
-	clean_all(&lst_e, &hst);
-	ft_read(env, environ);
+	if (ft_sigleton(0) == 3)
+	{
+		ft_sigleton(-1);
+		ft_putchar('\n');
+		ft_read(env, environ);
+	}
+	else
+	{
+		if (lst_e)
+			ft_jumprint(&lst_e);
+		ft_putchar('\n');
+		if ((ft_write_on_file(&lst_e, environ->env)) == 0)
+			ft_lexer(ft_creat_string(lst_e), environ);
+		clean_all(&lst_e, &hst);
+		ft_read(env, environ);
+		return (0);
+	}
 	return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: gpetrov <gpetrov@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/01/24 15:49:20 by gpetrov           #+#    #+#             */
-/*   Updated: 2014/03/26 22:49:26 by ymohl-cl         ###   ########.fr       */
+/*   Updated: 2014/03/27 17:15:32 by ymohl-cl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ typedef struct	s_data
 	char		*home;
 	char		*old_pwd;
 	char		*pwd;
-	char 		*path;
+	char		*path;
 }				t_data;
 
 /*

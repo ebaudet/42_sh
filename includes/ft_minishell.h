@@ -6,7 +6,7 @@
 /*   By: ymohl-cl <ymohl-cl@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/02/04 13:14:22 by ymohl-cl          #+#    #+#             */
-/*   Updated: 2014/03/26 17:43:27 by wbeets           ###   ########.fr       */
+/*   Updated: 2014/03/27 19:12:50 by ymohl-cl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,7 +75,9 @@ int		ft_tputs(char *str);
 */
 int		ft_termios(t_env **environ, char **env);
 int		ft_envfree(char **env);
-
+void	ft_signum(int sig);
+int		ft_sigleton(int i);
+void	ft_signal(t_env **env, t_edit **lst, int value, t_hist **hst);
 
 /*
 ** print_error.c

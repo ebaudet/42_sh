@@ -6,7 +6,7 @@
 /*   By: wbeets <wbeets@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/03/13 14:41:35 by wbeets            #+#    #+#             */
-/*   Updated: 2014/03/27 14:24:33 by wbeets           ###   ########.fr       */
+/*   Updated: 2014/03/27 16:14:34 by ymohl-cl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,8 +32,8 @@ static int		lunch_cmd(char *cmd, char **argv, t_data *env)
 		execve(tmp, argv, env->env);
 		free(tmp);
 	}
-	ft_putstr("not a regular command\n");
 	execve(cmd, argv, env->env);
+	ft_putstr("Command can't be executed, check permission or existence\n");
 	exit(-1);
 }
 

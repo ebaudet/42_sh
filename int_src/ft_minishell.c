@@ -6,10 +6,11 @@
 /*   By: ymohl-cl <ymohl-cl@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/02/04 13:12:59 by ymohl-cl          #+#    #+#             */
-/*   Updated: 2014/03/27 14:23:57 by wbeets           ###   ########.fr       */
+/*   Updated: 2014/03/27 20:19:25 by ymohl-cl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include <signal.h>
 #include <stdlib.h>
 #include "ft_minishell.h"
 #include "libft.h"
@@ -24,12 +25,22 @@ static	void	ft_save_some_env_values(t_data *data, char **env)
 	data->path = getenv("PATH");
 }
 
+static void		manage_signal(void)
+{
+	signal(SIGTSTP, ft_signum);
+	signal(SIGCONT, ft_signum);
+	signal(SIGINT, ft_signum);
+	signal(SIGQUIT, ft_signum);
+	signal(SIGPIPE, ft_signum);
+}
+
 int				main(int argc, char **argv, char **env)
 {
 	t_env		*environ;
 	int			debug;
 	t_data		envi;
 
+	manage_signal();
 	ft_save_some_env_values(&envi, env);
 	debug = 0;
 	(void)argv;

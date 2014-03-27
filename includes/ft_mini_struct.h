@@ -6,7 +6,7 @@
 /*   By: wbeets <wbeets@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/03/26 17:32:55 by wbeets            #+#    #+#             */
-/*   Updated: 2014/03/26 17:40:55 by wbeets           ###   ########.fr       */
+/*   Updated: 2014/03/27 16:40:37 by ymohl-cl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 
 typedef struct			s_env
 {
+	char				*buf;
 	struct termios		term;
 	char				**env;
 	struct termios		term_cpy;
