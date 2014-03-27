@@ -44,7 +44,7 @@ int					ft_lexer(char *str, t_data *env);
 char				**ft_split(char *str);
 int					is_space(char c);
 int					is_op(char c);
-char				**ft_get_path(char **tabs);
+char				**ft_get_path(t_data *env);
 char				**ft_fill_tab(char *str, int size);
 t_op				*ft_create_tree(t_op **lst);
 

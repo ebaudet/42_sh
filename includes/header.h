@@ -22,6 +22,7 @@ typedef struct	s_data
 	char		*home;
 	char		*old_pwd;
 	char		*pwd;
+	char 		*path;
 }				t_data;
 
 /*

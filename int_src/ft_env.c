@@ -30,17 +30,16 @@ static int	ft_count_c(char *str, char c)
 	return (j);
 }
 
-char		**ft_get_path(char **env)
+char		**ft_get_path(t_data *env)
 {
 	char	**path;
 	char	**tmp;
 	int		i;
 	int		j;
 
-	(void)env;
-	if ((tmp = ft_strsplit(getenv("PATH"), ':')) == NULL)
+	if ((tmp = ft_strsplit(env->path, ':')) == NULL)
 		return (NULL);
-	i = ft_count_c(getenv("PATH"), ':') + 1;
+	i = ft_count_c(env->path, ':') + 1;
 	if ((path = (char **)malloc(i * sizeof(char *))) == NULL)
 		return (NULL);
 	j = 0;

@@ -49,7 +49,7 @@ int		ft_echo_check_env(char **env, char *val)
 	j = -1;
 	while (env[++i] != 0)
 	{
-		if (ft_strncmp(env[i], val, (size_t)ft_strlen(val)) == 0)
+		if (ft_strncmp(env[i], val, (size_t)ft_strlen(val) - 1) == 0)
 		{
 			ft_echo_value(env[i]);
 			return (1);

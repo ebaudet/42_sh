@@ -25,7 +25,7 @@ static int		lunch_cmd(char *cmd, char **argv, t_data *env)
 	i = -1;
 	tmp = NULL;
 	paths = NULL;
-	paths = ft_get_path(env->env);
+	paths = ft_get_path(env);
 	while (paths[++i] != '\0')
 	{
 		tmp = ft_strjoin(paths[i], cmd);

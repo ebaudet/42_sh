@@ -21,6 +21,7 @@ static	void	ft_save_some_env_values(t_data *data, char **env)
 	data->home = getenv("HOME");
 	data->old_pwd = getenv("OLD_PWD");
 	data->pwd = getenv("PWD");
+	data->path = getenv("PATH");
 }
 
 int				main(int argc, char **argv, char **env)
