@@ -6,7 +6,7 @@
 /*   By: gpetrov <gpetrov@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/03/25 22:40:04 by gpetrov           #+#    #+#             */
-/*   Updated: 2014/03/27 14:11:15 by ymohl-cl         ###   ########.fr       */
+/*   Updated: 2014/03/27 14:17:17 by ymohl-cl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -117,7 +117,5 @@ int		ft_echo(char **arg, char **env)
 	}
 	if (mark == 0)
 		ft_putchar('\n');
-	else
-		ft_tputs("do");
 	return (0);
 }
