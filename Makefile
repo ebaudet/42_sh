@@ -6,7 +6,7 @@
 #    By: ymohl-cl <ymohl-cl@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2014/01/04 16:12:18 by ymohl-cl          #+#    #+#              #
-#    Updated: 2014/03/27 17:39:17 by ymohl-cl         ###   ########.fr        #
+#    Updated: 2014/03/27 21:22:40 by ymohl-cl         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -60,6 +60,8 @@ INT_SRC =	ft_minishell.c \
 			ft_signum.c \
 			ft_sigleton.c \
 			ft_signal.c \
+			ft_creat_string.c \
+			ft_jumprint.c \
 
 BLD_SRC =	ft_builtin.c \
 			ft_env.c \

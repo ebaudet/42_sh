@@ -6,10 +6,11 @@
 /*   By: ymohl-cl <ymohl-cl@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/03/27 17:16:30 by ymohl-cl          #+#    #+#             */
-/*   Updated: 2014/03/27 20:29:29 by ymohl-cl         ###   ########.fr       */
+/*   Updated: 2014/03/27 21:12:29 by ymohl-cl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include <sys/ioctl.h>
 #include <fcntl.h>
 #include <unistd.h>
 #include <stdlib.h>
@@ -66,7 +67,7 @@ static void		sig_int(t_edit **lst)
 	}
 }
 
-void		ft_signal(t_env **env, t_edit **lst, int value, t_hist **hst)
+void			ft_signal(t_env **env, t_edit **lst, int value, t_hist **hst)
 {
 	(void)hst;
 	if (value == 1)
@@ -78,5 +79,3 @@ void		ft_signal(t_env **env, t_edit **lst, int value, t_hist **hst)
 	else if (value == 4)
 		exit(0);
 }
-
-
