@@ -21,13 +21,13 @@ static char		*find_word(char *str, int *i)
 
 	j = 0;
 	k = *i;
-	while (str[k] != '\0' && !is_space(str[k]))
+	while (str[k] != 0 && !is_space(str[k]))
 	{
 		k++;
 		j++;
 	}
 	ret = (char *)malloc((j + 1) * sizeof(char));
-	ret[j] = '\0';
+	ret[j] = 0;
 	j = 0;
 	while (*i < k)
 	{
@@ -48,7 +48,7 @@ char			**ft_fill_tab(char *str, int size)
 	i = 0;
 	j = 0;
 	arr = (char **)malloc((size + 1) * sizeof(char *));
-	arr[size] = '\0';
+	arr[size] = 0;
 	while (i < size)
 	{
 		arr[i] = find_word(str, &j);

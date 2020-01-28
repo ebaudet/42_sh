@@ -26,7 +26,7 @@ static void			free_list(t_op **lst)
 		tmp = (*lst)->next;
 		if ((*lst)->argv)
 		{
-			while ((*lst)->argv[i] != '\0')
+			while ((*lst)->argv[i] != NULL)
 			{
 				free((*lst)->argv[i]);
 				i++;
@@ -51,7 +51,7 @@ static int			add_next_to_argv(t_op **lst)
 		tmp = tmp->next;
 	if (((*lst)->argv = (char **)malloc((i + 2) * sizeof(char *))))
 	{
-		(*lst)->argv[i + 1] = '\0';
+		(*lst)->argv[i + 1] = NULL;
 		(*lst)->argv[0] = ft_strdup((*lst)->name);
 		i = 1;
 		tmp = *lst;

@@ -30,7 +30,7 @@ static char		**ft_count_word(char const *s, char c)
 			i++;
 	}
 	tab = (char **)malloc(sizeof(char *) * (nbr + 1));
-	tab[nbr] = '\0';
+	tab[nbr] = 0;
 	return (tab);
 }
 
